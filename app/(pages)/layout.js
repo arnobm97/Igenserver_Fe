@@ -1,0 +1,67 @@
+'use client';
+import { useEffect, useState } from "react";
+
+export default function MainLayout({ children }) {
+    const [showStars, setShowStars] = useState(true);
+    const [showBG1, setShowBG1] = useState(false);
+    const [showContent, setShowContent] = useState(false);
+
+    useEffect(() => {
+        const starsTimeout = setTimeout(() => {
+            setShowStars(false);
+            setShowBG1(true);
+            const bg1Timeout = setTimeout(() => {
+                setShowContent(true);
+            }, 2000);
+
+            return () => clearTimeout(bg1Timeout);
+        }, 5000);
+
+        return () => clearTimeout(starsTimeout);
+    }, []);
+
+    return (
+        <div className="relative h-screen font-ceraround  overflow-hidden">
+            {/* Show stars video */}
+            {showStars && (
+               <div>
+                 <video
+                    autoPlay
+                    muted
+                    loop={false}
+                    className="fixed inset-0 w-[100vw] h-[100vh] object-cover z-0"
+                >
+                    <source src="video/3-d-stars.webm" type="video/webm" />
+                    Your browser does not support the video tag.
+                </video>
+               </div>
+            )}
+
+            {/* Show background video */}
+            {(showBG1 || showContent) && (
+                <video
+                    autoPlay
+                    muted
+                    loop={true}
+                    onPlay={(e) => {
+                        const video = e.target;
+                        video.currentTime = 2.5; // Start playback at 2.5 seconds
+                    }}
+                    className="fixed inset-0 w-full h-full object-cover z-0"
+                >
+                    <source src="video/BG_1.webm" type="video/webm" />
+                    Your browser does not support the video tag.
+                </video>
+            )}
+
+            {showContent && <div className="!relative max-w-[1440px] mx-auto h-full">
+                <img
+                    src="/images/igenServerLogo.png"
+                    alt="Logo"
+                    className="absolute top-5 left-5 w-[173px]"
+                />
+                {children}
+            </div>}
+        </div>
+    );
+}
