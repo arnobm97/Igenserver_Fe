@@ -1,21 +1,45 @@
 <svg width="198" height="198" viewBox="0 0 198 198" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="99" cy="99" r="48" fill="#D96D26" opacity='0.8'  />
-  <circle opacity="0.5" cx="99" cy="99" r="58.5" stroke="#DB6E27">
-    <animate attributeName="r" values="48.5; 53.5; 58.5" dur="3s" repeatCount="indefinite" />
-    <animate attributeName="opacity" values="0.5; 0.3; 0.0" dur="3s" repeatCount="indefinite" />
+  <circle cx="99" cy="99" r="48.5" fill="#D96D26" opacity="0.8" />
+  
+  <!-- Circle 1 -->
+  <circle opacity="0.5" cx="99" cy="99" r="48.5" stroke="#DB6E27">
+    <animate attributeName="r" values="48.5; 58.5; 68.5" dur="2s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.5; 0.3; 0" dur="2s" repeatCount="indefinite" />
   </circle>
-  <circle opacity="0.5" cx="99" cy="99" r="58.5" stroke="#DB6E27">
-    <animate attributeName="r" values="58.5; 63.5; 68.5" dur="3s" repeatCount="indefinite" />
-    <animate attributeName="opacity" values="0.5; 0.3; 0.0" dur="3s" repeatCount="indefinite" />
+  
+  <!-- Circle 2 -->
+  <circle opacity="0.5" cx="99" cy="99" r="48.5" stroke="#DB6E27">
+    <animate attributeName="r" values="48.5; 63.5; 78.5" dur="4s" repeatCount="indefinite" begin="2s" />
+    <animate attributeName="opacity" values="0.5; 0.3; 0" dur="4s" repeatCount="indefinite" begin="2s" />
   </circle>
-  <circle opacity="0.2" cx="99" cy="99" r="76.5" stroke="#DB6E27">
-    <animate attributeName="r" values="76.5; 81.5; 86.5" dur="3s" repeatCount="indefinite" />
-    <animate attributeName="opacity" values="0.2; 0.1; 0.0" dur="3s" repeatCount="indefinite" />
+  
+  <!-- Circle 3 -->
+  <circle opacity="0.5" cx="99" cy="99" r="48.5" stroke="#DB6E27">
+    <animate attributeName="r" values="48.5; 73.5; 88.5" dur="6s" repeatCount="indefinite" begin="3s" />
+    <animate attributeName="opacity" values="0.5; 0.3; 0" dur="6s" repeatCount="indefinite" begin="3s" />
   </circle>
-  <circle opacity="0.05" cx="99" cy="99" r="98.5" stroke="#DB6E27">
-    <animate attributeName="r" values="98.5; 103.5; 108.5" dur="3s" repeatCount="indefinite" />
-    <animate attributeName="opacity" values="0.05; 0.02; 0.00" dur="3s" repeatCount="indefinite" />
+  
+  <!-- Circle 4 -->
+ 
+
+  <!-- Circle 6 (extra circle that fades away after its first loop) -->
+  <circle opacity="0.5" cx="99" cy="99" r="48.5" stroke="#DB6E27">
+    <animate attributeName="r" values="48.5; 63.5; 78.5" dur="3s" begin="0" />
+    <animate attributeName="opacity" values="0.5; 0.3; 0" dur="3s" begin="0" />
   </circle>
+
+  <!-- Circle 7 (extra circle that fades away after its first loop) -->
+  <circle opacity="0.5" cx="99" cy="99" r="48.5" stroke="#DB6E27">
+    <animate attributeName="r" values="58.5; 58.5; 68.5" dur="3s" begin="0" />
+    <animate attributeName="opacity" values="0.5; 0.3; 0" dur="3s" begin="0" />
+  </circle>
+
+  <!-- Circle 8 (extra circle that fades away after its first loop) -->
+  <circle opacity="0.5" cx="99" cy="99" r="48.5" stroke="#DB6E27">
+    <animate attributeName="r" values="73.5; 73.5; 88.5" dur="3s" begin="0" />
+    <animate attributeName="opacity" values="0.5; 0.3; 0" dur="3s" begin="0" />
+  </circle>
+
   <path
     d="M106.071 106.071C107.881 104.261 109 101.761 109 99C109 93.4772 104.523 89 99 89C93.4772 89 89 93.4772 89 99C89 101.761 90.1193 104.261 91.9289 106.071"
     stroke="white"

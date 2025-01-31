@@ -48,10 +48,9 @@ const ServiceSlider = ({ setDisplayMainServices }) => {
         setScrollPosition((prevPosition) => {
           const newPosition = prevPosition + 1;
 
-          if (newPosition >= totalSlides * 300) {
-            // Reset scroll position for infinite looping
-            return 0;
-          }
+          // if (newPosition >= totalSlides * 300) {
+          //   return 0;
+          // }
 
           return newPosition;
         });
@@ -68,9 +67,9 @@ const ServiceSlider = ({ setDisplayMainServices }) => {
       const newPosition = scrollPosition + e.deltaY;
 
       if (newPosition < 0) {
-        setScrollPosition((totalSlides - 1) * 300); // Wrap to end for backward scroll
+        setScrollPosition((totalSlides - 1) * 300);
       } else if (newPosition >= totalSlides * 300) {
-        setScrollPosition(0); // Wrap to start for forward scroll
+        setScrollPosition(0); 
       } else {
         setScrollPosition(newPosition);
       }
@@ -83,8 +82,9 @@ const ServiceSlider = ({ setDisplayMainServices }) => {
     <div
       className="relative w-full h-[calc(100vh_-_90px)] overflow-hidden !cursor-default"
       onWheel={handleWheel}
-      onMouseEnter={() => setIsPaused(true)}
+      onMouseEnter={() => setIsPaused(false)}
       onMouseLeave={() => setIsPaused(false)}
+      style={{ perspective: "1000px" }}
     >
       <div
         ref={redDivRef}
@@ -103,6 +103,7 @@ const ServiceSlider = ({ setDisplayMainServices }) => {
         }}
         style={{
           whiteSpace: "nowrap",
+          perspective: "1000px",
         }}
       >
         {[...initialSlides, ...initialSlides].map((slide, index) => (
@@ -115,14 +116,21 @@ const ServiceSlider = ({ setDisplayMainServices }) => {
               src={slide.image || "/placeholder.svg"}
               alt={slide.description}
               className="rounded-xl cursor-pointer"
+              style={{
+              transformStyle: "preserve-3d",
+            }}
               onClick={() => router.push(`/services?service=${index % totalSlides}`)}
               initial={{
                 width: "300px",
                 height: "200px",
+                boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)",
+                transform: "rotateY(0deg)",
               }}
               animate={{
                 width: activeIndex === index % totalSlides ? "500px" : "300px",
                 height: activeIndex === index % totalSlides ? "300px" : "200px",
+               boxShadow: activeIndex === index % totalSlides ? "0px 8px 20px rgba(0, 0, 0, 0.3)" : "0px 4px 12px rgba(0, 0, 0, 0.2)",
+               transform: activeIndex === index % totalSlides ? "rotateY(20deg)" : "rotateY(0deg)",
               }}
               transition={{
                 duration: 2,

@@ -60,7 +60,7 @@ export default function SelectMenuCardCenter() {
       <motion.div
         style={baseStyle}
         ref={divRef} 
-        className={`absolute w-[450px] h-[475px] bg-zinc-400 bg-opacity-40 rounded-[10px] backdrop-blur-2xl p-[10px] font-nordiquePro ${
+        className={`absolute w-[450px] h-[465px] bg-zinc-400 bg-opacity-40 rounded-[10px] backdrop-blur-2xl p-[10px] font-nordiquePro ${
           isExpanded && "!z-[30] !p-0 !m-0"
         }`}
         transition={{ duration: 0.5, ease: "easeInOut" }}
@@ -71,7 +71,7 @@ export default function SelectMenuCardCenter() {
         
         {dimensions.width > 0 && dimensions.height > 0 && !isExpanded && (
   <motion.svg
-    className="svg-border rounded-xl"
+    className="svg-border rounded-xl absolute !top-[-4px] !left-[-4px]"
     width={dimensions.width + 10}
     height={dimensions.height + 10}
     viewBox={`0 0 ${dimensions.width + 10} ${dimensions.height + 10}`}
@@ -79,7 +79,7 @@ export default function SelectMenuCardCenter() {
   >
     <defs>
       <linearGradient id="borderGradient" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stopColor="#DB6E27" />
+        <stop offset="50%" stopColor="#DB6E27" />
         <stop offset="100%" stopColor="white" />
       </linearGradient>
       <filter id="neon" x="-20%" y="-20%" width="140%" height="140%">
@@ -98,14 +98,17 @@ export default function SelectMenuCardCenter() {
       height={dimensions.height}
       rx="10"
       stroke="url(#borderGradient)"
-      strokeWidth="2"
+      strokeWidth="1"
       fill="none"
       filter="url(#neon)"
-      initial={{ strokeDasharray: 2 * (dimensions.width + dimensions.height), strokeDashoffset: 2 * (dimensions.width + dimensions.height) }}
+      initial={{
+      strokeDasharray: 1 * (dimensions.width + dimensions.height),
+      strokeDashoffset: 2 * (dimensions.width + dimensions.height),
+    }}
       animate={{ strokeDashoffset: 0 }}
       transition={{
-        duration: 2.4,
-        ease: "easeInOut",
+        duration: 8,
+        ease: "linear",
         repeat: Infinity,
       }}
     />
