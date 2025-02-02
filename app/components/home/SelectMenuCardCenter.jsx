@@ -11,7 +11,7 @@ export default function SelectMenuCardCenter() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
-  const divRef = useRef(null); 
+  const divRef = useRef(null);
   const [dimensions, setDimensions] = useState({
     width: 0,
     height: 0,
@@ -59,67 +59,65 @@ export default function SelectMenuCardCenter() {
     <div className="rounded-xl">
       <motion.div
         style={baseStyle}
-        ref={divRef} 
-        className={`absolute w-[450px] h-[465px] bg-zinc-400 bg-opacity-40 rounded-[10px] backdrop-blur-2xl p-[10px] font-nordiquePro ${
-          isExpanded && "!z-[30] !p-0 !m-0"
-        }`}
+        ref={divRef}
+        className={`absolute w-[450px] h-[465px] bg-zinc-400 bg-opacity-40 rounded-[10px] backdrop-blur-2xl p-[10px] font-nordiquePro ${isExpanded && "!z-[30] !p-0 !m-0"
+          }`}
         transition={{ duration: 0.5, ease: "easeInOut" }}
         animate={isExpanded ? expandedStyle : {}}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        
+
         {dimensions.width > 0 && dimensions.height > 0 && !isExpanded && (
-  <motion.svg
-    className="svg-border rounded-xl absolute !top-[-4px] !left-[-4px]"
-    width={dimensions.width + 10}
-    height={dimensions.height + 10}
-    viewBox={`0 0 ${dimensions.width + 10} ${dimensions.height + 10}`}
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <defs>
-      <linearGradient id="borderGradient" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stopColor="#DB6E27" amplitude='100' />
-      <stop offset="50%" stopColor="white" />
-      <stop offset="100%" stopColor="#DB6E27" />
-      </linearGradient>
-      <filter id="neon" x="-20%" y="-20%" width="140%" height="140%">
-        <feDropShadow
-          dx="0"
-          dy="0"
-          stdDeviation="4"
-          floodColor="#DB6E27"
-        />
-      </filter>
-    </defs>
-    <motion.rect
-      x="5"
-      y="5"
-      width={dimensions.width}
-      height={dimensions.height}
-      rx="10"
-      stroke="url(#borderGradient)"
-      strokeWidth="2"
-      fill="none"
-      filter="url(#neon)"
-      initial={{
-      strokeDasharray: 1 * (dimensions.width + dimensions.height),
-      strokeDashoffset: 2 * (dimensions.width + dimensions.height),
-    }}
-      animate={{ strokeDashoffset: 0 }}
-      transition={{
-        duration: 8,
-        ease: "linear",
-        repeat: Infinity,
-      }}
-    />
-  </motion.svg>
-)}
+          <motion.svg
+            className="svg-border rounded-xl absolute !top-[-4px] !left-[-4px]"
+            width={dimensions.width + 10}
+            height={dimensions.height + 10}
+            viewBox={`0 0 ${dimensions.width + 10} ${dimensions.height + 10}`}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient id="borderGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#DB6E27" amplitude='100' />
+                <stop offset="50%" stopColor="white" />
+                <stop offset="100%" stopColor="#DB6E27" />
+              </linearGradient>
+              <filter id="neon" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow
+                  dx="0"
+                  dy="0"
+                  stdDeviation="4"
+                  floodColor="#DB6E27"
+                />
+              </filter>
+            </defs>
+            <motion.rect
+              x="5"
+              y="5"
+              width={dimensions.width}
+              height={dimensions.height}
+              rx="10"
+              stroke="url(#borderGradient)"
+              strokeWidth="2"
+              fill="none"
+              filter="url(#neon)"
+              initial={{
+                strokeDasharray: 1 * (dimensions.width + dimensions.height),
+                strokeDashoffset: 2 * (dimensions.width + dimensions.height),
+              }}
+              animate={{ strokeDashoffset: 0 }}
+              transition={{
+                duration: 8,
+                ease: "linear",
+                repeat: Infinity,
+              }}
+            />
+          </motion.svg>
+        )}
 
         <div
-          className={`relative h-full py-[30px] px-[15px] ${
-          isExpanded && "!pb-0 !px-0"
-        }`}
+          className={`relative h-full py-[30px] px-[15px] ${isExpanded && "!pb-0 !px-0"
+            }`}
           style={{
             zIndex: isExpanded ? 1000 : 1,
             transition: "z-index 0.3s",
@@ -160,7 +158,7 @@ export default function SelectMenuCardCenter() {
               <ShuffledCards />
             </>
           )}
-          {isExpanded && <Portfolios setIsExpanded={setIsExpanded}/>}
+          {isExpanded && <Portfolios setIsExpanded={setIsExpanded} />}
         </div>
       </motion.div>
     </div>

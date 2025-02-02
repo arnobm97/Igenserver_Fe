@@ -1,52 +1,13 @@
 "use client"
 
-import React, { useEffect, useRef, useState } from "react"
+import React, { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowRight, Rocket } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import ServiceMainScreen from "../service_screen/ServiceMainScreen"
-import { services } from "../../data/services"
-import AnimatedBorderCard from "./AnimatedBorderCard"
 
 export default function SelectMenuCardService() {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [serviceImages, setServiceImages] = useState([]);
   const [isHovered, setIsHovered] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const divRef = useRef(null)
-  const [dimensions, setDimensions] = useState({
-    width: 0,
-    height: 0,
-    top: 200,
-    left: 200,
-  })
-
-  useEffect(() => {
-    if (!divRef.current) return
-
-    const updateDimensions = () => {
-      const { width, height, top, left } = divRef.current.getBoundingClientRect()
-      setDimensions({ width, height, top, left })
-    }
-
-    updateDimensions()
-    window.addEventListener("resize", updateDimensions)
-
-    return () => window.removeEventListener("resize", updateDimensions)
-  }, [])
-
-  useEffect(() => {
-    setServiceImages(services.map(service=>service.image))
-  }, [])
-
-  useEffect(() => {
-    if (isExpanded || serviceImages.length === 0) return;
-
-    const interval = setInterval(() => {
-      setCurrentImageIndex(prevIndex => (prevIndex + 1) % serviceImages.length);
-    }, 5000); 
-
-    return () => clearInterval(interval);
-  }, [isExpanded, serviceImages])
 
   const containerStyle = {
     perspective: "700px",
@@ -78,7 +39,7 @@ export default function SelectMenuCardService() {
     transformOrigin: "center",
     transition: "background-image 3s ease, opacity 2s ease",
     opacity: 1,
-    bottom:35,
+    bottom: 35,
   }
 
   const expandedStyle = {
@@ -99,13 +60,15 @@ export default function SelectMenuCardService() {
   }
 
   return (
-    <div style={isExpanded ? expandedContainerStyle : containerStyle}>
-   <motion.div
-        ref={divRef}
+    <>
+      <div 
+      className="hidden xl:block"
+      style={isExpanded ? expandedContainerStyle : containerStyle}>
+      <motion.div
         style={baseStyle}
         className={`absolute w-[380px] h-[300px]
               cursor-pointer z-10 
-              xl:right-[5%] 2xl:right-[9%]
+              xl:right-[4%] 2xl:right-[100px]
               ${isExpanded ? "!z-[30]" : "overflow-hidden"}`}
         animate={isExpanded ? expandedStyle : { rotateY: 15 }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
@@ -127,7 +90,7 @@ export default function SelectMenuCardService() {
               className="flex flex-col items-center "
             >
               <div>
-              <div
+                <div
                   className="text-gray-200 text-center text-[18px] font-[400] flex items-center gap-3 absolute left-[75px] top-[5.75px] bg-black bg-opacity-90 p-3 cursor-pointer backdrop-blur-2xl"
                 >
                   <span>Portfolio</span>
@@ -142,7 +105,7 @@ export default function SelectMenuCardService() {
                   </span>
                 </div>
               </div>
-             
+
             </motion.div>
           )}
         </AnimatePresence>
@@ -157,11 +120,69 @@ export default function SelectMenuCardService() {
               onHoverStart={() => setIsHovered(true)}  // Set hover state to true
               onHoverEnd={() => setIsHovered(false)}   // Set hover state to false
             >
-              <ServiceMainScreen onClose={handleShrink} isExpanded={isExpanded}/>
+              <ServiceMainScreen onClose={handleShrink} isExpanded={isExpanded} />
             </motion.div>
           )}
         </AnimatePresence>
       </motion.div>
     </div>
+    <div
+    className="xl:hidden"
+     style={isExpanded ? expandedContainerStyle : {...containerStyle, transformStyle: "preserve-3d", 
+    perspective: "1000px", }}
+    >
+    <motion.div 
+    className="absolute bottom-[500px]  sm:right-[calc(50%-228px)] w-[218px] h-[200px] border rounded-[32px]"
+        animate={isExpanded ? expandedStyle : { rotateY: 15}}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        whileHover={{
+          rotateY: isExpanded ? 0 : 0,
+          translateX: isExpanded ? 0 : 0,
+          transition: { duration: 0.5 },
+        }}
+    >
+         <AnimatePresence>
+          {!isExpanded && (
+            <motion.div
+              key="content"
+              initial={{ opacity: 1, scale: 1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="flex flex-col items-center "
+            >
+              <div>
+                <div
+                  className="text-gray-200 text-center text-[18px] font-[400] flex items-center gap-3  bg-opacity-90 p-3 cursor-pointer backdrop-blur-2xl"
+                  onClick={() => setIsExpanded(true)}
+                >
+                  <span>Portfolio</span>
+                  <span className="border rounded-full p-1 -rotate-[45deg] text-orange-400">
+                    <ArrowRight />
+                  </span>
+                </div>
+              </div>
+
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.div
+              key="expanded"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              onHoverStart={() => setIsHovered(true)}  // Set hover state to true
+              onHoverEnd={() => setIsHovered(false)}   // Set hover state to false
+            >
+              <ServiceMainScreen onClose={handleShrink} isExpanded={isExpanded} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
+    </div>
+    </>
   )
 }

@@ -22,14 +22,12 @@ export default function ServiceMainScreen({ onClose, isExpanded }) {
   };
 
   useEffect(() => {
-    if (isExpanded) {
-      const timer = setTimeout(() => {
-        setIsLoading(false);
-      }, 1000);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
 
-      return () => clearTimeout(timer);
-    }
-  }, [isExpanded]);
+    return () => clearTimeout(timer);
+  }, [isExpanded,onClose]);
 
   return (
     <div className="h-[calc(100vh_-_40px)] w-full py-[40px] z-[100] relative !cursor-default">
