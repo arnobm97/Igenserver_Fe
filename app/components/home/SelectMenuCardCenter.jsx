@@ -78,9 +78,10 @@ export default function SelectMenuCardCenter() {
     xmlns="http://www.w3.org/2000/svg"
   >
     <defs>
-      <linearGradient id="borderGradient" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="50%" stopColor="#DB6E27" />
-        <stop offset="100%" stopColor="white" />
+      <linearGradient id="borderGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stopColor="#DB6E27" amplitude='100' />
+      <stop offset="50%" stopColor="white" />
+      <stop offset="100%" stopColor="#DB6E27" />
       </linearGradient>
       <filter id="neon" x="-20%" y="-20%" width="140%" height="140%">
         <feDropShadow
@@ -98,7 +99,7 @@ export default function SelectMenuCardCenter() {
       height={dimensions.height}
       rx="10"
       stroke="url(#borderGradient)"
-      strokeWidth="1"
+      strokeWidth="2"
       fill="none"
       filter="url(#neon)"
       initial={{

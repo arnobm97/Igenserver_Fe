@@ -157,7 +157,7 @@ export default function SelectMenuCardService() {
               onHoverStart={() => setIsHovered(true)}  // Set hover state to true
               onHoverEnd={() => setIsHovered(false)}   // Set hover state to false
             >
-              <ServiceMainScreen onClose={handleShrink} />
+              <ServiceMainScreen onClose={handleShrink} isExpanded={isExpanded}/>
             </motion.div>
           )}
         </AnimatePresence>

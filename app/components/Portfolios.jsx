@@ -48,7 +48,7 @@ const calculateTransformAndClipPath = (scrollPercentage) => {
 
   const transformValue = scrollPercentage >= 0.8 ? `perspective(8000px) translate3d(0px, ${translateY}px, ${translateZ}px) rotateX(${rotateX}deg) scale3d(${scaleX}, ${scaleY}, 1)` : `perspective(1500px) translate3d(0px, ${translateY}px, ${translateZ}px) rotateX(${rotateX}deg) scale3d(${scaleX}, ${scaleY}, 1)`;
   
- const clipPath = scrollPercentage > 0.1 ? 
+ const clipPath = scrollPercentage > 0.8 ? 
     'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' : 
     `polygon(
       ${interpolate(10, 0, scrollPercentage)}% 0%, 
@@ -93,7 +93,7 @@ const Page = ({ pageIndex, updateTransform, page }) => {
   return (
     <motion.div
       ref={pageRef}
-      className="sticky top-[0px] h-[750px] w-[600px] grid place-content-center"
+      className="sticky top-[0px] h-[750px] w-[calc(100vw_-_100px)] grid place-content-center"
       style={{
         transformOrigin: "bottom",
         transformStyle: "preserve-3d",

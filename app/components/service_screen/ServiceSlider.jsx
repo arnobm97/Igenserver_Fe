@@ -9,6 +9,7 @@ const ServiceSlider = ({ setDisplayMainServices }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [slides, setSlides] = useState(initialSlides);
   const redDivRef = useRef(null);
   const imgRefs = useRef([]);
   const sliderRef = useRef(null);
@@ -48,9 +49,9 @@ const ServiceSlider = ({ setDisplayMainServices }) => {
         setScrollPosition((prevPosition) => {
           const newPosition = prevPosition + 1;
 
-          // if (newPosition >= totalSlides * 300) {
-          //   return 0;
-          // }
+          if (newPosition >= totalSlides * 200) {
+            setSlides((prev)=> [...prev,...initialSlides])
+          }
 
           return newPosition;
         });
@@ -66,15 +67,17 @@ const ServiceSlider = ({ setDisplayMainServices }) => {
       setIsPaused(true);
       const newPosition = scrollPosition + e.deltaY;
 
-      if (newPosition < 0) {
-        setScrollPosition((totalSlides - 1) * 300);
-      } else if (newPosition >= totalSlides * 300) {
-        setScrollPosition(0); 
-      } else {
-        setScrollPosition(newPosition);
+      if (newPosition >= totalSlides * 200) {
+        setSlides((prev)=> [...prev,...initialSlides])
+      }
+      if (newPosition <= totalSlides) {
+        return 0
       }
 
-      setTimeout(() => setIsPaused(false), 500); // Resume auto-scroll after delay
+      setScrollPosition(newPosition);
+      
+
+      setTimeout(() => setIsPaused(false), 500);
     }
   };
 
@@ -106,7 +109,7 @@ const ServiceSlider = ({ setDisplayMainServices }) => {
           perspective: "1000px",
         }}
       >
-        {[...initialSlides, ...initialSlides].map((slide, index) => (
+        {slides.map((slide, index) => (
           <motion.div
             key={index}
             className="relative items-start flex h-[400px] min-w-fit"

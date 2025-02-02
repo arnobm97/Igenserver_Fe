@@ -31,7 +31,7 @@ export default function MainLayout({ children }) {
                     loop={false}
                     className="fixed inset-0 w-[100vw] h-[100vh] object-cover z-0"
                 >
-                    <source src="video/3-d-stars.webm" type="video/webm" />
+                    <source src="video/initial-video.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
                </div>
