@@ -39,7 +39,7 @@ export default function SelectMenuCardService() {
     transformOrigin: "center",
     transition: "background-image 3s ease, opacity 2s ease",
     opacity: 1,
-    bottom: 35,
+    bottom: 75,
   }
 
   const expandedStyle = {
@@ -132,7 +132,7 @@ export default function SelectMenuCardService() {
     perspective: "1000px", }}
     >
     <motion.div 
-    className="absolute bottom-[500px]  sm:right-[calc(50%-228px)] w-[218px] h-[200px] border rounded-[32px]"
+    className="absolute bottom-[500px] !right-[calc(50%-182px)] sm:right-[calc(50%-228px)] w-[195px] h-[180px] sm:w-[218px] sm:h-[200px] border rounded-[32px] xl:right-[calc(50%-108px)]"
         animate={isExpanded ? expandedStyle : { rotateY: 15}}
         transition={{ duration: 0.5, ease: "easeInOut" }}
         whileHover={{

@@ -1,14 +1,14 @@
 'use client'
 
-import React from 'react'
+import React from 'react';
 import { motion, AnimatePresence } from "framer-motion";
-import { services } from '../../data/services'
+import { services } from '../../data/services';
 import AnimatedServices from './AnimatedServices';
 import { Undo } from "lucide-react";
 
 export default function DisplayServices({ handleTakeALook, activeService, handleBack }) {
   return (
-    <div className="relative flex flex-col p-[30px] h-[calc(100vh_-_90px)] ">
+    <div className="relative flex flex-col p-4 md:p-6 lg:p-8 h-[calc(100vh_-_90px)] ">
       {activeService ? (
         <AnimatePresence>
           <motion.div
@@ -16,36 +16,36 @@ export default function DisplayServices({ handleTakeALook, activeService, handle
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0, duration: 2 }}
             exit={{ opacity: 0, x: 50 }}
-            className="flex flex-col lg:flex-row w-full space-x-[100px] h-full overflow-hidden"
+            className="flex flex-col lg:flex-row w-full lg:space-x-10 h-full overflow-hidden"
           >
-            <div className="flex-1 relative ">
+            <div className="flex-1 relative">
               <button
                 onClick={handleBack}
-                className="fixed top-[20px] left-[20px] text-orange-500 h-[55px] w-[55px] grid place-content-center rounded-full hover:text-gray-400 hover:border-orange-500 border z-[200]"
+                className="fixed top-4 left-4 text-orange-500 h-12 w-12 grid place-content-center rounded-full hover:text-gray-400 hover:border-orange-500 border z-50"
                 aria-label="Undo"
               >
-                <Undo className="w-full h-full" />
+                <Undo className="w-6 h-6" />
               </button>
-              <p className="text-gray-400 text-lg pt-[70px]">PROJECT</p>
-              <div className="text-3xl font-bold text-start pt-[10px] pb-[40px]">
+              <p className="text-gray-400 text-sm md:text-lg pt-16">PROJECT</p>
+              <div className="text-xl md:text-3xl font-bold text-start pt-2 pb-6">
                 {activeService.title}
               </div>
-              <motion.div className="flex flex-col items-start h-[calc(100vh_-_250px)] w-[500px] overflow-y-auto">
+              <motion.div className="flex flex-col items-start max-h-[calc(100vh_-_200px)] md:max-h-[calc(100vh_-_250px)] w-full md:w-[500px] overflow-y-auto">
                 <motion.img
                   src={activeService.image}
                   alt={activeService.title}
-                  className="w-[500px] h-[400px] object-fill rounded-lg"
+                  className="w-full h-60 md:h-96 object-cover rounded-lg"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1, duration: 2 }}
                   exit={{ opacity: 0, scale: 0.8 }}
                 />
-                <div className="flex flex-col space-y-[30px] mt-[30px]">
+                <div className="flex flex-col space-y-6 mt-6">
                   {activeService.details.images.map((img, idx) => (
                     <img
                       key={idx}
                       src={img}
                       alt={`${activeService.title} Detail ${idx}`}
-                      className="w-[500px] h-[400px] object-fill rounded-lg"
+                      className="w-full h-60 md:h-96 object-cover rounded-lg"
                     />
                   ))}
                 </div>
@@ -53,7 +53,7 @@ export default function DisplayServices({ handleTakeALook, activeService, handle
             </div>
 
             {/* Right side: Details */}
-            <div className="flex-1 p-5 space-y-5 overflow-y-scroll !h-[calc(100vh_-_90px)]">
+            <div className="flex-1 p-4 space-y-4 overflow-y-auto h-[calc(100vh_-_90px)]">
               {activeService.details.info.map((item, idx) => (
                 <motion.div
                   key={idx}
@@ -61,18 +61,18 @@ export default function DisplayServices({ handleTakeALook, activeService, handle
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 * (idx + 1) }}
                 >
-                  <h3 className="text-[25px]">{item.title}</h3>
-                  <p className="text-gray-400">{item.description}</p>
+                  <h3 className="text-lg md:text-xl lg:text-2xl font-semibold">{item.title}</h3>
+                  <p className="text-gray-400 text-sm md:text-base">{item.description}</p>
                 </motion.div>
               ))}
             </div>
           </motion.div>
         </AnimatePresence>
       ) : (
-        <div className=''>
+        <div className='w-full'>
           <AnimatedServices services={services} handleTakeALook={handleTakeALook} />
         </div>
       )}
     </div>
-  )
+  );
 }

@@ -15,7 +15,7 @@ export default function SelectMenuCardChatbot() {
       setContainerWidth('100%')
     } else {
       const timeoutId = setTimeout(() => {
-        setContainerWidth('50%')
+        setContainerWidth('10%')
       }, 1000);
       return () => clearTimeout(timeoutId);
     }
@@ -24,13 +24,25 @@ export default function SelectMenuCardChatbot() {
   const containerStyle = {
     perspective: "700px",
     position: "absolute",
-    bottom: 40,
+    bottom: 80,
     left: "-5px",
     width: containerWidth,
     height: "100%",
     transition: 'width 0.5s ease-in-out',
     zIndex: 5,
   }
+
+  const smallContainerStyle = {
+    perspective: "700px",
+    position: "absolute",
+    bottom: 0,
+    left: expandCount > 0 ? '0px ' : "",
+    width: containerWidth,
+    height: "100%",
+    transition: 'width 0.5s ease-in-out',
+    zIndex: 5,
+  }
+
 
   const expandedContainerStyle = {
     position: "absolute",
@@ -136,57 +148,56 @@ export default function SelectMenuCardChatbot() {
           </div>
         </motion.div>
       </div>
-     <div
-     className="xl:hidden"
-       style={isExpanded ? expandedContainerStyle : containerStyle}
-     >
-     <motion.div className="absolute bottom-[500px]  sm:left-[calc(50%-218px)]  w-[218px] h-[200px] border rounded-[32px] grid place-content-center text-3xl"
-      animate={isExpanded ? {rotateY: 0} : { rotateY: -15}}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
-        whileHover={{
+     {/* Mobile View */}
+     <div className="xl:hidden" style={isExpanded ? {...expandedContainerStyle,zIndex:1} : {...smallContainerStyle,zIndex:1}}>
+        <motion.div
+          className="absolute bottom-[500px] !left-[calc(50%-195px)] sm:left-[calc(50%-228px)] w-[195px] h-[180px] sm:w-[218px] sm:h-[200px] border rounded-[32px] "
+          animate={isExpanded ? expandedStyle : { rotateY: -15 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          whileHover={{
           rotateY: isExpanded ? 0 : 0,
           translateX: isExpanded ? 0 : 0,
           transition: { duration: 0.5 },
         }}
-     >
-       <AnimatePresence>
-              {!isExpanded && (
-                <motion.div
-                  key="content"
-                  initial={{ opacity: 1, scale: 1 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="w-full h-full grid place-content-center cursor-pointer"
-                  onClick={() => { setIsExpanded(true); setExpandCount(1) }}
+        >
+          <AnimatePresence>
+            {!isExpanded && (
+              <motion.div
+                key="content"
+                initial={{ opacity: 1, scale: 1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className="flex flex-col items-center"
+              >
+                <div
+                  className="text-gray-200 text-center text-[18px] font-[400] flex items-center gap-3 bg-opacity-90 p-3 cursor-pointer backdrop-blur-2xl"
+                  onClick={() => setIsExpanded(true)}
                 >
-                  <div>
-                    <img src="/images/Wave.svg" alt="Icon" />
-                  </div>
-                  {/* <div className="text-white text-center text-[25px] font-[400] flex items-center gap-3 cursor-pointer">
-                    <span>Connect With Us</span>
-                    <span className="border rounded-full p-1 -rotate-[45deg]">
-                      <ArrowRight />
-                    </span>
-                  </div> */}
-                </motion.div>
-              )}
-            </AnimatePresence>
-            <AnimatePresence>
-              {isExpanded && (
-                <motion.div
-                  key="expanded"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                >
-                  <ChatbotMainScreen onClose={handleShrink} />
-                </motion.div>
-              )}
-            </AnimatePresence>
-</motion.div>
-     </div>
+                  <span>Chatbot</span>
+                  <span className="border rounded-full p-1 -rotate-[45deg] text-orange-400">
+                    <ArrowRight />
+                  </span>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <AnimatePresence>
+            {isExpanded && (
+              <motion.div
+                key="expanded"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+              >
+                <ChatbotMainScreen onClose={() => setIsExpanded(false)} isExpanded={isExpanded} />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      </div>
     </>
   );
 }

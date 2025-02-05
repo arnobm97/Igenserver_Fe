@@ -33,12 +33,12 @@ export  function StyledButton({name = 'Button'}) {
     );
   }
 
-export default function ChatbotMainScreen({ onClose }) {
+export default function ChatbotMainScreen({ handleClose }) {
   return (
     <div className='h-full w-full px-[40px] py-[20px] z-[100] flex flex-col justify-between relative'>
     <button 
-    onClick={()=>onClose()}
-    className=' absolute top-[20px] right-[20px] text-white h-[35px] w-[35px] border rounded-full hover:text-gray-400'>X</button>
+     onClick={()=> handleClose()}
+     className=' absolute top-[20px] right-[20px] text-white h-[35px] w-[35px] border rounded-full hover:text-gray-400'>X</button>
      <div className='h-[calc(100vh_-_418px)] grid place-content-center '>
        <img 
         className='h-[229.34px]'

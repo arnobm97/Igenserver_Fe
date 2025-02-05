@@ -124,16 +124,16 @@ const ServiceSlider = ({ setDisplayMainServices }) => {
             }}
               onClick={() => router.push(`/services?service=${index % totalSlides}`)}
               initial={{
-                width: "300px",
+                width: "5%",
                 height: "200px",
                 boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)",
                 transform: "rotateY(0deg)",
               }}
               animate={{
-                width: activeIndex === index % totalSlides ? "500px" : "300px",
+                width: activeIndex === index % totalSlides ? "150%" : "100%",
                 height: activeIndex === index % totalSlides ? "300px" : "200px",
-               boxShadow: activeIndex === index % totalSlides ? "0px 8px 20px rgba(0, 0, 0, 0.3)" : "0px 4px 12px rgba(0, 0, 0, 0.2)",
-               transform: activeIndex === index % totalSlides ? "rotateY(20deg)" : "rotateY(0deg)",
+                boxShadow: activeIndex === index % totalSlides ? "0px 8px 20px rgba(0, 0, 0, 0.3)" : "0px 4px 12px rgba(0, 0, 0, 0.2)",
+                transform: activeIndex === index % totalSlides ? "rotateY(20deg)" : "rotateY(0deg)",
               }}
               transition={{
                 duration: 2,

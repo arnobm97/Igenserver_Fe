@@ -93,7 +93,7 @@ const Page = ({ pageIndex, updateTransform, page }) => {
   return (
     <motion.div
       ref={pageRef}
-      className="sticky top-[0px] h-[750px] w-[calc(100vw_-_100px)] grid place-content-center"
+      className="sticky top-[0px] h-[750px] w-[calc(100vw_-_100px)] xl:w-[calc(100vw_-_200px)] grid place-content-center "
       style={{
         transformOrigin: "bottom",
         transformStyle: "preserve-3d",
@@ -108,7 +108,7 @@ const Page = ({ pageIndex, updateTransform, page }) => {
   );
 };
 
-export default function Portfolios({ setIsExpanded }) {
+export default function Portfolios({ setIsExpanded , setClicked}) {
   const containerRef = useRef(null);
   const [pagesState, setPagesState] = useState(pages);
 
@@ -121,10 +121,11 @@ export default function Portfolios({ setIsExpanded }) {
   };
 
   return (
-    <div ref={containerRef} className="relative h-full w-[calc(100vw_-_115px)] overflow-hidden">
+    <div ref={containerRef} className="relative h-full xl:w-[calc(100vw_-_100px)] overflow-hidden ">
       <button
         onClick={() => {
           setIsExpanded(false);
+          setClicked(false)
         }}
         className="fixed top-[20px] left-[20px] text-orange-500 h-[55px] w-[55px] grid place-content-center rounded-full hover:text-gray-400 hover:border-orange-500 border z-[200]"
         aria-label="Undo"
@@ -132,14 +133,14 @@ export default function Portfolios({ setIsExpanded }) {
         <Undo className="w-full h-full " />
       </button>
       <div className="overflow-y-auto" style={{ height: "100vh" }}>
-        <div className="relative text-lg font-extrabold h-[550px] w-full grid place-content-center text-center overflow-hidden">
+        <div className="relative text-lg font-extrabold h-[550px] w-full grid place-content-center text-center overflow-hidden ">
           <div className="z-[10] text-[50px] text-[#DB6E27] space-y-3 tracking-wider">
             <p>Featured</p>
             <p>Portfolio</p>
           </div>
         </div>
 
-        <div className="space-y-[30px] h-[6800px] flex flex-col items-center ">
+        <div className="space-y-[30px] h-[6800px] flex flex-col items-center xl:max-w-full xl:overflow-x-hidden">
           {pagesState.map((page, index) => (
             <Page key={index} pageIndex={index} updateTransform={updateTransform} page={page} />
           ))}

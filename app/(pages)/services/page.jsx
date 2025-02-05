@@ -31,12 +31,12 @@ export default function DisplayServices() {
   };
 
   return (
-    <div className="grid place-content-center w-full h-full backdrop-blur-[100px] z-[1] p-[40px]">
-      <div className='relative h-[calc(100vh_-_30px)] w-[calc(100vw_-_100px)] border rounded-[32px] overflow-hidden bg-gray-800/70 border-gray-50/10 p-[40px]'>
+    <div className="grid place-content-center w-full h-full backdrop-blur-[100px] z-[1] xl:p-[40px]">
+      <div className='relative h-[calc(100vh_-_20px)] xl:h-[calc(100vh_-_30px)] w-[calc(100vw_-_20px)] xl:w-[calc(100vw_-_100px)] border rounded-[20px] xl:rounded-[32px] overflow-hidden bg-gray-800/70 border-gray-50/10 p-[10px] sm:p-[20px] xl:p-[40px]'>
         
         {!activeService && <Link
           href='/home'
-          className="absolute top-[40px] left-[40px] text-orange-500 h-[55px] w-[55px] grid place-content-center rounded-full hover:text-gray-400 hover:border-orange-500 border z-[200]"
+          className="absolute top-5 right-5 h-[35px] w-[35px] xl:top-[40px] xl:left-[40px] text-orange-500 xl:h-[55px] xl:w-[55px] grid place-content-center rounded-full hover:text-gray-400 hover:border-orange-500 border z-[200]"
           aria-label="Undo"
         >
           <Undo className="w-full h-full" />
@@ -49,39 +49,39 @@ export default function DisplayServices() {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0, duration: 2 }}
               exit={{ opacity: 0, x: 50 }}
-              className="flex flex-col lg:flex-row w-full space-x-[100px] h-full overflow-hidden"
+              className="flex flex-col-reverse lg:flex-row w-full xl:space-x-[100px] h-full overflow-hidden"
             >
               {/* Left side: Images */}
               <div className="flex-1 relative"  style={{ overflowY: 'auto' }}>
                 <button
                   onClick={handleBack}
-                  className="fixed top-[40px] left-[40px] text-orange-500 h-[55px] w-[55px] grid place-content-center rounded-full hover:text-gray-400 hover:border-orange-500 border z-[200]"
+                  className="fixed top-[40px] xl:left-[40px] text-orange-500 h-[55px] w-[55px] grid place-content-center rounded-full hover:text-gray-400 hover:border-orange-500 border z-[200] xl:bg-transparent bg-white"
                   aria-label="Undo"
                 >
                   <Undo className="w-full h-full" />
                 </button>
-                <p className="text-gray-400 text-lg pt-[70px]">PROJECT</p>
-                <div className="text-3xl font-bold text-start pt-[10px] pb-[40px]">
+                <p className="text-gray-400 xl:text-lg pt-[70px] hidden xl:block">PROJECT</p>
+                <div className="hidden xl:block xl:text-3xl font-bold text-start pt-[10px] pb-[40px]">
                   {activeService.title}
                 </div>
                 <motion.div 
                  ref={leftScrollRef} onWheel={handleLeftScroll}
-                 className="flex flex-col items-start h-[calc(100vh_-_330px)] w-[500px] overflow-y-auto relative">
+                 className="flex flex-col items-start h-[calc(100vh_-_330px)] xl:w-[500px] overflow-y-auto relative mt-2 xl:mt-0">
                   <motion.img
                     src={activeService.image}
                     alt={activeService.title}
-                    className="w-[500px] h-[400px] object-fill rounded-lg sticky top-0"
+                    className="w-full h-[400px] object-fill rounded-lg sticky top-0"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1, duration: 2 }}
                     exit={{ opacity: 0, scale: 0.8 }}
                   />
-                  <div className="flex flex-col space-y-[30px] mt-[30px]">
+                  <div className="flex flex-col space-y-[30px] mt-[30px] w-full xl:w-[500px]">
                     {activeService.details.images.map((img, idx) => (
                       <img
                         key={idx}
                         src={img}
                         alt={`${activeService.title} Detail ${idx}`}
-                        className="w-[500px] h-[400px] object-fill rounded-lg sticky top-0"
+                        className="w-full h-[400px] object-fill rounded-lg sticky top-0"
                       />
                     ))}
                   </div>
@@ -89,7 +89,7 @@ export default function DisplayServices() {
               </div>
 
               {/* Right side: Details */}
-              <div className="flex-1 p-5 space-y-5 overflow-y-scroll !h-[calc(100vh_-_90px)]" ref={rightScrollRef} onWheel={handleRightScroll}>
+              <div className="flex-1 xl:p-5 space-y-5 overflow-y-scroll !h-[calc(100vh_-_90px)] w-full xl:w-[500px]" ref={rightScrollRef} onWheel={handleRightScroll}>
                 {activeService.details.info.map((item, idx) => (
                   <motion.div
                     key={idx}
@@ -105,7 +105,7 @@ export default function DisplayServices() {
             </motion.div>
           </AnimatePresence>
         ) : (
-          <div className='h-full overflow-y-auto'>
+          <div className='h-full overflow-y-auto w-full'>
             <AnimatedServices setActiveService={setActiveService} />
           </div>
         )}
