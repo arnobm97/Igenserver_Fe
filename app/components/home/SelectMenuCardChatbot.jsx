@@ -80,7 +80,7 @@ export default function SelectMenuCardChatbot() {
       "linear-gradient(180deg, rgba(40, 40, 40, 0.5) 0%, rgba(61, 61, 61, 0.5) 50%, rgba(40, 40, 40, 0.5) 100%)",
   };
 
-  const handleShrink = () => {
+  const handleClose = () => {
     setIsExpanded(false);
   };
 
@@ -141,63 +141,14 @@ export default function SelectMenuCardChatbot() {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
                 >
-                  <ChatbotMainScreen onClose={handleShrink} />
+                  <ChatbotMainScreen handleClose={handleClose} />
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
         </motion.div>
       </div>
-     {/* Mobile View */}
-     <div className="xl:hidden" style={isExpanded ? {...expandedContainerStyle,zIndex:1} : {...smallContainerStyle,zIndex:1}}>
-        <motion.div
-          className="absolute bottom-[500px] !left-[calc(50%-195px)] sm:left-[calc(50%-228px)] w-[195px] h-[180px] sm:w-[218px] sm:h-[200px] border rounded-[32px] "
-          animate={isExpanded ? expandedStyle : { rotateY: -15 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          whileHover={{
-          rotateY: isExpanded ? 0 : 0,
-          translateX: isExpanded ? 0 : 0,
-          transition: { duration: 0.5 },
-        }}
-        >
-          <AnimatePresence>
-            {!isExpanded && (
-              <motion.div
-                key="content"
-                initial={{ opacity: 1, scale: 1 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="flex flex-col items-center"
-              >
-                <div
-                  className="text-gray-200 text-center text-[18px] font-[400] flex items-center gap-3 bg-opacity-90 p-3 cursor-pointer backdrop-blur-2xl"
-                  onClick={() => setIsExpanded(true)}
-                >
-                  <span>Chatbot</span>
-                  <span className="border rounded-full p-1 -rotate-[45deg] text-orange-400">
-                    <ArrowRight />
-                  </span>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
 
-          <AnimatePresence>
-            {isExpanded && (
-              <motion.div
-                key="expanded"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-              >
-                <ChatbotMainScreen onClose={() => setIsExpanded(false)} isExpanded={isExpanded} />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
-      </div>
     </>
   );
 }

@@ -13,7 +13,7 @@ export default function SelectMenuCardService() {
     perspective: "700px",
     position: "absolute",
     top: "0",
-    right: "-14px",
+    right: "7px",
     width: "100%",
     height: "100%",
     zIndex: isHovered ? 10 : 0
@@ -132,7 +132,7 @@ export default function SelectMenuCardService() {
     perspective: "1000px", }}
     >
     <motion.div 
-    className="absolute bottom-[500px] !right-[calc(50%-182px)] sm:right-[calc(50%-228px)] w-[195px] h-[180px] sm:w-[218px] sm:h-[200px] border rounded-[32px] xl:right-[calc(50%-108px)]"
+    className="absolute bottom-[500px] !right-[calc(50%-182px)] sm:right-[calc(50%-228px)] w-[195px] h-[180px] sm:w-[218px] sm:h-[200px] border rounded-[32px] "
         animate={isExpanded ? expandedStyle : { rotateY: 15}}
         transition={{ duration: 0.5, ease: "easeInOut" }}
         whileHover={{
