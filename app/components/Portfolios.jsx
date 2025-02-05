@@ -6,34 +6,10 @@ import { Undo } from "lucide-react";
 import Portfolio from "./Portfolio";
 
 const pages = [
-  {
-    component: Portfolio,
-    title: "Page 1",
-    transform: "perspective(800px) translate3d(0px, -62px, 190px) rotateX(-56.5deg) scale3d(0.83, 0.76, 1)",
-    clipPath: "polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%)",
-    opacity: 0.5
-  },
-  {
-    component: Portfolio,
-    title: "Page 2",
-    transform: "perspective(800px) translate3d(0px, -62px, 190px) rotateX(-56.5deg) scale3d(0.83, 0.76, 1)",
-    clipPath: "polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%)",
-    opacity: 0.2
-  },
-  {
-    component: Portfolio,
-    title: "Page 3",
-    transform: "perspective(800px) translate3d(0px, -62px, 190px) rotateX(-56.5deg) scale3d(0.83, 0.76, 1)",
-    clipPath: "polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%)",
-    opacity: 0.2
-  },
-  {
-    component: Portfolio,
-    title: "Page 4",
-    transform: "perspective(800px) translate3d(0px, -62px, 190px) rotateX(-56.5deg) scale3d(0.83, 0.76, 1)",
-    clipPath: "polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%)",
-    opacity: 0.2
-  },
+  { component: Portfolio, title: "Page 1", transform: "perspective(800px) translate3d(0px, -62px, 190px) rotateX(-56.5deg) scale3d(0.83, 0.76, 1)", clipPath: "polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%)", opacity: 0.5 },
+  { component: Portfolio, title: "Page 2", transform: "perspective(800px) translate3d(0px, -62px, 190px) rotateX(-56.5deg) scale3d(0.83, 0.76, 1)", clipPath: "polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%)", opacity: 0.2 },
+  { component: Portfolio, title: "Page 3", transform: "perspective(800px) translate3d(0px, -62px, 190px) rotateX(-56.5deg) scale3d(0.83, 0.76, 1)", clipPath: "polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%)", opacity: 0.2 },
+  { component: Portfolio, title: "Page 4", transform: "perspective(800px) translate3d(0px, -62px, 190px) rotateX(-56.5deg) scale3d(0.83, 0.76, 1)", clipPath: "polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%)", opacity: 0.2 },
 ];
 
 const interpolate = (start, end, percentage) => start + (end - start) * percentage;
@@ -43,18 +19,20 @@ const calculateTransformAndClipPath = (scrollPercentage) => {
   const translateZ = interpolate(190, 0, scrollPercentage);
   const rotateX = interpolate(-56.5, 0, scrollPercentage);
   const scaleX = interpolate(0.63, 1, scrollPercentage);
-  const scaleY = interpolate(0.76, 0.95, scrollPercentage);
+  const scaleY = interpolate(0.76, 0.99, scrollPercentage);
   const opacity = interpolate(0.2, 1, scrollPercentage);
 
-  const transformValue = scrollPercentage >= 0.8 ? `perspective(8000px) translate3d(0px, ${translateY}px, ${translateZ}px) rotateX(${rotateX}deg) scale3d(${scaleX}, ${scaleY}, 1)` : `perspective(1500px) translate3d(0px, ${translateY}px, ${translateZ}px) rotateX(${rotateX}deg) scale3d(${scaleX}, ${scaleY}, 1)`;
-  
- const clipPath = scrollPercentage > 0.8 ? 
-    'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' : 
-    `polygon(
-      ${interpolate(10, 0, scrollPercentage)}% 0%, 
-      ${interpolate(90, 100, scrollPercentage)}% 0%,
-      ${interpolate(80, 100, scrollPercentage)}% 100%, 
-      ${interpolate(20, 0, scrollPercentage)}% 100%)`;
+  const transformValue = scrollPercentage >= 0.8
+    ? `perspective(800px) translate3d(0px, 0px, 0px) rotateX(0deg) scale3d(1, 1, 1)`
+    : `perspective(1500px) translate3d(0px, ${translateY}px, ${translateZ}px) rotateX(${rotateX}deg) scale3d(${scaleX}, ${scaleY}, 1)`;
+
+  const clipPath = scrollPercentage >= 0.1
+    ? 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'
+    : `polygon(
+        ${interpolate(10, 0, scrollPercentage)}% 0%, 
+        ${interpolate(90, 100, scrollPercentage)}% 0%,
+        ${interpolate(80, 100, scrollPercentage)}% 100%, 
+        ${interpolate(20, 0, scrollPercentage)}% 100%)`;
 
   return { transformValue, opacity, clipPath };
 };
@@ -93,7 +71,7 @@ const Page = ({ pageIndex, updateTransform, page }) => {
   return (
     <motion.div
       ref={pageRef}
-      className="sticky top-[0px] h-[750px] w-[calc(100vw_-_100px)] xl:w-[calc(100vw_-_200px)] grid place-content-center "
+      className="sticky top-[0px] w-[calc(100vw_-_100px)] xl:w-[calc(100vw_-_200px)] grid place-content-center"
       style={{
         transformOrigin: "bottom",
         transformStyle: "preserve-3d",
@@ -108,7 +86,7 @@ const Page = ({ pageIndex, updateTransform, page }) => {
   );
 };
 
-export default function Portfolios({ setIsExpanded , setClicked}) {
+export default function Portfolios({ setIsExpanded, setClicked }) {
   const containerRef = useRef(null);
   const [pagesState, setPagesState] = useState(pages);
 
@@ -121,19 +99,19 @@ export default function Portfolios({ setIsExpanded , setClicked}) {
   };
 
   return (
-    <div ref={containerRef} className="relative h-full xl:w-[calc(100vw_-_100px)] overflow-hidden ">
+    <div ref={containerRef} className="relative h-full xl:w-[calc(100vw_-_100px)] overflow-hidden">
       <button
         onClick={() => {
           setIsExpanded(false);
-          setClicked(false)
+          setClicked(false);
         }}
         className="fixed top-[20px] left-[20px] text-orange-500 h-[55px] w-[55px] grid place-content-center rounded-full hover:text-gray-400 hover:border-orange-500 border z-[200]"
         aria-label="Undo"
       >
-        <Undo className="w-full h-full " />
+        <Undo className="w-full h-full" />
       </button>
       <div className="overflow-y-auto" style={{ height: "100vh" }}>
-        <div className="relative text-lg font-extrabold h-[550px] w-full grid place-content-center text-center overflow-hidden ">
+        <div className="relative text-lg font-extrabold h-[550px] w-full grid place-content-center text-center overflow-hidden">
           <div className="z-[10] text-[50px] text-[#DB6E27] space-y-3 tracking-wider">
             <p>Featured</p>
             <p>Portfolio</p>
