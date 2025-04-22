@@ -15,7 +15,7 @@ const ceraRoundPro = localFont({
   variable: "--font-ceraroundpro",
 });
 
-export const nordiquePro = localFont({
+const nordiquePro = localFont({
   src: "./fonts/Nordiquepro-regular.otf",
   weight: "400",
   style: "normal",

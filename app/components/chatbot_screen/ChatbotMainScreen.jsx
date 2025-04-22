@@ -49,7 +49,7 @@ export default function ChatbotMainScreen({ handleClose }) {
        </div>
         <div className='h-fit'>
         <p className='text-white text-[25px] font-nordiquePro text-center py-[20px]'>Search like never before</p>
-        <div className='flex items-center justify-between w-full gap-[10px] text-gray-300 text-sm'>
+        <div className='flex flex-col lg:flex-row items-center justify-between w-full gap-[10px] text-gray-300 text-sm'>
         <StyledButton name='>> Ultimate Enterprise Solution'/>
         <StyledButton name='>> Software Development Process'/>
         <StyledButton name='>> Branding or Identity '/>
