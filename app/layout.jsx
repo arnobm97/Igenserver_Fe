@@ -1,15 +1,14 @@
-'use client'
 import localFont from "next/font/local";
 import "./globals.css";
 
-export const arktype = localFont({
+const arktype = localFont({
   src: "./fonts/Arkitype-TektypeRegular.otf",
   weight: "400",
   style: "normal",
   variable: "--font-arktype",
 });
 
-export const ceraRoundPro = localFont({
+const ceraRoundPro = localFont({
   src: "./fonts/Ceraroundpro-regular.otf",
   weight: "400",
   style: "normal",
