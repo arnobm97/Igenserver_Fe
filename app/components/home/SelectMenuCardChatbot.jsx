@@ -89,12 +89,12 @@ export default function SelectMenuCardChatbot() {
       <div className="hidden xl:block" style={isExpanded ? expandedContainerStyle : containerStyle}>
         <motion.div
           style={baseStyle}
-          className={`absolute w-[370px] bg-[#e7e4f01c] h-[334px] cursor-pointer z-10 overflow-hidden xl:bottom-0 xl:left-[5%] ${expandCount > 0 ? '2xl:left-[80px]' : '2xl:left-[80px] '} ${isExpanded && " !z-[30] "}`}
+          className={`absolute w-[380px] h-[300px] bg-[#e7e4f01c] cursor-pointer z-10 overflow-hidden xl:bottom-0 xl:left-[5%] ${expandCount > 0 ? '2xl:left-[80px]' : '2xl:left-[80px] '} ${isExpanded && " !z-[30] "}`}
           transition={{ duration: 0.5, ease: "easeInOut" }}
           whileHover={{
-            rotateY: isExpanded ? 0 : 15,
+            rotateY: isExpanded ? 0 : 5,
             translateX: isExpanded ? 0 : expandCount > 0 ? 25 : 25,
-            translateY: isExpanded ? 0 : 2,
+            translateY: isExpanded ? 0 : 15,
             transition: { duration: 0.5 },
             scaleX: 1
           }}

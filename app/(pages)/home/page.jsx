@@ -1,6 +1,5 @@
 'use client'
 
-import TitleTexts from "@/app/components/home/TitleTexts";
 import SelectMenuCardChatbot from "../../components/home/SelectMenuCardChatbot";
 import SelectMenuCardCenter from "../../components/home/SelectMenuCardCenter";
 import SelectMenuCardService from "../../components/home/SelectMenuCardService";
@@ -8,6 +7,7 @@ import LeftCard from "../../components/home/small/LeftCard";
 import RightCard from "../../components/home/small/RightCard";
 import CenterCard from "../../components/home/small/CenterCard";
 import { useState } from "react";
+import TitleTexts from "../../components/home/TitleTexts";
 
 export default function Home() {
 const [isExpanded, setIsExpanded] = useState(false)

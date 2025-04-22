@@ -37,7 +37,7 @@ export default function SelectMenuCardCenter() {
     borderRadius: "10px",
     left: "calc(50% - 225px)",
     bottom: "52px",
-    zIndex: isHovered ? 1000 : 1,
+    zIndex: 10,
     transition: "z-index 0.3s",
   };
 
@@ -60,7 +60,7 @@ export default function SelectMenuCardCenter() {
       <motion.div
         style={baseStyle}
         ref={divRef}
-        className={`absolute w-[450px]  max-w-[calc(100vw-20px)] h-[465px] bg-zinc-400 bg-opacity-40 rounded-[10px] backdrop-blur-2xl p-[10px] font-nordiquePro ${isExpanded && "!z-[30] !p-0 !m-0"
+        className={`absolute w-[450px]  max-w-[calc(100vw-20px)] h-[375px] bg-zinc-400 bg-opacity-40 rounded-[10px] backdrop-blur-2xl p-[10px] font-nordiquePro ${isExpanded && "!z-[30] !p-0 !m-0"
           }`}
         transition={{ duration: 0.5, ease: "easeInOut" }}
         animate={isExpanded ? expandedStyle : {}}

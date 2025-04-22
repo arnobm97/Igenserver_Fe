@@ -34,7 +34,7 @@ export default function ServiceMainScreen({ onClose, isExpanded }) {
     <div className="h-[calc(100vh_-_40px)] w-full py-[40px] z-[100] relative !cursor-default ">
       <button
         onClick={() => handleBack()}
-        className="fixed top-3 left-3 xl:top-[20px] xl:left-[20px] text-orange-500 h-[30px] w-[30px] xl:h-[55px] xl:w-[55px] grid place-content-center rounded-full hover:text-gray-400 hover:border-orange-500 border z-[200]"
+        className="fixed top-3 left-3 xl:top-[20px] xl:left-[20px] text-orange-500 h-[30px] w-[30px] xl:h-[55px] xl:w-[55px] grid place-content-center bg-black/30 rounded-full hover:text-gray-400 hover:border-orange-500 border z-[200]"
         aria-label="Undo"
       >
         <Undo className="w-full h-full" />

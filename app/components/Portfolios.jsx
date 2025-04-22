@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Undo } from "lucide-react";
 import Portfolio from "./Portfolio";
+import ScrollMouseIndicator from "./ScrollIndicator";
 
 const pages = Array(4).fill({
   component: Portfolio,
@@ -93,7 +94,9 @@ export default function Portfolios({ setIsExpanded, setClicked }) {
   };
 
   return (
-    <div className="relative h-full xl:w-[calc(100vw-100px)] overflow-hidden">
+    <div className="relative h-full xl:w-[calc(100vw-100px)] mx-auto overflow-hidden">
+    <ScrollMouseIndicator />
+
       <button
         onClick={() => {
           setIsExpanded(false);
