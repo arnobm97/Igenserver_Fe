@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 const ServiceSlider = ({ setDisplayMainServices }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const scrollRef = useRef(0);
   const [slides, setSlides] = useState(initialSlides);
   const redDivRef = useRef(null);
   const imgRefs = useRef([]);
@@ -44,42 +44,58 @@ const ServiceSlider = ({ setDisplayMainServices }) => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (!isPaused) {
-        setScrollPosition((prevPosition) => {
-          const newPosition = prevPosition + 1;
+  let animationFrame;
+  let lastTime = performance.now();
 
-          if (newPosition >= totalSlides * 200) {
-            setSlides((prev)=> [...prev,...initialSlides])
-          }
+  const scroll = (now) => {
+    const delta = now - lastTime;
+    lastTime = now;
 
-          return newPosition;
-        });
-        checkIntersection();
+    if (!isPaused) {
+      scrollRef.current += delta * 0.05; // 0.2px per ms = ~12px per 60fps
+
+      if (scrollRef.current >= slides.length * 200) {
+        setSlides((prev) => [...prev, ...initialSlides]);
       }
-    }, 50);
 
-    return () => clearInterval(interval);
-  }, [isPaused, activeIndex]);
+      if (sliderRef.current) {
+        sliderRef.current.style.transform = `translateX(-${scrollRef.current}px)`;
+      }
+
+      // throttle intersection check every 300ms
+      if (now % 300 < 17) checkIntersection();
+    }
+
+    animationFrame = requestAnimationFrame(scroll);
+  };
+
+  animationFrame = requestAnimationFrame(scroll);
+
+  return () => cancelAnimationFrame(animationFrame);
+}, [isPaused, slides.length]);
+
 
   const handleWheel = (e) => {
-    if (sliderRef.current) {
-      setIsPaused(true);
-      const newPosition = scrollPosition + e.deltaY;
+  if (!sliderRef.current) return;
 
-      if (newPosition >= totalSlides * 200) {
-        setSlides((prev)=> [...prev,...initialSlides])
-      }
-      if (newPosition <= totalSlides) {
-        return 0
-      }
+  setIsPaused(true);
 
-      setScrollPosition(newPosition);
-      
+  scrollRef.current += e.deltaY;
 
-      setTimeout(() => setIsPaused(false), 500);
-    }
-  };
+  if (scrollRef.current >= slides.length * 200) {
+    setSlides((prev) => [...prev, ...initialSlides]);
+  }
+
+  if (scrollRef.current <= 0) scrollRef.current = 0;
+
+  sliderRef.current.style.transform = `translateX(-${scrollRef.current}px)`;
+
+  // resume after 500ms
+  clearTimeout(window.scrollPauseTimer);
+  window.scrollPauseTimer = setTimeout(() => {
+    setIsPaused(false);
+  }, 500);
+};
 
   return (
     <div
@@ -87,7 +103,6 @@ const ServiceSlider = ({ setDisplayMainServices }) => {
       onWheel={handleWheel}
       onMouseEnter={() => setIsPaused(false)}
       onMouseLeave={() => setIsPaused(false)}
-      style={{ perspective: "1000px" }}
     >
       <div
         ref={redDivRef}
@@ -98,7 +113,7 @@ const ServiceSlider = ({ setDisplayMainServices }) => {
         ref={sliderRef}
         className="flex items-center gap-8"
         animate={{
-          x: `${-scrollPosition}px`,
+          x: `${-scrollRef.current}px`,
         }}
         transition={{
           duration: 0.5,
@@ -106,7 +121,6 @@ const ServiceSlider = ({ setDisplayMainServices }) => {
         }}
         style={{
           whiteSpace: "nowrap",
-          perspective: "1000px",
         }}
       >
         {slides.map((slide, index) => (
@@ -120,9 +134,8 @@ const ServiceSlider = ({ setDisplayMainServices }) => {
               alt={slide.description}
               className="rounded-xl cursor-pointer"
               style={{
-              transformStyle: "preserve-3d",
             }}
-              onClick={() => router.push(`/services?service=${index % totalSlides}`)}
+              onClick={() => router.push(`/services?service=${index}`)}
               initial={{
                 width: "5%",
                 height: "200px",

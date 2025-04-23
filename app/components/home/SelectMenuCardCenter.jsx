@@ -60,7 +60,7 @@ export default function SelectMenuCardCenter() {
       <motion.div
         style={baseStyle}
         ref={divRef}
-        className={`absolute w-[450px]  max-w-[calc(100vw-20px)] h-[375px] bg-zinc-400 bg-opacity-40 rounded-[10px] backdrop-blur-2xl p-[10px] font-nordiquePro ${isExpanded && "!z-[30] !p-0 !m-0"
+        className={`absolute w-[450px]  max-w-[calc(100vw-20px)] h-[375px] 2xl:h-[450px] bg-zinc-400 bg-opacity-40 rounded-[10px] backdrop-blur-2xl p-[10px] font-nordiquePro ${isExpanded && "!z-[30] !p-0 !m-0"
           }`}
         transition={{ duration: 0.5, ease: "easeInOut" }}
         animate={isExpanded ? expandedStyle : {}}
@@ -137,7 +137,7 @@ export default function SelectMenuCardCenter() {
               <div className="absolute bottom-0 right-0">
                 <Dot />
               </div>
-              <div className="mb-7">
+              <div className="2xl:mb-7">
                 <div className="flex items-center justify-between">
                   <p className="text-[22px] font-bold tracking-wider">
                     Services

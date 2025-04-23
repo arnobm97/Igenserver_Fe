@@ -35,11 +35,11 @@ export default function ShuffledCards() {
   const [hoveredCard, setHoveredCard] = useState(null)
 
   return (
-    <div className="relative  w-full max-w-md h-full perspective-1000 pt-[56px] pl-2">
+    <div className="relative  w-full max-w-md h-full perspective-1000 pt-[56px] px-7 2xl:pl-2">
       {cards.map((card, index) => (
         <motion.div
           key={card.id}
-          className={`absolute max-w-[calc(100vw-100px)] w-[375px] h-[206px] rounded-xl cursor-pointer ${card.color} bg-opacity-20 backdrop-blur-xl `}
+          className={`absolute max-w-[calc(100vw-100px)] w-[325px] 2xl:w-[375px] h-[145px] 2xl:h-[206px] rounded-xl cursor-pointer ${card.color} bg-opacity-20 backdrop-blur-xl `}
           style={{
             zIndex: hoveredCard === index ? 1000 : cards.length - index,
             transformOrigin: "top-left",

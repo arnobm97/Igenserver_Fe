@@ -94,7 +94,7 @@ export default function Portfolios({ setIsExpanded, setClicked }) {
   };
 
   return (
-    <div className="relative h-full xl:w-[calc(100vw-100px)] mx-auto overflow-hidden">
+    <div className="relative h-full xl:w-[calc(100vw-100px)] overflow-hidden">
     <ScrollMouseIndicator />
 
       <button

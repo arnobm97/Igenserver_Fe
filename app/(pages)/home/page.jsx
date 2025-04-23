@@ -15,12 +15,12 @@ const [isExpanded, setIsExpanded] = useState(false)
         <div 
         className={isExpanded
         ? ' xl:hidden max-h-[100vh] w-full overflow-hidden  '
-        : ' h-screen w-[100vw] xl:w-full xl:overflow-hidden font-ceraround '
+        : ' h-[screen] w-[100vw] xl:w-full xl:overflow-hidden font-ceraround '
       }>
-           <div className="relative z-10 text-white grid px-[72px] pt-[50px] min-h-screen font-ceraRoundPro place-content-center w-full">
+           <div className="relative z-10 text-white grid px-[72px] pt-[50px] min-h-[700px] font-ceraRoundPro place-content-center w-full">
                     <div className="flex flex-col w-[100vw] h-screen items-center">
                         <TitleTexts />
-                        <div className="hidden xl:flex absolute bottom-1 left-0  w-full h-full justify-center items-end !gap-[10px] pb-2">
+                        <div className="hidden xl:flex absolute bottom-10 left-0  w-full h-full justify-center items-end !gap-[10px] pb-2">
                             <SelectMenuCardChatbot />
                             <SelectMenuCardCenter />
                             <SelectMenuCardService />
