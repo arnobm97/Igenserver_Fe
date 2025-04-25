@@ -16,6 +16,9 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      backgroundImage: {
+        'custom-gradient': 'linear-gradient(to right, #1B1B1B 0%, #3D3D3D 50%, #1B1B1B 100%)',
+      },
       screens: {
          sm: '450px',
       },

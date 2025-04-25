@@ -35,12 +35,12 @@ export default function DisplayServices() {
   };
 
   return (
-    <div className="grid place-content-center w-full h-full backdrop-blur-[100px] z-[1] xl:p-[40px]">
-      <div className='relative h-[calc(100vh_-_20px)] xl:h-[calc(100vh_-_30px)] w-[calc(100vw_-_20px)] xl:w-[calc(100vw_-_100px)] border rounded-[20px] xl:rounded-[32px] overflow-hidden bg-gray-800/70 border-gray-50/10 p-[10px] sm:p-[20px] xl:p-[40px]'>
+    <div className="w-full h-full rounded-[2rem] backdrop-blur-[100px] z-[1]">
+      <div className='relative h-[calc(100vh_-_20px)] xl:h-[calc(100vh_-_30px)] w-[calc(100vw_-_20px)] border xl:rounded-[32px] overflow-hidden bg-custom-gradient border-gray-50/10 p-[10px] sm:p-[20px] xl:p-[40px]'>
         
         {!activeService && <Link
           href='/home'
-          className="absolute top-5 right-5 h-[35px] w-[35px] xl:top-[40px] xl:left-[40px] text-orange-500 xl:h-[55px] xl:w-[55px] grid place-content-center rounded-full hover:text-gray-400 hover:border-orange-500 border z-[200]"
+          className="absolute top-5 right-5 h-[35px] w-[35px] xl:top-[40px] xl:left-[40px] text-orange-500 xl:h-[55px] xl:w-[55px] grid place-content-center rounded-full hover:text-gray-400 hover:border-orange-500 border border-white border-opacity-25 z-[200]"
           aria-label="Undo"
         >
           <Undo className="w-full h-full" />

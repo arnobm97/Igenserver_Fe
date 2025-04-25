@@ -80,15 +80,12 @@ body {
 }
 
 .text-outline {
+ background: linear-gradient(90deg, #1B1B1B, #1B1B1B);
+  background-clip: text;
+  -webkit-background-clip: text;
   color: transparent;
-  text-shadow:
-    1px 0 0 #ffffff33,
-    -1px 0 0 #ffffff33,
-    0 1px 0 #ffffff33,
-    0 -1px 0 #ffffff33,
-    1px 1px 0 #ffffff33,
-    -1px -1px 0 #ffffff33,
-    1px -1px 0 #ffffff33,
-    -1px 1px 0 #ffffff33;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.6px white;
+  opacity: 0.50;
 }
 
