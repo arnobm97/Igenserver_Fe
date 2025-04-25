@@ -36,11 +36,11 @@ export default function AnimatedServices({ setActiveService }) {
       style={{ scrollBehavior: "smooth" }}
     >
       {services.map((service, index) => (
-        <div className="flex">
+        <div key={index} className="flex">
         <div className="bg-transparent text-[150px] tracking-[-12px] hidden md:block">
           <p className="text-outline font-light text-transparent">{String(activeIndex + 1).padStart(2, '0')}</p>
           </div>
-        <div key={index} className="h-fit snap-start sticky top-[30px] p-[10px] xl:pb-32">
+        <div className="h-fit snap-start sticky top-[30px] p-[10px] xl:pb-32">
           <div className="flex flex-col lg:flex-row justify-between gap-[150px] h-full px-0 lg:px-[60px] mx-auto"
           >
             <motion.div
