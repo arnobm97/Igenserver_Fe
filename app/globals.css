@@ -78,3 +78,17 @@ body {
       transform: translateX(100%);
   }
 }
+
+.text-outline {
+  color: transparent;
+  text-shadow:
+    1px 0 0 #ffffff33,
+    -1px 0 0 #ffffff33,
+    0 1px 0 #ffffff33,
+    0 -1px 0 #ffffff33,
+    1px 1px 0 #ffffff33,
+    -1px -1px 0 #ffffff33,
+    1px -1px 0 #ffffff33,
+    -1px 1px 0 #ffffff33;
+}
+

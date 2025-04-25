@@ -31,12 +31,13 @@ export default function AnimatedServices({ setActiveService }) {
   return (
     <div
       ref={containerRef}
-      className="h-[calc(100vh_-_00px)] md:h-[calc(100vh_-_300px)] xl:h-[calc(100vh_-_40px)] max-w-[calc(100vw_-_10px)] overflow-y-scroll "
+      className="h-[calc(100vh_-_00px)] md:h-[calc(100vh_-_300px)] xl:h-[calc(100vh_-_40px)] max-w-[calc(100%-10px)] overflow-y-scroll "
       style={{ scrollBehavior: "smooth" }}
     >
       {services.map((service, index) => (
         <>
-        <div className="absolute left-[-50px] top-[-50px] text-[200px] text-gray-100 text-opacity-10 tracking-[-12px] hidden md:block xl:hidden">{String(activeIndex + 1).padStart(2, '0')}</div>
+        <div className="absolute left-[-50px] top-[-50px] bg-transparent text-[200px] text-opacity-10 tracking-[-12px] hidden md:block">
+          <p className="">{String(activeIndex + 1).padStart(2, '0')}</p></div>
         <div key={index} className="h-fit w-full snap-start sticky top-[30px] p-[10px] xl:p-10 xl:pb-32">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-[150px] h-full px-0 lg:px-[60px] mx-auto"
           >

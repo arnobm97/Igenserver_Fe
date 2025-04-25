@@ -16,7 +16,7 @@ export default function CenterCard({ isExpanded, setIsExpanded }) {
       const { width, height, top, left } = divRef.current.getBoundingClientRect();
       setDimensions({ width, height, top, left });
     }
-  }, []);
+  }, [divRef.current]);
 
   const expandedContainerStyle = {
     position: "absolute",
@@ -27,7 +27,7 @@ export default function CenterCard({ isExpanded, setIsExpanded }) {
   };
 
   const expandedStyle = {
-    width: "calc(100% - 20px)",
+    width: "calc(100%)",
     height: "calc(100% - 20px)",
     left: "10px",
     top: "10px",
@@ -45,52 +45,52 @@ export default function CenterCard({ isExpanded, setIsExpanded }) {
   };
 
   return (
-    <div className="rounded-xl grid place-content-center w-full h-full">
+    <div className="rounded-xl grid grid-cols-1 place-content-center w-full h-full">
       <motion.div
         ref={divRef}
-        className={`w-[450px] max-w-[calc(100vw-20px)] h-[465px]  bg-opacity-40 rounded-[10px] backdrop-blur-2xl p-[10px] font-nordiquePro ${!clicked && ' bg-zinc-400 '}`}
+        className={`w-full h-[350px]  bg-opacity-40 rounded-[10px] backdrop-blur-2xl p-[10px] font-nordiquePro ${!clicked && ' bg-zinc-400 '}`}
         style={clicked ? expandedContainerStyle : {}}
       >
         {dimensions.width > 0 && dimensions.height > 0 && !isExpanded && (
-          <motion.svg
-            className="svg-border rounded-xl absolute !top-[-4px] !left-[-4px]"
-            width={dimensions.width + 10}
-            height={dimensions.height + 10}
-            viewBox={`0 0 ${dimensions.width + 10} ${dimensions.height + 10}`}
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <linearGradient id="borderGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#DB6E27" />
-                <stop offset="50%" stopColor="white" />
-                <stop offset="100%" stopColor="#DB6E27" />
-              </linearGradient>
-              <filter id="neon" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="0" stdDeviation="4" floodColor="#DB6E27" />
-              </filter>
-            </defs>
-            <motion.rect
-              x="5"
-              y="5"
-              width={dimensions.width}
-              height={dimensions.height}
-              rx="10"
-              stroke="url(#borderGradient)"
-              strokeWidth="2"
-              fill="none"
-              filter="url(#neon)"
-              initial={{
-                strokeDasharray: 1 * (dimensions.width + dimensions.height),
-                strokeDashoffset: 2 * (dimensions.width + dimensions.height),
-              }}
-              animate={{ strokeDashoffset: 0 }}
-              transition={{ duration: 8, ease: "linear", repeat: Infinity }}
-            />
-          </motion.svg>
-        )}
+  <motion.svg
+    className="absolute inset-0 w-[calc(100%+8px)] h-[calc(100%+8px)] -left-1 -top-1"
+    width={dimensions.width + 8}
+    height={dimensions.height + 8}
+    viewBox={`0 0 ${dimensions.width + 8} ${dimensions.height + 8}`}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <linearGradient id="borderGradient" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#DB6E27" />
+        <stop offset="50%" stopColor="white" />
+        <stop offset="100%" stopColor="#DB6E27" />
+      </linearGradient>
+      <filter id="neon" x="-10%" y="-10%" width="120%" height="120%">
+        <feDropShadow dx="0" dy="0" stdDeviation="2" floodColor="#DB6E27" />
+      </filter>
+    </defs>
+    <motion.rect
+      x="4"
+      y="4"
+      width={dimensions.width}
+      height={dimensions.height}
+      rx="10"
+      stroke="url(#borderGradient)"
+      strokeWidth="1.5"
+      fill="none"
+      filter="url(#neon)"
+      initial={{
+        strokeDasharray: 1 * (dimensions.width + dimensions.height),
+        strokeDashoffset: 2 * (dimensions.width + dimensions.height),
+      }}
+      animate={{ strokeDashoffset: 0 }}
+      transition={{ duration: 8, ease: "linear", repeat: Infinity }}
+    />
+  </motion.svg>
+)}
 
         <div
-          className={`relative h-full py-[30px] px-[15px] ${isExpanded && "!pb-0 !px-0"}`}
+          className={`relative w-full h-full py-[30px] px-[15px] ${isExpanded && "!pb-0 !px-0"}`}
         >
           {!isExpanded && (
             <>
@@ -100,7 +100,7 @@ export default function CenterCard({ isExpanded, setIsExpanded }) {
                 </div>
               ))}
 
-              <div className="mb-7">
+              <div className="">
                 <div className="flex items-center justify-between">
                   <p className="text-[22px] font-bold tracking-wider">Services</p>
                   <div className="flex items-center group" onClick={handleExploreClick}>

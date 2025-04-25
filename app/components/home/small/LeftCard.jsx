@@ -44,7 +44,7 @@ export default function LeftCard({ isExpanded, setIsExpanded }) {
     <div
       className={isExpanded
         ? 'border-none max-h-[100vh] overflow-hidden'
-        : 'h-[200px] w-[200px] border rounded-[32px] cursor-pointer '
+        : 'h-[180px] w-full border rounded-[32px] cursor-pointer '
       }
 
       style={isExpanded

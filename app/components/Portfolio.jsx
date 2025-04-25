@@ -31,15 +31,15 @@ export default function Portfolio() {
   ]
 
   return (
-    <div className="flex flex-col lg:flex-row bg-zinc-900 mb-10 w-full max-w-7xl mx-auto">
+    <div className="grid grid-cols-1 lg:grid-cols-2 bg-zinc-900 mb-10 w-full max-w-7xl">
       {/* Left Section */}
-      <div className="relative w-full lg:w-1/2 h-64 lg:h-auto">
+      <div className="relative w-full h-64 lg:h-auto">
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent z-10" />
         <h1 className="absolute top-4 left-4 text-2xl lg:text-4xl font-bold text-white z-20 tracking-wider">
           MY DUBAI PROPERTY
         </h1>
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 w-full bg-cover bg-center"
           style={{
             backgroundImage:
               "url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-jotdUymSUZAqT46iqY3Bnr7Zgh0Q2t.png')",
@@ -53,9 +53,9 @@ export default function Portfolio() {
       </div>
 
       {/* Right Section */}
-      <div className="w-full lg:w-1/2 bg-zinc-900 text-white">
+      <div className="w-full bg-zinc-900 text-white">
         <div
-          className="h-40 lg:h-52 w-full bg-cover bg-center"
+          className="hidden lg:block h-40 lg:h-52 w-full bg-cover bg-center"
           style={{
             backgroundImage:
               "url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-jotdUymSUZAqT46iqY3Bnr7Zgh0Q2t.png')",
@@ -64,7 +64,7 @@ export default function Portfolio() {
         />
 
         <div className="p-4 sm:p-6 lg:p-8">
-          <div className="space-y-4">
+          <div className="w-full space-y-4">
             {menuItems.map((item, index) => (
               <motion.div
                 key={index}
@@ -73,13 +73,14 @@ export default function Portfolio() {
                 }`}
                 onClick={() => setActiveIndex(index)}
                 whileHover={{ opacity: 1 }}
+                layout
               >
                 <h2 className="text-base sm:text-lg font-medium tracking-wide">{item.title}</h2>
                 {activeIndex === index && (
                   <motion.p
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="mt-2 text-sm sm:text-base text-zinc-400 leading-relaxed"
+                    className="w-full mt-2 text-sm sm:text-base text-zinc-400 leading-relaxed"
                   >
                     {item.description}
                   </motion.p>

@@ -5,8 +5,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import AnimatedServices from '../../components/service_screen/AnimatedServices';
 import { Undo } from 'lucide-react';
 import Link from 'next/link';
+import { useParams, useSearchParams } from 'next/navigation';
 
 export default function DisplayServices() {
+  const params = useSearchParams();
+  console.log(params.get("service"));
+  
   const [activeService, setActiveService] = useState(false);
   
   const leftScrollRef = useRef(null);  // Reference for the left-side container
