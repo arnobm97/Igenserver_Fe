@@ -102,7 +102,7 @@ export default function Portfolios({ setIsExpanded, setClicked }) {
           setIsExpanded(false);
           setClicked(false);
         }}
-        className="fixed top-2 xl:top-7 left-5 text-orange-500 w-10 h-10 xl:h-14 xl:w-14 grid place-content-center rounded-full  z-50"
+        className="fixed top-2 xl:top-7 left-5 text-orange-500 w-10 h-10 xl:h-14 xl:w-14 grid place-content-center rounded-full xl:border-[0.5px] border-white hover:border-[#DB6E27] hover:text-white duration-300 z-50"
         aria-label="Undo"
       >
         <Undo className="w-full h-full" />

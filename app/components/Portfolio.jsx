@@ -32,7 +32,7 @@ export default function Portfolio() {
   ]
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 bg-zinc-900 mb-10 w-full max-h-[550px]">
+    <div className="grid grid-cols-1 lg:grid-cols-2 bg-zinc-900 mb-10 w-full xl:max-h-[550px] 2xl:max-h-[690px]">
       {/* Left Section */}
       <div className="relative w-full lg:h-auto">
         {/* <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent z-10" /> */}

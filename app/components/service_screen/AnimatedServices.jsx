@@ -38,7 +38,7 @@ export default function AnimatedServices({ setActiveService }) {
       {services.map((service, index) => (
         <>
         
-        <div key={index} className="h-fit w-full snap-start sticky top-[100px] flex items-start p-[10px] xl:pb-32">
+        <div key={index} className="h-fit w-full snap-start sticky top-[100px] flex flex-col items-start p-[10px] xl:pb-32">
        
             <motion.div
               className="bg-transparent text-[150px] tracking-[-12px] hidden md:block -ml-10 -mt-12"
