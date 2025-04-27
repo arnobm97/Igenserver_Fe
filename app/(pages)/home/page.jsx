@@ -17,7 +17,7 @@ const [isExpanded, setIsExpanded] = useState(false)
         ? ' xl:hidden max-h-[100vh] w-full overflow-hidden  '
         : 'h-[calc(100vh-170px)] xl:h-screen w-[100vw] xl:w-full xl:overflow-hidden font-ceraround pt-12 lg:pt-0'
       }>
-           <div className="relative z-10 text-white grid px-[72px] pt-[50px] min-h-[700px] font-ceraRoundPro place-content-center w-full ">
+           <div className="relative z-10 text-white grid px-[72px] pt-[50px] h-screen min-h-[700px] font-ceraRoundPro place-content-center w-full ">
                     <div className="flex flex-col gap-7 w-[100vw] xl:h-screen items-center">
                         <TitleTexts />
                         <div className="hidden xl:flex absolute bottom-5 2xl:bottom-12 left-0  w-full h-full items-end pb-2">

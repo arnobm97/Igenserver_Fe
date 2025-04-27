@@ -32,14 +32,14 @@ export default function Portfolio() {
   ]
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 bg-zinc-900 mb-10 w-full">
+    <div className="grid grid-cols-1 lg:grid-cols-2 bg-zinc-900 mb-10 w-full max-h-[550px]">
       {/* Left Section */}
       <div className="relative w-full lg:h-auto">
         {/* <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent z-10" /> */}
         <h1 className="py-3 lg:py-10 text-2xl lg:text-4xl font-bold text-white text-center z-20 tracking-wider">
           MY DUBAI PROPERTY
         </h1>
-        <Image src="/images/portfolio_image.jpg" alt="Portfolio image" width={0} height={0} sizes="100vw" className="w-full h-[150px] xl:h-full object-cover" />
+        <Image src="/images/portfolio_image.jpg" alt="Portfolio image" width={0} height={0} sizes="100vw" className="w-full h-[250px] xl:h-full object-cover" />
         {/* <div className="absolute bottom-4 left-4 flex items-center gap-2 text-white/80 z-20">
           <MousePointerClick className="w-4 h-4" />
           <span className="text-sm">Scroll to experience the journey</span>
@@ -48,9 +48,9 @@ export default function Portfolio() {
 
       {/* Right Section */}
       <div className="w-full bg-zinc-900 text-white">
-        <Image src="/images/portfolio_image.jpg" alt="Portfolio image" width={0} height={0} sizes="100vw" className="w-full h-0 xl:h-[230px] object-cover" />
+        <Image src="/images/portfolio_image.jpg" alt="Portfolio image" width={0} height={0} sizes="100vw" className="w-full h-0 xl:h-[210px] object-cover" />
 
-        <div className="p-4 sm:p-6 lg:p-8">
+        <div className="p-4 sm:p-6">
           <div className="w-full space-y-4">
             {menuItems.map((item, index) => (
               <motion.div

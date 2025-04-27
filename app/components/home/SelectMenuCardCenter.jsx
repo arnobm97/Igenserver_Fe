@@ -43,10 +43,10 @@ export default function SelectMenuCardCenter() {
 
   const expandedStyle = {
     width: "calc(100% - 30px)",
-    height: "calc(100% - 70px)",
+    height: "calc(100% - 30px)",
     borderRadius: "10px",
     left: "15px",
-    top: "50px",
+    top: "30px",
     bottom: "0px",
     right: "15px",
     backdropFilter: "blur(50px)",

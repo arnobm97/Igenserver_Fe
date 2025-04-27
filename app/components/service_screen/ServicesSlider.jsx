@@ -1,57 +1,42 @@
-'use client';
+// app/page.tsx or pages/index.tsx
+'use client'; // if using App Router (Next.js 13+)
 
-import { motion, useAnimationFrame } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
-import { initialSlides } from '../../data/initialSlides';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 
-export default function AutoScrollCarousel() {
+export default function CardStack() {
   const containerRef = useRef(null);
-  const [scrolling, setScrolling] = useState(true);
-
-  // Autoscroll using requestAnimationFrame
-  useAnimationFrame((t, delta) => {
-    if (!scrolling) return;
-    const container = containerRef.current;
-    if (!container) return;
-
-    container.scrollLeft += 0.1 * delta; // tweak speed here
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start end', 'end start'],
   });
 
-  // Stop autoscroll on hover
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const handleMouseEnter = () => setScrolling(false);
-    const handleMouseLeave = () => setScrolling(true);
-
-    container.addEventListener('mouseenter', handleMouseEnter);
-    container.addEventListener('mouseleave', handleMouseLeave);
-
-    return () => {
-      container.removeEventListener('mouseenter', handleMouseEnter);
-      container.removeEventListener('mouseleave', handleMouseLeave);
-    };
-  }, []);
+  // Motion values for card transforms
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const scale1 = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [50, -150]);
+  const scale2 = useTransform(scrollYProgress, [0, 1], [0.95, 0.75]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const scale3 = useTransform(scrollYProgress, [0, 1], [0.9, 0.7]);
 
   return (
-    <div className="bg-black py-10">
-      <div
-        ref={containerRef}
-        className="scrollbar-hide flex overflow-x-auto whitespace-nowrap gap-4 px-10"
-      >
-        {initialSlides.concat(initialSlides).map((slide, i) => (
-          <motion.div
-            key={i}
-            className="min-w-[300px] h-[200px] flex-shrink-0 rounded-lg overflow-hidden bg-gray-300 relative"
-          >
-            <img
-              src={slide.image}
-              alt={`Slide ${slide.id}`}
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
-        ))}
+    <div className="h-[300vh] bg-gray-900 relative overflow-hidden">
+      <div ref={containerRef} className="sticky top-0 h-screen flex items-center justify-center">
+        {/* Card 1 */}
+        <motion.div
+          style={{ y: y3, scale: scale3 }}
+          className="absolute w-80 h-96 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 shadow-lg"
+        />
+        {/* Card 2 */}
+        <motion.div
+          style={{ y: y2, scale: scale2 }}
+          className="absolute w-80 h-96 rounded-2xl bg-gradient-to-br from-blue-500 to-green-500 shadow-lg"
+        />
+        {/* Card 3 */}
+        <motion.div
+          style={{ y: y1, scale: scale1 }}
+          className="absolute w-80 h-96 rounded-2xl bg-gradient-to-br from-yellow-400 to-red-400 shadow-lg"
+        />
       </div>
     </div>
   );
