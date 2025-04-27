@@ -7,17 +7,16 @@ import ChatbotMainScreen from "../chatbot_screen/ChatbotMainScreen";
 
 export default function SelectMenuCardChatbot() {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [containerWidth, setContainerWidth] = useState('50%')
+  // Change initial width to match the collapsed state
+  const [containerWidth, setContainerWidth] = useState('10%')
   const [expandCount, setExpandCount] = useState(0);
 
   useEffect(() => {
     if (isExpanded) {
       setContainerWidth('100%')
     } else {
-      const timeoutId = setTimeout(() => {
-        setContainerWidth('10%')
-      }, 1000);
-      return () => clearTimeout(timeoutId);
+      // Remove the timeout to prevent unwanted animation
+      setContainerWidth('10%')
     }
   }, [isExpanded])
 
@@ -25,10 +24,10 @@ export default function SelectMenuCardChatbot() {
     perspective: "700px",
     position: "absolute",
     bottom: 80,
-    left: "-5px",
+    left: "50px",
     width: containerWidth,
     height: "100%",
-    transition: 'width 0.5s ease-in-out',
+    transition: 'width 0.5s ease-in-out 0.3s',
     zIndex: 5,
   }
 
@@ -62,7 +61,7 @@ export default function SelectMenuCardChatbot() {
     backdropFilter: "blur(18px)",
     boxShadow: "-8px -8px 16px 0px rgba(0, 0, 0, 0.5) inset",
     borderRadius: "10px",
-    transformOrigin: "center",
+    transformOrigin: "right",
     rotateY: isExpanded ? 0 : -15,
     bottom: "0px",
   };
@@ -88,18 +87,22 @@ export default function SelectMenuCardChatbot() {
     <>
       <div className="hidden xl:block" style={isExpanded ? expandedContainerStyle : containerStyle}>
         <motion.div
-          style={baseStyle}
-          className={`absolute w-[380px] h-[300px] bg-[#e7e4f01c] cursor-pointer z-10 overflow-hidden xl:bottom-0 xl:left-[5%] ${expandCount > 0 ? '2xl:left-[80px]' : '2xl:left-[80px] '} ${isExpanded && " !z-[30] "}`}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          whileHover={{
-            rotateY: isExpanded ? 0 : 5,
-            translateX: isExpanded ? 0 : expandCount > 0 ? 25 : 25,
-            translateY: isExpanded ? 0 : 15,
-            transition: { duration: 0.5 },
-            scaleX: 1
-          }}
-          animate={isExpanded ? expandedStyle : ''}
-        >
+  style={baseStyle}
+  className={`absolute w-[380px] h-[300px] bg-[#e7e4f01c] cursor-pointer z-10 overflow-hidden xl:bottom-0 xl:left-[5%] ${
+    expandCount > 0 ? '2xl:left-[80px]' : '2xl:left-[80px]'
+  } ${isExpanded && "!z-[30]"}`}
+  initial={{ x: 0 }} // Add initial position
+  transition={{ duration: 0.5, ease: "easeInOut" }}
+  whileHover={{
+    width: "430px",
+    rotateY: isExpanded ? 0 : 5,
+    translateX: isExpanded ? 0 : expandCount > 0 ? 0 : 0,
+    translateY: isExpanded ? 0 : 5,
+    transition: { duration: 0.5 },
+    scaleX: 1
+  }}
+  animate={isExpanded ? expandedStyle : undefined}
+>
           <div
             className="w-full border border-gray-700 text-black h-full "
             style={{

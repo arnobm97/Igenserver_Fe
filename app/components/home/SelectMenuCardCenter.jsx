@@ -42,11 +42,11 @@ export default function SelectMenuCardCenter() {
   };
 
   const expandedStyle = {
-    width: "calc(100% - 0px)",
-    height: "calc(100% - 0px)",
+    width: "calc(100% - 30px)",
+    height: "calc(100% - 70px)",
     borderRadius: "10px",
     left: "15px",
-    top: "15px",
+    top: "50px",
     bottom: "0px",
     right: "15px",
     backdropFilter: "blur(50px)",

@@ -13,7 +13,7 @@ export default function SelectMenuCardService() {
     perspective: "700px",
     position: "absolute",
     top: "0",
-    right: "7px",
+    right: "30px",
     width: "100%",
     height: "100%",
     zIndex: isHovered ? 10 : 0

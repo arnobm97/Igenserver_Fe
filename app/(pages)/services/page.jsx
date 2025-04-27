@@ -35,8 +35,8 @@ export default function DisplayServices() {
   };
 
   return (
-    <div className="w-full h-full rounded-[2rem] backdrop-blur-[100px] z-[1]">
-      <div className='relative h-[calc(100vh_-_20px)] xl:h-[calc(100vh_-_30px)] w-[calc(100vw_-_20px)] border xl:rounded-[32px] overflow-hidden bg-custom-gradient border-gray-50/10 p-[10px] sm:p-[20px] xl:p-[40px]'>
+    <div className="w-full h-screen rounded-[2rem] backdrop-blur-[100px] z-[1] py-4">
+      <div className='relative h-[calc(100vh_-_20px)] xl:h-[calc(100vh_-_30px)] w-[calc(100vw_-_20px)] border xl:rounded-[32px] mx-auto overflow-hidden bg-custom-gradient border-gray-50/10 p-[10px] sm:p-[20px] xl:p-[40px]'>
         
         {!activeService && <Link
           href='/home'

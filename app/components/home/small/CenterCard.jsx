@@ -20,22 +20,23 @@ export default function CenterCard({ isExpanded, setIsExpanded }) {
 
   const expandedContainerStyle = {
     position: "absolute",
-    top: 0,
+    top: "55px",
     left: 0,
     width: "100vw",
-    height: "100vh",
+    height: "calc(100% - 55px)",
   };
 
   const expandedStyle = {
     width: "calc(100%)",
-    height: "calc(100% - 20px)",
-    left: "10px",
-    top: "10px",
+    height: "100%",
+    left: "0px",
+    top: 0,
     bottom: "10px",
     right: "10px",
     backdropFilter: "blur(50px)",
     WebkitBackdropFilter: "blur(50px)",
-    borderRadius: "30px",
+    "border-top": "1px solid rgba(255, 255, 255, 0.18)",
+    borderRadius: "30px 30px 0 0",
     background: "linear-gradient(180deg, rgba(40, 40, 40, 0.5) 0%, rgba(61, 61, 61, 0.5) 50%, rgba(40, 40, 40, 0.5) 100%)",
   };
 
@@ -45,10 +46,10 @@ export default function CenterCard({ isExpanded, setIsExpanded }) {
   };
 
   return (
-    <div className="rounded-xl grid grid-cols-1 place-content-center w-full h-full">
+    <div className="rounded-xl grid grid-cols-1 w-full h-[calc(100vh - 100px)] mt-10">
       <motion.div
         ref={divRef}
-        className={`w-full h-[350px]  bg-opacity-40 rounded-[10px] backdrop-blur-2xl p-[10px] font-nordiquePro ${!clicked && ' bg-zinc-400 '}`}
+        className={`w-full h-[350px]  bg-opacity-40 rounded-[10px] backdrop-blur-2xl font-nordiquePro ${!clicked && ' bg-zinc-400 '}`}
         style={clicked ? expandedContainerStyle : {}}
       >
         {dimensions.width > 0 && dimensions.height > 0 && !isExpanded && (
@@ -90,7 +91,7 @@ export default function CenterCard({ isExpanded, setIsExpanded }) {
 )}
 
         <div
-          className={`relative w-full h-full py-[30px] px-[15px] ${isExpanded && "!pb-0 !px-0"}`}
+          className={`relative w-full h-full py-[30px] ${isExpanded && "!pb-0 !px-0"}`}
         >
           {!isExpanded && (
             <>
@@ -118,9 +119,9 @@ export default function CenterCard({ isExpanded, setIsExpanded }) {
           )}
 
           {isExpanded && clicked && (
-            <dialog open className="absolute w-screen h-screen z-10" style={expandedStyle}>
+            <div className="absolute w-full z-10 p-3" style={expandedStyle}>
               <Portfolios setIsExpanded={setIsExpanded} setClicked={setClicked} />
-            </dialog>
+            </div>
           )}
         </div>
       </motion.div>

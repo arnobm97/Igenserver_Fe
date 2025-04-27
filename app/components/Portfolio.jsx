@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { MousePointerClick } from "lucide-react"
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 export default function Portfolio() {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -31,37 +32,23 @@ export default function Portfolio() {
   ]
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 bg-zinc-900 mb-10 w-full max-w-7xl">
+    <div className="grid grid-cols-1 lg:grid-cols-2 bg-zinc-900 mb-10 w-full">
       {/* Left Section */}
-      <div className="relative w-full h-64 lg:h-auto">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent z-10" />
-        <h1 className="absolute top-4 left-4 text-2xl lg:text-4xl font-bold text-white z-20 tracking-wider">
+      <div className="relative w-full lg:h-auto">
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent z-10" /> */}
+        <h1 className="py-3 lg:py-10 text-2xl lg:text-4xl font-bold text-white text-center z-20 tracking-wider">
           MY DUBAI PROPERTY
         </h1>
-        <div
-          className="absolute inset-0 w-full bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-jotdUymSUZAqT46iqY3Bnr7Zgh0Q2t.png')",
-            backgroundPosition: "left center",
-          }}
-        />
-        <div className="absolute bottom-4 left-4 flex items-center gap-2 text-white/80 z-20">
+        <Image src="/images/portfolio_image.jpg" alt="Portfolio image" width={0} height={0} sizes="100vw" className="w-full h-[150px] xl:h-full object-cover" />
+        {/* <div className="absolute bottom-4 left-4 flex items-center gap-2 text-white/80 z-20">
           <MousePointerClick className="w-4 h-4" />
           <span className="text-sm">Scroll to experience the journey</span>
-        </div>
+        </div> */}
       </div>
 
       {/* Right Section */}
       <div className="w-full bg-zinc-900 text-white">
-        <div
-          className="hidden lg:block h-40 lg:h-52 w-full bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-jotdUymSUZAqT46iqY3Bnr7Zgh0Q2t.png')",
-            backgroundPosition: "right top",
-          }}
-        />
+        <Image src="/images/portfolio_image.jpg" alt="Portfolio image" width={0} height={0} sizes="100vw" className="w-full h-0 xl:h-[230px] object-cover" />
 
         <div className="p-4 sm:p-6 lg:p-8">
           <div className="w-full space-y-4">

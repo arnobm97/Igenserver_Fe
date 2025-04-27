@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function ScrollMouseIndicator() {
   return (
     <motion.div
-      className="fixed bottom-28 right-7 transform -translate-x-1/2 z-50 flex flex-col items-center"
+      className="fixed bottom-7 lg:bottom-20 right-3 lg:right-7 transform -translate-x-1/2 z-50 flex flex-col items-center"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1, ease: "easeOut" }}
