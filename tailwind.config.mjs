@@ -13,6 +13,7 @@ export default {
         nordiquePro: ['var(--font-nordiquepro)'],
       },
       colors: {
+        primary: "#DB6E27",
         background: "var(--background)",
         foreground: "var(--foreground)",
       },

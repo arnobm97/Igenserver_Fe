@@ -35,7 +35,7 @@ export default function ShuffledCards() {
   const [hoveredCard, setHoveredCard] = useState(null)
 
   return (
-    <div className="relative  w-full max-w-md h-full perspective-1000 pt-[56px] px-3 lg:px-12 2xl:pl-2">
+    <div className="relative  w-full max-w-md h-full perspective-1000 pt-[56px] px-7 lg:px-12 2xl:pl-2">
       {cards.map((card, index) => (
         <motion.div
           key={card.id}

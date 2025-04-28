@@ -48,7 +48,7 @@ export default function SelectMenuCardChatbot() {
     top: 0,
     left: 0,
     width: "100%",
-    height: "100%",
+    height: "calc(100% - 30px)",
   }
 
   const baseStyle = {
@@ -61,17 +61,16 @@ export default function SelectMenuCardChatbot() {
     backdropFilter: "blur(18px)",
     boxShadow: "-8px -8px 16px 0px rgba(0, 0, 0, 0.5) inset",
     borderRadius: "10px",
-    transformOrigin: "right",
-    rotateY: isExpanded ? 0 : -15,
+    transformOrigin: "center",
+    rotateY: isExpanded ? 0 : -25,
     bottom: "0px",
   };
 
   const expandedStyle = {
-    width: "calc(100% - 50px)",
-    height: "calc(100% - 10px)",
+    width: "calc(100% - 30px)",
+    height: "calc(100% - 50px)",
     left: "15px",
     top: "15px",
-    bottom: "0px",
     right: "15px",
     backdropFilter: "blur(50px)",
     WebkitBackdropFilter: "blur(50px)",
@@ -87,22 +86,20 @@ export default function SelectMenuCardChatbot() {
     <>
       <div className="hidden xl:block" style={isExpanded ? expandedContainerStyle : containerStyle}>
         <motion.div
-  style={baseStyle}
-  className={`absolute w-[380px] h-[300px] bg-[#e7e4f01c] cursor-pointer z-10 overflow-hidden xl:bottom-0 xl:left-[5%] ${
-    expandCount > 0 ? '2xl:left-[80px]' : '2xl:left-[80px]'
-  } ${isExpanded && "!z-[30]"}`}
-  initial={{ x: 0 }} // Add initial position
-  transition={{ duration: 0.5, ease: "easeInOut" }}
-  whileHover={{
-    width: "430px",
-    rotateY: isExpanded ? 0 : 5,
-    translateX: isExpanded ? 0 : expandCount > 0 ? 0 : 0,
-    translateY: isExpanded ? 0 : 5,
-    transition: { duration: 0.5 },
-    scaleX: 1
-  }}
-  animate={isExpanded ? expandedStyle : undefined}
->
+          style={baseStyle}
+          className={`absolute w-[380px] h-[300px] bg-[#e7e4f01c] cursor-pointer z-10 overflow-hidden xl:left-[5%] ${expandCount > 0 ? '2xl:left-[80px]' : '2xl:left-[80px]'
+            } ${isExpanded && "!z-[30]"}`}
+          initial={{ x: 0 }} // Add initial position
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          whileHover={{
+            rotateY: isExpanded ? 0 : 5,
+            translateX: isExpanded ? 0 : expandCount > 0 ? 0 : 0,
+            translateY: isExpanded ? 0 : 5,
+            transition: { duration: 0.5 },
+            scaleX: 1
+          }}
+          animate={isExpanded ? expandedStyle : undefined}
+        >
           <div
             className="w-full border border-gray-700 text-black h-full "
             style={{
@@ -135,23 +132,25 @@ export default function SelectMenuCardChatbot() {
                 </motion.div>
               )}
             </AnimatePresence>
-            <AnimatePresence>
-              {isExpanded && (
-                <motion.div
-                  key="expanded"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                >
-                  <ChatbotMainScreen handleClose={handleClose} />
-                </motion.div>
-              )}
-            </AnimatePresence>
+
           </div>
         </motion.div>
       </div>
-
+      <AnimatePresence>
+        {isExpanded && (
+          <motion.div
+            key="expanded"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className="fixed w-full h-full z-50"
+            style={expandedStyle}
+          >
+            <ChatbotMainScreen handleClose={handleClose} />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

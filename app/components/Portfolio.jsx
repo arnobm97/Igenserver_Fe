@@ -55,7 +55,7 @@ export default function Portfolio() {
             {menuItems.map((item, index) => (
               <motion.div
                 key={index}
-                className={`border-b border-zinc-800 pb-4 cursor-pointer transition-opacity duration-300 ${
+                className={`border-b last:border-none border-zinc-800 pb-4 cursor-pointer transition-opacity duration-300 ${
                   activeIndex === index ? "opacity-100" : "opacity-60"
                 }`}
                 onClick={() => setActiveIndex(index)}

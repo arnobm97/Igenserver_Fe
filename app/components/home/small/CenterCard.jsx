@@ -49,7 +49,7 @@ export default function CenterCard({ isExpanded, setIsExpanded }) {
     <div className="rounded-xl grid grid-cols-1 w-full h-[calc(100vh - 100px)] mt-10">
       <motion.div
         ref={divRef}
-        className={`w-full h-[350px]  bg-opacity-40 rounded-[10px] backdrop-blur-2xl font-nordiquePro ${!clicked && ' bg-zinc-400 '}`}
+        className={`w-full h-[350px]  bg-opacity-40 rounded-[10px] backdrop-blur-2xl font-nordiquePro px-3 ${!clicked && ' bg-zinc-400 '}`}
         style={clicked ? expandedContainerStyle : {}}
       >
         {dimensions.width > 0 && dimensions.height > 0 && !isExpanded && (

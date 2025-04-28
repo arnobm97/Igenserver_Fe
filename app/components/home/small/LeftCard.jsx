@@ -8,10 +8,10 @@ export default function LeftCard({ isExpanded, setIsExpanded }) {
 
   const expandedContainerStyle = {
     position: "absolute",
-    top: 0,
+    top: "45px",
     left: 0,
     width: "100vw",
-    height: "100vh",
+    height: "calc(100vh - 55px)",
   }
 
   const expandedStyle = {
@@ -30,13 +30,13 @@ export default function LeftCard({ isExpanded, setIsExpanded }) {
 
   const handleClose = () => {
     setIsExpanded(false);
-    setClicked(false); 
+    setClicked(false);
   };
 
   const handleCardClick = () => {
     if (!isExpanded) {
       setIsExpanded(true);
-      setClicked(true); 
+      setClicked(true);
     }
   };
 
@@ -64,7 +64,7 @@ export default function LeftCard({ isExpanded, setIsExpanded }) {
     >
       {!isExpanded && (
         <div className='w-full h-full grid place-content-center'>
-          <img src="/images/Wave.svg" alt="Icon" className='w-[150px]'/>
+          <img src="/images/Wave.svg" alt="Icon" className='w-[150px]' />
         </div>
       )}
       {isExpanded && clicked && (
