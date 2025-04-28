@@ -15,7 +15,7 @@ export default function Home() {
         <div
             className={isExpanded
                 ? ' xl:hidden max-h-[100vh] w-full overflow-hidden  '
-                : 'h-[calc(100vh-170px)] xl:h-screen w-[100vw] xl:w-full xl:overflow-hidden font-ceraround pt-12 lg:pt-0'
+                : 'h-[calc(100vh-170px)] xl:h-[calc(100vh-10px)] w-[100vw] xl:w-full xl:overflow-hidden font-ceraround pt-12 lg:pt-0'
             }>
             <div className="relative z-10 text-white grid px-[72px] pt-[50px] h-screen min-h-[700px] font-ceraRoundPro place-content-center w-full ">
                 <div className="flex flex-col gap-7 w-[100vw] xl:h-screen items-center">

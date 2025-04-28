@@ -46,7 +46,7 @@ export default function SelectMenuCardCenter() {
     height: "calc(100% - 30px)",
     borderRadius: "10px",
     left: "15px",
-    top: "30px",
+    top: "10px",
     bottom: "0px",
     right: "15px",
     backdropFilter: "blur(50px)",

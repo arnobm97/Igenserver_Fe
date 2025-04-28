@@ -95,7 +95,7 @@ export default function Portfolios({ setIsExpanded, setClicked }) {
 
   return (
     <div className="relative h-full w-full xl:w-[calc(100%-100px)] rounded-2xl overflow-hidden">
-    <ScrollMouseIndicator />
+      <ScrollMouseIndicator />
 
       <button
         onClick={() => {
@@ -109,14 +109,14 @@ export default function Portfolios({ setIsExpanded, setClicked }) {
       </button>
 
       <div className="relative w-full overflow-y-auto" style={{ height: "100vh" }}>
-      <div className="relative text-lg font-extrabold h-[30vh] xl:h-[300px] w-full grid place-content-center text-center overflow-hidden">
+        <div className="relative text-lg font-extrabold h-[30vh] xl:h-[300px] w-full grid place-content-center text-center overflow-hidden">
           <div className="z-[10] text-[2.25rem] lg:text-[50px] 2xl:text-[4rem] text-[#DB6E27] space-y-3 2xl:space-y-7 tracking-widest">
             <p>Featured</p>
             <p>Portfolio</p>
           </div>
         </div>
 
-        <div className="space-y-10 w-full h-[6800px] flex flex-col items-center mt-24">
+        <div className="space-y-10 w-full h-[calc(400vh+160px)] flex flex-col items-center mt-24">
           {pagesState.map((page, index) => (
             <Page key={index} pageIndex={index} updateTransform={updateTransform} page={page} />
           ))}
