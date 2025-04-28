@@ -71,6 +71,12 @@ export default function ChatbotMainScreen({ handleClose }) {
     setIsTyping(false);
   };
 
+  const adjustTextareaHeight = (element) => {
+    element.style.height = 'auto';
+    const newHeight = Math.min(element.scrollHeight, 5 * 24); // 24px per line, max 5 lines
+    element.style.height = `${newHeight}px`;
+  };
+
   const handleSendMessage = async () => {
     if (!inputMessage.trim()) return;
 
@@ -109,7 +115,7 @@ export default function ChatbotMainScreen({ handleClose }) {
     <div className='h-full w-full px-5 xl:px-[40px] py-[20px] z-[100] flex flex-col justify-between relative'>
       <button
         onClick={() => handleClose()}
-        className='absolute top-[1.875rem] right-[1.875rem] text-white h-[35px] w-[35px] flex justify-center items-center border border-white/20 rounded-full hover:text-gray-400'>
+        className='absolute top-[1.875rem] right-[1.875rem] text-white h-[35px] w-[35px] flex justify-center items-center border border-primary hover:border-white/20 rounded-full hover:text-primary'>
         <House size={16} />
       </button>
 
@@ -117,16 +123,15 @@ export default function ChatbotMainScreen({ handleClose }) {
         <motion.button
           onClick={resetChat}
           whileTap={{ scale: 0.95 }}
-          className='flex items-center gap-2 text-sm text-white px-4 py-2 rounded-full hover:bg-gray-700 transition-colors'
+          className='flex items-center gap-2 text-white px-2 py-2 rounded-full hover:text-primary transition-colors'
         >
-          <NotebookPen size={16} />
-          <span>New Chat</span>
+          <NotebookPen size={20} />
         </motion.button>
         <motion.button
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           onClick={() => handleShareLink()}
-          className="flex items-center gap-1 text-xs text-gray-400 hover:text-gray-200 transition-colors"
+          className="flex items-center gap-1 text-white hover:text-primary transition-colors"
         >
           {sharedMessageId ? (
             <>
@@ -135,13 +140,13 @@ export default function ChatbotMainScreen({ handleClose }) {
             </>
           ) : (
             <>
-              <Share2 size={14} className="w-10 h-10 rounded-full hover:bg-gray-700 p-2" />
+              <Share2 size={20} className="" />
             </>
           )}
         </motion.button>
       </div>
 
-      <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
+      {!messages.length && <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center -z-[1]">
         <div className='h-[300px] 2xl:h-[350px] -mt-28'>
           <img
             className='h-full w-auto'
@@ -150,9 +155,9 @@ export default function ChatbotMainScreen({ handleClose }) {
           />
         </div>
 
-      </div>
+      </div>}
 
-      <div className='flex-1 overflow-y-auto px-5 xl:px-[40px] max-xl:mt-12 py-[20px] scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent'>
+      <div className='flex-1 overflow-y-auto px-5 xl:px-[40px] mt-10 2xl:mt-14 max-xl:mt-12 py-[20px] scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent'>
         {messages.length > 0 && (
           <div className='space-y-4 pb-4'>
             {messages.map((message, index) => (
@@ -167,7 +172,9 @@ export default function ChatbotMainScreen({ handleClose }) {
                     ? 'self-end bg-orange-500 text-white'
                     : 'bg-gray-800 text-gray-200'
                     }`}>
-                    <p>{message.text}</p>
+                    <p className="whitespace-pre-wrap break-words">
+                      {message.text}
+                    </p>
                   </div>
                   {message.sender === 'bot' && (
                     <div className="flex items-center gap-3 ml-2">
@@ -223,7 +230,7 @@ export default function ChatbotMainScreen({ handleClose }) {
       </div>
 
       <div className='w-full flex flex-col gap-3'>
-        <div className="">
+        {!messages.length && <div className="">
           <p className='text-white text-[25px] font-nordiquePro text-center py-[20px]'>
             Search like never before
           </p>
@@ -234,19 +241,24 @@ export default function ChatbotMainScreen({ handleClose }) {
             <StyledButton name='Digital Marketing' />
             <StyledButton name='Machine Learning' />
           </div>
-        </div>
-        <div className='w-full flex flex-col gap-3 rounded-[20px] bg-black overflow-hidden text-white py-[25px] px-5 xl:px-[35px]'>
+        </div>}
+        <div className='w-full flex flex-col gap-3 rounded-[20px] bg-black overflow-hidden text-white py-3 px-5 xl:px-[35px]'>
           <textarea
             value={inputMessage}
-            onChange={(e) => setInputMessage(e.target.value)}
+            onChange={(e) => {
+              setInputMessage(e.target.value);
+              adjustTextareaHeight(e.target);
+            }}
             onKeyDown={(e) => {
               if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
                 handleSendMessage();
               }
             }}
-            className='bg-transparent outline-none border-none w-full resize-none min-h-[60px]'
+            className='bg-transparent outline-none border-none w-full resize-none min-h-[60px] max-h-[120px] transition-all duration-200'
             placeholder='Ask Anything...'
+            rows={3}
+            ref={(el) => el && adjustTextareaHeight(el)}
           />
           <div className="w-full flex justify-between items-center">
             <div className='text-white flex gap-4'>
