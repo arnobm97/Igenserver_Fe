@@ -44,58 +44,58 @@ const ServiceSlider = ({ setDisplayMainServices }) => {
   };
 
   useEffect(() => {
-  let animationFrame;
-  let lastTime = performance.now();
+    let animationFrame;
+    let lastTime = performance.now();
 
-  const scroll = (now) => {
-    const delta = now - lastTime;
-    lastTime = now;
+    const scroll = (now) => {
+      const delta = now - lastTime;
+      lastTime = now;
 
-    if (!isPaused) {
-      scrollRef.current += delta * 0.05; // 0.2px per ms = ~12px per 60fps
+      if (!isPaused) {
+        scrollRef.current += delta * 0.05; // 0.2px per ms = ~12px per 60fps
 
-      if (scrollRef.current >= slides.length * 200) {
-        setSlides((prev) => [...prev, ...initialSlides]);
+        if (scrollRef.current >= slides.length * 200) {
+          setSlides((prev) => [...prev, ...initialSlides]);
+        }
+
+        if (sliderRef.current) {
+          sliderRef.current.style.transform = `translateX(-${scrollRef.current}px)`;
+        }
+
+        // throttle intersection check every 300ms
+        if (now % 300 < 17) checkIntersection();
       }
 
-      if (sliderRef.current) {
-        sliderRef.current.style.transform = `translateX(-${scrollRef.current}px)`;
-      }
-
-      // throttle intersection check every 300ms
-      if (now % 300 < 17) checkIntersection();
-    }
+      animationFrame = requestAnimationFrame(scroll);
+    };
 
     animationFrame = requestAnimationFrame(scroll);
-  };
 
-  animationFrame = requestAnimationFrame(scroll);
-
-  return () => cancelAnimationFrame(animationFrame);
-}, [isPaused, slides.length]);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [isPaused, slides.length]);
 
 
   const handleWheel = (e) => {
-  if (!sliderRef.current) return;
+    if (!sliderRef.current) return;
 
-  setIsPaused(true);
+    setIsPaused(true);
 
-  scrollRef.current += e.deltaY;
+    scrollRef.current += e.deltaY;
 
-  if (scrollRef.current >= slides.length * 200) {
-    setSlides((prev) => [...prev, ...initialSlides]);
-  }
+    if (scrollRef.current >= slides.length * 200) {
+      setSlides((prev) => [...prev, ...initialSlides]);
+    }
 
-  if (scrollRef.current <= 0) scrollRef.current = 0;
+    if (scrollRef.current <= 0) scrollRef.current = 0;
 
-  sliderRef.current.style.transform = `translateX(-${scrollRef.current}px)`;
+    sliderRef.current.style.transform = `translateX(-${scrollRef.current}px)`;
 
-  // resume after 500ms
-  clearTimeout(window.scrollPauseTimer);
-  window.scrollPauseTimer = setTimeout(() => {
-    setIsPaused(false);
-  }, 500);
-};
+    // resume after 500ms
+    clearTimeout(window.scrollPauseTimer);
+    window.scrollPauseTimer = setTimeout(() => {
+      setIsPaused(false);
+    }, 500);
+  };
 
   return (
     <div
@@ -134,7 +134,7 @@ const ServiceSlider = ({ setDisplayMainServices }) => {
               alt={slide.description}
               className="rounded-xl cursor-pointer"
               style={{
-            }}
+              }}
               onClick={() => router.push(`/services?service=${index}`)}
               // initial={{
               //   width: "5%",

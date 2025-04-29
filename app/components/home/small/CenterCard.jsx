@@ -18,21 +18,11 @@ export default function CenterCard({ isExpanded, setIsExpanded }) {
     }
   }, [divRef.current]);
 
-  const expandedContainerStyle = {
-    position: "absolute",
-    top: "55px",
-    left: 0,
-    width: "100vw",
-    height: "calc(100% - 55px)",
-  };
-
   const expandedStyle = {
     width: "calc(100%)",
-    height: "100%",
+    height: "calc(100% - 55px)",
     left: "0px",
-    top: 0,
-    bottom: "10px",
-    right: "10px",
+    top: "55px",
     backdropFilter: "blur(50px)",
     WebkitBackdropFilter: "blur(50px)",
     "border-top": "1px solid rgba(255, 255, 255, 0.18)",
@@ -50,45 +40,44 @@ export default function CenterCard({ isExpanded, setIsExpanded }) {
       <motion.div
         ref={divRef}
         className={`w-full h-[350px]  bg-opacity-40 rounded-[10px] backdrop-blur-2xl font-nordiquePro px-3 ${!clicked && ' bg-zinc-400 '}`}
-        style={clicked ? expandedContainerStyle : {}}
       >
         {dimensions.width > 0 && dimensions.height > 0 && !isExpanded && (
-  <motion.svg
-    className="absolute inset-0 w-[calc(100%+8px)] h-[calc(100%+8px)] -left-1 -top-1"
-    width={dimensions.width + 8}
-    height={dimensions.height + 8}
-    viewBox={`0 0 ${dimensions.width + 8} ${dimensions.height + 8}`}
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <defs>
-      <linearGradient id="borderGradient" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="#DB6E27" />
-        <stop offset="50%" stopColor="white" />
-        <stop offset="100%" stopColor="#DB6E27" />
-      </linearGradient>
-      <filter id="neon" x="-10%" y="-10%" width="120%" height="120%">
-        <feDropShadow dx="0" dy="0" stdDeviation="2" floodColor="#DB6E27" />
-      </filter>
-    </defs>
-    <motion.rect
-      x="4"
-      y="4"
-      width={dimensions.width}
-      height={dimensions.height}
-      rx="10"
-      stroke="url(#borderGradient)"
-      strokeWidth="1.5"
-      fill="none"
-      filter="url(#neon)"
-      initial={{
-        strokeDasharray: 1 * (dimensions.width + dimensions.height),
-        strokeDashoffset: 2 * (dimensions.width + dimensions.height),
-      }}
-      animate={{ strokeDashoffset: 0 }}
-      transition={{ duration: 8, ease: "linear", repeat: Infinity }}
-    />
-  </motion.svg>
-)}
+          <motion.svg
+            className="absolute inset-0 w-[calc(100%+8px)] h-[calc(100%+8px)] -left-1 -top-1"
+            width={dimensions.width + 8}
+            height={dimensions.height + 8}
+            viewBox={`0 0 ${dimensions.width + 8} ${dimensions.height + 8}`}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient id="borderGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#DB6E27" />
+                <stop offset="50%" stopColor="white" />
+                <stop offset="100%" stopColor="#DB6E27" />
+              </linearGradient>
+              <filter id="neon" x="-10%" y="-10%" width="120%" height="120%">
+                <feDropShadow dx="0" dy="0" stdDeviation="2" floodColor="#DB6E27" />
+              </filter>
+            </defs>
+            <motion.rect
+              x="4"
+              y="4"
+              width={dimensions.width}
+              height={dimensions.height}
+              rx="10"
+              stroke="url(#borderGradient)"
+              strokeWidth="1.5"
+              fill="none"
+              filter="url(#neon)"
+              initial={{
+                strokeDasharray: 1 * (dimensions.width + dimensions.height),
+                strokeDashoffset: 2 * (dimensions.width + dimensions.height),
+              }}
+              animate={{ strokeDashoffset: 0 }}
+              transition={{ duration: 8, ease: "linear", repeat: Infinity }}
+            />
+          </motion.svg>
+        )}
 
         <div
           className={`relative w-full h-full py-[30px] ${isExpanded && "!pb-0 !px-0"}`}
@@ -118,13 +107,14 @@ export default function CenterCard({ isExpanded, setIsExpanded }) {
             </>
           )}
 
-          {isExpanded && clicked && (
-            <div className="absolute w-full z-10 p-3" style={expandedStyle}>
-              <Portfolios setIsExpanded={setIsExpanded} setClicked={setClicked} />
-            </div>
-          )}
+
         </div>
       </motion.div>
+      {isExpanded && clicked && (
+        <div className="fixed w-full z-10 p-3" style={expandedStyle}>
+          <Portfolios setIsExpanded={setIsExpanded} setClicked={setClicked} />
+        </div>
+      )}
     </div>
   );
 }

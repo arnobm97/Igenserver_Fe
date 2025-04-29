@@ -16,8 +16,8 @@ export default function RightCard({ isExpanded, setIsExpanded }) {
   }
 
   const expandedStyle = {
-    width: "calc(100% - 20px)",
-    height: "calc(100% - 20px)",
+    width: "calc(100vw - 20px)",
+    height: "calc(100vh - 20px)",
     left: "10px",
     top: "10px",
     bottom: "10px",
@@ -32,23 +32,21 @@ export default function RightCard({ isExpanded, setIsExpanded }) {
   const handleCardClick = () => {
     if (!isExpanded) {
       setIsExpanded(true);
-      setClicked(true); 
+      setClicked(true);
     }
   };
 
   const handleShrink = () => {
     setIsExpanded(false);
-    setClicked(false); 
+    setClicked(false);
   }
 
   return (
-    <div className={isExpanded
-      ? 'border-none max-h-[100vh] overflow-hidden'
-      : 'h-[180px] w-full border rounded-[32px] cursor-pointer '
-    }
-      style={isExpanded
-        ? expandedContainerStyle
-        : {
+    <>
+      <div className={
+        'h-[180px] w-full border rounded-[32px] cursor-pointer'
+      }
+        style={{
           transform: "perspective(800px) translate3d(0px, 0px, 190px) rotateY(26.5deg) scale3d(0.83, 0.76, 1)",
           backgroundImage: "url('/images/FirstSlideBgPattern1.png')",
           backgroundSize: "cover",
@@ -58,22 +56,24 @@ export default function RightCard({ isExpanded, setIsExpanded }) {
           backdropFilter: "blur(18px)",
           boxShadow: "-8px -8px 16px 0px rgba(0, 0, 0, 0.5) inset",
         }
-      }
-      onClick={handleCardClick}>
-      {!isExpanded && (
-        <div className='w-full h-full flex flex-col justify-center items-center space-y-3'>
-          <Rocket />
-          <p>Portfolio</p>
-        </div>
-      )}
+        }
+        onClick={handleCardClick}>
+        {!isExpanded && (
+          <div className='w-full h-full flex flex-col justify-center items-center space-y-3'>
+            <Rocket />
+            <p>Portfolio</p>
+          </div>
+        )}
+
+      </div>
       {isExpanded && clicked && (
         <dialog open
-          className='absolute w-screen h-screen z-10'
+          className='fixed z-10'
           style={expandedStyle}
         >
           <ServiceMainScreen onClose={handleShrink} isExpanded={isExpanded} />
         </dialog>
       )}
-    </div>
+    </>
   )
 }

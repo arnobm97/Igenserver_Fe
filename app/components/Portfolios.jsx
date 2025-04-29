@@ -6,13 +6,40 @@ import { Undo } from "lucide-react";
 import Portfolio from "./Portfolio";
 import ScrollMouseIndicator from "./ScrollIndicator";
 
-const pages = Array(4).fill({
-  component: Portfolio,
-  title: "Page",
-  transform: "perspective(1500px) translate3d(0px, -62px, 190px) rotateX(-56.5deg) scale3d(0.83, 0.76, 1)",
-  clipPath: "polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%)",
-  opacity: 0.5,
-});
+const pages = [
+  {
+    title: "MY DUBAI PROPERTY",
+    largeImage: "/images/My Dubai Property.webp",
+    smallImage: "/images/my_dubai_properties_small.webp",
+    transform: "perspective(1500px) translate3d(0px, -62px, 190px) rotateX(-56.5deg) scale3d(0.83, 0.76, 1)",
+    clipPath: "polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%)",
+    opacity: 0.5,
+  },
+  {
+    title: "GULF PALMS",
+    largeImage: "/images/GULF PALMS.webp",
+    smallImage: "/images/My Dubai Property.webp",
+    transform: "perspective(1500px) translate3d(0px, -62px, 190px) rotateX(-56.5deg) scale3d(0.83, 0.76, 1)",
+    clipPath: "polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%)",
+    opacity: 0.5,
+  },
+  {
+    title: "WATER ON WHEELS",
+    largeImage: "/images/water_on_wheels.webp",
+    smallImage: "/images/My Dubai Property.webp",
+    transform: "perspective(1500px) translate3d(0px, -62px, 190px) rotateX(-56.5deg) scale3d(0.83, 0.76, 1)",
+    clipPath: "polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%)",
+    opacity: 0.5,
+  },
+  {
+    title: "ZIA AL MADINA",
+    largeImage: "/images/zia_al_madina.webp",
+    smallImage: "/images/My Dubai Property.webp",
+    transform: "perspective(1500px) translate3d(0px, -62px, 190px) rotateX(-56.5deg) scale3d(0.83, 0.76, 1)",
+    clipPath: "polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%)",
+    opacity: 0.5,
+  }
+]
 
 const interpolate = (start, end, percentage) => start + (end - start) * percentage;
 
@@ -67,7 +94,7 @@ const Page = ({ pageIndex, updateTransform, page }) => {
   return (
     <motion.div
       ref={pageRef}
-      className="sticky top-10 lg:top-0 left-24 w-full md:w-[calc(100%-100px)] xl:w-[calc(100%-100px)] grid place-content-center border border-[rgba(255,255,255,0.18)] rounded-2xl mx-auto overflow-hidden"
+      className="sticky top-10 lg:top-7 left-24 w-full md:w-[calc(100%-100px)] xl:w-[calc(100%-100px)] border border-[rgba(255,255,255,0.18)] rounded-2xl mx-auto overflow-hidden"
       style={{
         transformOrigin: "bottom",
         transformStyle: "preserve-3d",
@@ -77,7 +104,7 @@ const Page = ({ pageIndex, updateTransform, page }) => {
         transition: "transform 0.5s ease, opacity 0.5s ease, clip-path 0.2s ease",
       }}
     >
-      <Portfolio />
+      <Portfolio page={page} />
     </motion.div>
   );
 };

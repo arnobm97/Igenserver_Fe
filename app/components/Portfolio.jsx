@@ -5,7 +5,7 @@ import { MousePointerClick } from "lucide-react"
 import { motion } from "framer-motion"
 import Image from "next/image"
 
-export default function Portfolio() {
+export default function Portfolio({ page }) {
   const [activeIndex, setActiveIndex] = useState(0)
 
   const menuItems = [
@@ -32,32 +32,29 @@ export default function Portfolio() {
   ]
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 bg-zinc-900 mb-10 w-full xl:max-h-[550px] 2xl:max-h-[690px]">
+    <div className="grid grid-cols-1 xl:grid-cols-2 bg-zinc-900 w-full xl:max-h-[550px] 2xl:max-h-[690px]">
       {/* Left Section */}
-      <div className="relative w-full lg:h-auto">
+      <div className="relative w-full xl:h-auto flex flex-col">
         {/* <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent z-10" /> */}
         <h1 className="py-3 lg:py-10 text-2xl lg:text-4xl font-bold text-white text-center z-20 tracking-wider">
-          MY DUBAI PROPERTY
+          {page.title}
         </h1>
-        <Image src="/images/portfolio_image.jpg" alt="Portfolio image" width={0} height={0} sizes="100vw" className="w-full h-[250px] xl:h-full object-cover" />
-        {/* <div className="absolute bottom-4 left-4 flex items-center gap-2 text-white/80 z-20">
-          <MousePointerClick className="w-4 h-4" />
-          <span className="text-sm">Scroll to experience the journey</span>
-        </div> */}
+        <div className="relative flex-1">
+          <Image src={page.largeImage} alt="Portfolio image" width={0} height={0} sizes="100vw" className="w-full h-[250px] xl:h-full object-cover" />
+        </div>
       </div>
 
       {/* Right Section */}
-      <div className="w-full bg-zinc-900 text-white">
-        <Image src="/images/portfolio_image.jpg" alt="Portfolio image" width={0} height={0} sizes="100vw" className="w-full h-0 xl:h-[210px] object-cover" />
+      <div className="w-full h-full flex flex-col bg-zinc-900 text-white">
+        <Image src={page.smallImage} alt="Portfolio image" width={0} height={0} sizes="100vw" className="w-full h-0 xl:h-[210px] 2xl:h-[250px] object-cover" />
 
-        <div className="p-4 sm:p-6">
+        <div className="flex-1 p-4 sm:p-6">
           <div className="w-full space-y-4">
             {menuItems.map((item, index) => (
               <motion.div
                 key={index}
-                className={`border-b last:border-none border-zinc-800 pb-4 cursor-pointer transition-opacity duration-300 ${
-                  activeIndex === index ? "opacity-100" : "opacity-60"
-                }`}
+                className={`border-b last:border-none border-zinc-800 pb-4 cursor-pointer transition-opacity duration-300 ${activeIndex === index ? "opacity-100" : "opacity-60"
+                  }`}
                 onClick={() => setActiveIndex(index)}
                 whileHover={{ opacity: 1 }}
                 layout

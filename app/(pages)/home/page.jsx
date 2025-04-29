@@ -13,14 +13,12 @@ export default function Home() {
     const [isExpanded, setIsExpanded] = useState(false)
     return (
         <div
-            className={isExpanded
-                ? ' xl:hidden max-h-[100vh] w-full overflow-hidden  '
-                : 'h-[calc(100vh-170px)] xl:h-[calc(100vh-10px)] w-[100vw] xl:w-full xl:overflow-hidden font-ceraround pt-12 lg:pt-0'
+            className={'h-[calc(100vh-170px)] xl:h-[calc(100vh)] w-[100vw] xl:w-full xl:overflow-hidden font-ceraround pt-28 xl:pt-3 2xl:pt-28 lg:pt-0'
             }>
-            <div className="relative z-10 text-white grid px-[72px] pt-[50px] h-screen min-h-[700px] font-ceraRoundPro place-content-center w-full ">
-                <div className="flex flex-col gap-7 w-[100vw] xl:h-screen items-center">
+            <div className="relative z-10 text-white grid xl:px-[72px] xl:pt-0 min-h-[670px] font-ceraRoundPro w-full ">
+                <div className="flex flex-col w-full xl:h-full justify-center items-center">
                     <TitleTexts />
-                    <div className="hidden xl:flex w-full max-w-[1400px] h-full items-end mx-auto pb-2">
+                    <div className="relative hidden xl:flex w-full max-w-[1250px] justify-between items-center gap-3 mx-auto pb-2">
                         <SelectMenuCardChatbot />
                         <SelectMenuCardCenter />
                         <SelectMenuCardService />

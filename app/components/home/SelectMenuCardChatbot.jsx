@@ -8,51 +8,35 @@ import ChatbotMainScreen from "../chatbot_screen/ChatbotMainScreen";
 export default function SelectMenuCardChatbot() {
   const [isExpanded, setIsExpanded] = useState(false);
   // Change initial width to match the collapsed state
-  const [containerWidth, setContainerWidth] = useState('10%')
   const [expandCount, setExpandCount] = useState(0);
-
-  useEffect(() => {
-    if (isExpanded) {
-      setContainerWidth('100%')
-    } else {
-      // Remove the timeout to prevent unwanted animation
-      setContainerWidth('10%')
-    }
-  }, [isExpanded])
 
   const containerStyle = {
     perspective: "700px",
-    position: "absolute",
-    bottom: 80,
-    left: "50px",
-    width: containerWidth,
-    height: "100%",
     transition: 'width 0.5s ease-in-out 0.3s',
     zIndex: 5,
   }
 
-  const smallContainerStyle = {
-    perspective: "700px",
-    position: "absolute",
-    bottom: 0,
-    left: expandCount > 0 ? '0px ' : "",
-    width: containerWidth,
-    height: "100%",
-    transition: 'width 0.5s ease-in-out',
-    zIndex: 5,
-  }
+  // const smallContainerStyle = {
+  //   perspective: "700px",
+  //   position: "absolute",
+  //   bottom: 0,
+  //   left: expandCount > 0 ? '0px ' : "",
+  //   width: containerWidth,
+  //   height: "100%",
+  //   transition: 'width 0.5s ease-in-out',
+  //   zIndex: 5,
+  // }
 
 
-  const expandedContainerStyle = {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "calc(100% - 30px)",
-  }
+  // const expandedContainerStyle = {
+  //   position: "absolute",
+  //   top: 0,
+  //   left: 0,
+  //   width: "100%",
+  //   height: "100%",
+  // }
 
   const baseStyle = {
-    position: "absolute",
     backgroundImage: "url('/images/FirstSlideBgPattern1.png')",
     backgroundSize: "cover",
     backgroundPosition: "center",
@@ -61,14 +45,14 @@ export default function SelectMenuCardChatbot() {
     backdropFilter: "blur(18px)",
     boxShadow: "-8px -8px 16px 0px rgba(0, 0, 0, 0.5) inset",
     borderRadius: "10px",
-    transformOrigin: "center",
-    rotateY: isExpanded ? 0 : -25,
+    transformOrigin: "right",
+    // rotateY: -15,
     bottom: "0px",
   };
 
   const expandedStyle = {
     width: "calc(100% - 30px)",
-    height: "calc(100% - 50px)",
+    height: "calc(100% - 30px)",
     left: "15px",
     top: "15px",
     right: "15px",
@@ -84,21 +68,19 @@ export default function SelectMenuCardChatbot() {
 
   return (
     <>
-      <div className="hidden xl:block" style={isExpanded ? expandedContainerStyle : containerStyle}>
+      <div className="hidden xl:block" style={{ ...containerStyle }}>
         <motion.div
           style={baseStyle}
-          className={`absolute w-[380px] h-[300px] bg-[#e7e4f01c] cursor-pointer z-10 overflow-hidden xl:left-[5%] ${expandCount > 0 ? '2xl:left-[80px]' : '2xl:left-[80px]'
-            } ${isExpanded && "!z-[30]"}`}
-          initial={{ x: 0 }} // Add initial position
+          className={`w-[380px] h-[300px] bg-[#e7e4f01c] cursor-pointer z-10 overflow-hidden`}
           transition={{ duration: 0.5, ease: "easeInOut" }}
           whileHover={{
-            rotateY: isExpanded ? 0 : 5,
-            translateX: isExpanded ? 0 : expandCount > 0 ? 0 : 0,
-            translateY: isExpanded ? 0 : 5,
+            rotateY: 15,
+            translateX: 10,
+            translateY: 10,
             transition: { duration: 0.5 },
             scaleX: 1
           }}
-          animate={isExpanded ? expandedStyle : undefined}
+          animate={{ rotateY: -15 }}
         >
           <div
             className="w-full border border-gray-700 text-black h-full "
@@ -144,7 +126,7 @@ export default function SelectMenuCardChatbot() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="fixed w-full h-full z-50"
+            className="fixed rounded-[20px] overflow-hidden z-50"
             style={expandedStyle}
           >
             <ChatbotMainScreen handleClose={handleClose} />

@@ -27,7 +27,6 @@ export default function SelectMenuCardCenter() {
   }, []);
 
   const baseStyle = {
-    position: "absolute",
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
@@ -37,7 +36,7 @@ export default function SelectMenuCardCenter() {
     borderRadius: "10px",
     left: "calc(50% - 225px)",
     bottom: "52px",
-    zIndex: 10,
+    zIndex: 15,
     transition: "z-index 0.3s",
   };
 
@@ -53,6 +52,7 @@ export default function SelectMenuCardCenter() {
     WebkitBackdropFilter: "blur(50px)",
     background:
       "linear-gradient(180deg, rgba(40, 40, 40, 0.5) 0%, rgba(61, 61, 61, 0.5) 50%, rgba(40, 40, 40, 0.5) 100%)",
+    padding: "10px 0",
   };
 
   return (
@@ -60,10 +60,9 @@ export default function SelectMenuCardCenter() {
       <motion.div
         style={baseStyle}
         ref={divRef}
-        className={`absolute w-[450px] max-w-[calc(100vw-20px)] h-[375px] 2xl:h-[450px] bg-zinc-400 bg-opacity-40 rounded-[10px] backdrop-blur-2xl p-[10px] font-nordiquePro ${isExpanded && "!z-[30] !p-0 !m-0"
-          }`}
+        className={`w-[450px] max-w-[calc(100vw-20px)] h-[375px] 2xl:h-[450px] bg-zinc-400 bg-opacity-40 rounded-[10px] backdrop-blur-2xl p-[10px] font-nordiquePro`}
         transition={{ duration: 0.5, ease: "easeInOut" }}
-        animate={isExpanded ? expandedStyle : {}}
+
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -116,10 +115,9 @@ export default function SelectMenuCardCenter() {
         )}
 
         <div
-          className={`relative h-full py-[30px] px-[15px] ${isExpanded && "!pb-0 !px-0"
-            }`}
+          className={`relative h-full py-[30px] px-[15px]`}
           style={{
-            zIndex: isExpanded ? 1000 : 1,
+            zIndex: 1,
             transition: "z-index 0.3s",
           }}
         >
@@ -158,9 +156,11 @@ export default function SelectMenuCardCenter() {
               <ShuffledCards />
             </>
           )}
-          {isExpanded && <Portfolios setIsExpanded={setIsExpanded} />}
+
         </div>
       </motion.div>
+      {isExpanded && <motion.div className="fixed z-50" animate={expandedStyle}>
+        <Portfolios setIsExpanded={setIsExpanded} /></motion.div>}
     </div>
   );
 }
