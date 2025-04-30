@@ -25,7 +25,7 @@ export default function Portfolio({ page }) {
       title: "DEPLOYMENT",
       description:
         "Implementing robust deployment strategies with CI/CD pipelines to ensure smooth and reliable application updates.",
-      image: "/images/Dev.png"
+      image: "/images/Dev.jpg"
     },
     {
       title: "TRAINING",
