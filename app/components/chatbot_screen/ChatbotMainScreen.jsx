@@ -196,9 +196,9 @@ export default function ChatbotMainScreen({ handleClose }) {
                 className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 <div className="w-full flex flex-col gap-2">
-                  <div className={`w-max max-w-[70%] flex rounded-2xl px-4 py-2 ${message.sender === 'user'
+                  <div className={`w-max max-w-[70%] flex rounded-2xl px-6 py-4 ${message.sender === 'user'
                     ? 'self-end bg-orange-500 text-white'
-                    : 'bg-gray-800 text-gray-200'
+                    : 'bg-[#34363A]/70 text-gray-200'
                     }`}>
                     <p className="whitespace-pre-wrap break-words">
                       {message.text}
