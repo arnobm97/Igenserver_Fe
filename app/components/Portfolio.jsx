@@ -13,25 +13,25 @@ export default function Portfolio({ page }) {
       title: "UI/UX",
       description:
         "Our work with the Indian Navy involved the development of a custom web application that streamlined their internal processes, enabling them to operate more efficiently and effectively.",
-      image: "/images/1.webp"
+      image: "/images/1.png"
     },
     {
       title: "WEB DEVELOPMENT",
       description:
         "Developing cutting-edge web solutions using modern technologies and best practices to ensure optimal performance and user experience.",
-      image: "/images/2.webp"
+      image: "/images/2.png"
     },
     {
       title: "DEPLOYMENT",
       description:
         "Implementing robust deployment strategies with CI/CD pipelines to ensure smooth and reliable application updates.",
-      image: "/images/my_dubai_properties_small.webp"
+      image: "/images/my_dubai_properties_small.png"
     },
     {
       title: "TRAINING",
       description:
         "Providing comprehensive training programs to enable teams to maintain and enhance their digital solutions independently.",
-      image: "/images/3.webp"
+      image: "/images/3.png"
     },
   ]
 
@@ -40,7 +40,7 @@ export default function Portfolio({ page }) {
       {/* Left Section */}
       <div className="relative w-full xl:h-auto flex flex-col">
         {/* <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent z-10" /> */}
-        <h1 className="py-3 lg:py-10 text-2xl lg:text-4xl font-bold text-white text-center z-20 tracking-wider">
+        <h1 className="py-3 lg:py-10 text-2xl lg:text-4xl font-bold text-primary text-center z-20 tracking-wider">
           {page.title}
         </h1>
         <div className="relative flex-1">
@@ -59,9 +59,10 @@ export default function Portfolio({ page }) {
           <Image
             src={menuItems[activeIndex].image}
             alt={menuItems[activeIndex].title}
-            fill
-            className="object-cover"
-            sizes="(max-width: 1280px) 100vw, 50vw"
+            width={0}
+            height={0}
+            className="w-full h-full object-cover"
+            sizes="100vw"
             priority
           />
         </motion.div>
