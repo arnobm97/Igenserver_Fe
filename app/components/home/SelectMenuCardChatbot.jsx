@@ -16,26 +16,6 @@ export default function SelectMenuCardChatbot() {
     zIndex: 5,
   }
 
-  // const smallContainerStyle = {
-  //   perspective: "700px",
-  //   position: "absolute",
-  //   bottom: 0,
-  //   left: expandCount > 0 ? '0px ' : "",
-  //   width: containerWidth,
-  //   height: "100%",
-  //   transition: 'width 0.5s ease-in-out',
-  //   zIndex: 5,
-  // }
-
-
-  // const expandedContainerStyle = {
-  //   position: "absolute",
-  //   top: 0,
-  //   left: 0,
-  //   width: "100%",
-  //   height: "100%",
-  // }
-
   const baseStyle = {
     backgroundImage: "url('/images/FirstSlideBgPattern1.png')",
     backgroundSize: "cover",

@@ -80,31 +80,59 @@ export default function ChatbotMainScreen({ handleClose }) {
   const handleSendMessage = async () => {
     if (!inputMessage.trim()) return;
 
-    // Add user message
-    const newMessage = {
+    const userMessage = {
       text: inputMessage,
       sender: 'user',
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
 
-    console.log();
-
-
-    setMessages(prev => [...prev, newMessage]);
-    setInputMessage("");
+    setMessages(prev => [...prev, userMessage]);
+    setInputMessage('');
     setIsTyping(true);
 
-    // Simulate bot response (replace with actual API call)
-    setTimeout(() => {
+    try {
+      const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_GROQ_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            ...messages.map(m => ({
+              role: m.sender === 'user' ? 'user' : 'assistant',
+              content: m.text,
+            })),
+            { role: 'user', content: inputMessage }
+          ],
+          temperature: 0.7,
+          max_tokens: 512
+        }),
+      });
+
+      const data = await res.json();
+      const botText = data.choices?.[0]?.message?.content || 'Something went wrong.';
+
       const botMessage = {
-        text: "Thanks for your message! I'm processing your request.",
+        text: botText,
         sender: 'bot',
         timestamp: new Date().toISOString()
       };
+
       setMessages(prev => [...prev, botMessage]);
+    } catch (error) {
+      console.error("Groq API error:", error);
+      setMessages(prev => [...prev, {
+        text: "⚠️ Failed to get response from Groq API.",
+        sender: 'bot',
+        timestamp: new Date().toISOString()
+      }]);
+    } finally {
       setIsTyping(false);
-    }, 1500);
+    }
   };
+
 
   const handleShareLink = () => {
     setSharedMessageId("Chat link");
