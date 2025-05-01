@@ -49,7 +49,7 @@ export default function SelectMenuCardChatbot() {
 
   return (
     <>
-      <div className="hidden xl:block" style={{ ...containerStyle }}>
+      <div className="hidden xl:block font-raleway" style={{ ...containerStyle }}>
         <motion.div
           style={baseStyle}
           className={`w-[380px] h-[300px] bg-[#e7e4f01c] cursor-pointer z-10 overflow-hidden`}
@@ -88,7 +88,7 @@ export default function SelectMenuCardChatbot() {
                   </div>
                   <div className="text-white text-center text-[25px] font-[400] flex items-center gap-3 cursor-pointer">
                     <span>Connect With Us</span>
-                    <span className="border rounded-full p-1 -rotate-[45deg]">
+                    <span className="border rounded-full p-1 -rotate-[45deg] text-primary">
                       <ArrowRight />
                     </span>
                   </div>

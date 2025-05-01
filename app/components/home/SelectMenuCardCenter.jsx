@@ -4,8 +4,8 @@ import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Dot } from "lucide-react";
 import ShuffledCards from "../ShuffledCards";
-import Portfolios from "../Portfolios";
 import "./animatedBorder.css";
+import ServiceMainScreen from "../service_screen/ServiceMainScreen";
 
 export default function SelectMenuCardCenter() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -25,6 +25,10 @@ export default function SelectMenuCardCenter() {
       setDimensions({ width, height, top, left });
     }
   }, []);
+
+  const handleShrink = () => {
+    setIsExpanded(false)
+  }
 
   const baseStyle = {
     backgroundSize: "cover",
@@ -56,7 +60,7 @@ export default function SelectMenuCardCenter() {
   };
 
   return (
-    <div className="rounded-xl">
+    <div className="rounded-xl font-raleway">
       <motion.div
         style={baseStyle}
         ref={divRef}
@@ -160,7 +164,7 @@ export default function SelectMenuCardCenter() {
         </div>
       </motion.div>
       {isExpanded && <motion.div className="fixed z-50" animate={expandedStyle}>
-        <Portfolios setIsExpanded={setIsExpanded} /></motion.div>}
+        <ServiceMainScreen onClose={handleShrink} isExpanded={isExpanded} /></motion.div>}
     </div>
   );
 }

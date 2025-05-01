@@ -7,29 +7,30 @@ import Image from "next/image";
 export default function Portfolio({ page }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [autoplayEnabled, setAutoplayEnabled] = useState(true);
-  const ROTATION_INTERVAL = 10000; // 10 seconds
+  const AUTOPLAY_INTERVAL = 2500; // 2.5 seconds for autoplay
+  const PAUSE_DURATION = 10000;
 
   const rotateIndex = useCallback(() => {
     setActiveIndex((current) => (current + 1) % page.menuItems.length);
-  }, []);
+  }, [page.menuItems.length]);
 
   const handleMenuClick = (index) => {
     setActiveIndex(index);
     setAutoplayEnabled(false); // Pause autoplay
-    // Resume autoplay after 10 seconds of inactivity
-    setTimeout(() => setAutoplayEnabled(true), ROTATION_INTERVAL);
+    // Resume autoplay after PAUSE_DURATION of inactivity
+    setTimeout(() => setAutoplayEnabled(true), PAUSE_DURATION);
   };
 
   useEffect(() => {
     if (!autoplayEnabled) return;
 
-    const intervalId = setInterval(rotateIndex, ROTATION_INTERVAL);
+    const intervalId = setInterval(rotateIndex, AUTOPLAY_INTERVAL);
 
     return () => clearInterval(intervalId);
   }, [autoplayEnabled, rotateIndex]);
 
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-2 bg-zinc-900 w-full xl:max-h-[550px] 2xl:max-h-[690px]">
+    <div className="grid grid-cols-1 xl:grid-cols-2 bg-zinc-900 w-full xl:max-h-[550px] 2xl:max-h-[690px] font-raleway">
       {/* Left Section */}
       <div className="relative w-full xl:h-auto flex flex-col">
         {/* <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent z-10" /> */}

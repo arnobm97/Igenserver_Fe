@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { Rocket } from 'lucide-react';
 import ServiceMainScreen from '../../service_screen/ServiceMainScreen'
+import Portfolios from '../../Portfolios';
 
 export default function RightCard({ isExpanded, setIsExpanded }) {
   const [clicked, setClicked] = useState(false)
@@ -36,11 +37,6 @@ export default function RightCard({ isExpanded, setIsExpanded }) {
     }
   };
 
-  const handleShrink = () => {
-    setIsExpanded(false);
-    setClicked(false);
-  }
-
   return (
     <>
       <div className={
@@ -71,7 +67,7 @@ export default function RightCard({ isExpanded, setIsExpanded }) {
           className='fixed z-10'
           style={expandedStyle}
         >
-          <ServiceMainScreen onClose={handleShrink} isExpanded={isExpanded} />
+          <Portfolios setIsExpanded={setIsExpanded} setClicked={setClicked} />
         </dialog>
       )}
     </>

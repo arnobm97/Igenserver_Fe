@@ -2,8 +2,8 @@
 
 import React, { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowRight } from "lucide-react"
-import ServiceMainScreen from "../service_screen/ServiceMainScreen"
+import { ArrowRight } from "lucide-react";
+import Portfolios from "../Portfolios"
 
 export default function SelectMenuCardService() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -53,14 +53,10 @@ export default function SelectMenuCardService() {
     borderRadius: "20px"
   }
 
-  const handleShrink = () => {
-    setIsExpanded(false)
-  }
-
   return (
     <>
       <div
-        className="hidden xl:block"
+        className="hidden xl:block font-raleway"
         style={containerStyle}>
         <motion.div
           style={baseStyle}
@@ -75,6 +71,7 @@ export default function SelectMenuCardService() {
             transition: { duration: 0.5 },
           }}
           animate={{ rotateY: 15 }}
+          onClick={() => setIsExpanded(true)}
         >
           <AnimatePresence>
             {!isExpanded && (
@@ -85,6 +82,7 @@ export default function SelectMenuCardService() {
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
                 className="flex flex-col items-center "
+
               >
                 <div>
                   <div
@@ -94,7 +92,7 @@ export default function SelectMenuCardService() {
                   </div>
                   <div
                     className="text-gray-200 text-center text-[18px] font-[400] flex items-center gap-3 absolute right-[21px] bottom-3 bg-black bg-opacity-90 p-3 cursor-pointer backdrop-blur-2xl !z-[200]"
-                    onClick={() => setIsExpanded(true)}
+
                   >
                     <span>Take A Look</span>
                     <span className="border rounded-full p-1 -rotate-[45deg] text-orange-400">
@@ -121,7 +119,7 @@ export default function SelectMenuCardService() {
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
           >
-            <ServiceMainScreen onClose={handleShrink} isExpanded={isExpanded} />
+            <Portfolios setIsExpanded={setIsExpanded} />
           </motion.div>
         )}
       </AnimatePresence>

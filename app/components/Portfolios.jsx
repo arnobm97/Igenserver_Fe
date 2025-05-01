@@ -145,7 +145,7 @@ const pages = [
   },
   {
     title: "LILITH",
-    largeImage: "/images/My Dubai Property.webp",
+    largeImage: "/images/lilith.webp",
     smallImage: "/images/my_dubai_properties_small.webp",
     transform: "perspective(1500px) translate3d(0px, -62px, 190px) rotateX(-56.5deg) scale3d(0.83, 0.76, 1)",
     clipPath: "polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%)",

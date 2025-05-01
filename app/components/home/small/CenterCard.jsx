@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Dot } from "lucide-react";
 import ShuffledCards from "../../ShuffledCards";
 import Portfolios from "../../Portfolios";
+import ServiceMainScreen from "../../service_screen/ServiceMainScreen";
 
 export default function CenterCard({ isExpanded, setIsExpanded }) {
   const [clicked, setClicked] = useState(false);
@@ -34,6 +35,11 @@ export default function CenterCard({ isExpanded, setIsExpanded }) {
     setIsExpanded(true);
     setClicked(true);
   };
+
+  const handleShrink = () => {
+    setIsExpanded(false);
+    setClicked(false);
+  }
 
   return (
     <div className="rounded-xl grid grid-cols-1 w-full h-[calc(100vh - 100px)] mt-10">
@@ -112,7 +118,7 @@ export default function CenterCard({ isExpanded, setIsExpanded }) {
       </motion.div>
       {isExpanded && clicked && (
         <div className="fixed w-full z-10 p-3" style={expandedStyle}>
-          <Portfolios setIsExpanded={setIsExpanded} setClicked={setClicked} />
+          <ServiceMainScreen onClose={handleShrink} isExpanded={isExpanded} />
         </div>
       )}
     </div>

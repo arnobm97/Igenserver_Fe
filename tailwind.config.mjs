@@ -11,6 +11,7 @@ export default {
         arktype: ['var(--font-arktype)'],
         ceraRoundPro: ['var(--font-ceraroundpro)'],
         nordiquePro: ['var(--font-nordiquepro)'],
+        raleway: ['var(--font-raleway)'],
       },
       colors: {
         primary: "#DB6E27",

@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import { Raleway } from "next/font/google";
 
 const arktype = localFont({
   src: "./fonts/Arkitype-TektypeRegular.otf",
@@ -22,6 +23,12 @@ const nordiquePro = localFont({
   variable: "--font-nordiquepro",
 });
 
+const raleway = Raleway({
+  subsets: ["latin"],
+  variable: "--font-raleway",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+})
+
 
 export default function RootLayout({ children }) {
   return (
@@ -30,7 +37,8 @@ export default function RootLayout({ children }) {
         className={`
         ${arktype.variable}  
         ${nordiquePro.variable} 
-        ${ceraRoundPro.variable} 
+        ${ceraRoundPro.variable}
+        ${raleway.variable} 
         antialiased
         max-w-[1920px]
         mx-auto

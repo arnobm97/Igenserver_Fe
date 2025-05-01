@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUp, ChevronsRight, House, Mic, Paperclip, Copy, Check, Share2, NotebookPen } from 'lucide-react';
 import TypingIndicator from '../TypingIndicator';
 
-export function StyledButton({ name = 'Button' }) {
+export function StyledButton({ name = 'Button', handleClick }) {
   return (
     <motion.button
       style={{
@@ -21,6 +21,7 @@ export function StyledButton({ name = 'Button' }) {
         justifyContent: "center",
         gap: "4px"
       }}
+      onClick={() => handleClick(`Briefly tell me about ${name}`)}
       className="font-light text-[.625rem] xl:text-base"
       whileHover={{
         opacity: 1,
@@ -77,11 +78,12 @@ export default function ChatbotMainScreen({ handleClose }) {
     element.style.height = `${newHeight}px`;
   };
 
-  const handleSendMessage = async () => {
-    if (!inputMessage.trim()) return;
+  const handleSendMessage = async (messageText) => {
+    const textToSend = messageText || inputMessage;
+    if (!textToSend.trim()) return;
 
     const userMessage = {
-      text: inputMessage,
+      text: textToSend,
       sender: 'user',
       timestamp: new Date().toISOString(),
     };
@@ -104,7 +106,7 @@ export default function ChatbotMainScreen({ handleClose }) {
               role: m.sender === 'user' ? 'user' : 'assistant',
               content: m.text,
             })),
-            { role: 'user', content: inputMessage }
+            { role: 'user', content: textToSend }
           ],
           temperature: 0.7,
           max_tokens: 512
@@ -140,7 +142,7 @@ export default function ChatbotMainScreen({ handleClose }) {
   }
 
   return (
-    <div className='h-full w-full px-5 xl:px-[40px] py-[20px] z-[100] flex flex-col justify-between relative'>
+    <div className='h-full w-full px-5 xl:px-[40px] py-[20px] z-[100] flex flex-col justify-between relative font-raleway'>
       <button
         onClick={() => handleClose()}
         className='absolute top-[1.875rem] right-[1.875rem] text-white h-[35px] w-[35px] flex justify-center items-center border border-primary hover:border-white/20 rounded-full hover:text-primary'>
@@ -174,8 +176,8 @@ export default function ChatbotMainScreen({ handleClose }) {
         </motion.button>
       </div>
 
-      {!messages.length && <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center -z-[1]">
-        <div className='h-[300px] 2xl:h-[350px] -mt-28'>
+      {!messages.length && <div className="absolute top-0 left-0 w-full h-full flex justify-center -z-[1]">
+        <div className='h-[300px] 2xl:h-[350px] mt-7 sm:mt-12 lg:mt-20 xl:mt-28 '>
           <img
             className='h-full w-auto'
             src='images/robot.png'
@@ -263,11 +265,21 @@ export default function ChatbotMainScreen({ handleClose }) {
             Search like never before
           </p>
           <div className='flex flex-wrap justify-center items-center w-full gap-2 text-gray-300 text-sm'>
-            <StyledButton name='Ultimate Enterprise Solution' />
-            <StyledButton name='Software Development Process' />
-            <StyledButton name='Branding or Identity ' />
-            <StyledButton name='Digital Marketing' />
-            <StyledButton name='Machine Learning' />
+            <StyledButton name='Ultimate Enterprise Solution' handleClick={(text) => {
+              handleSendMessage(text);
+            }} />
+            <StyledButton name='Software Development Process' handleClick={(text) => {
+              handleSendMessage(text);
+            }} />
+            <StyledButton name='Branding or Identity ' handleClick={(text) => {
+              handleSendMessage(text);
+            }} />
+            <StyledButton name='Digital Marketing' handleClick={(text) => {
+              handleSendMessage(text);
+            }} />
+            <StyledButton name='Machine Learning' handleClick={(text) => {
+              handleSendMessage(text);
+            }} />
           </div>
         </div>}
         <div className='w-full flex flex-col gap-3 rounded-[20px] bg-black overflow-hidden text-white py-3 px-5 xl:px-[35px]'>
