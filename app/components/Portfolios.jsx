@@ -14,6 +14,32 @@ const pages = [
     transform: "perspective(1500px) translate3d(0px, -62px, 190px) rotateX(-56.5deg) scale3d(0.83, 0.76, 1)",
     clipPath: "polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%)",
     opacity: 0.5,
+    menuItems: [
+      {
+        title: "UI/UX",
+        description:
+          "Our work with the Indian Navy involved the development of a custom web application that streamlined their internal processes, enabling them to operate more efficiently and effectively.",
+        image: "/images/1.png"
+      },
+      {
+        title: "WEB DEVELOPMENT",
+        description:
+          "Developing cutting-edge web solutions using modern technologies and best practices to ensure optimal performance and user experience.",
+        image: "/images/2.png"
+      },
+      {
+        title: "DEPLOYMENT",
+        description:
+          "Implementing robust deployment strategies with CI/CD pipelines to ensure smooth and reliable application updates.",
+        image: "/images/Dev.jpg"
+      },
+      {
+        title: "TRAINING",
+        description:
+          "Providing comprehensive training programs to enable teams to maintain and enhance their digital solutions independently.",
+        image: "/images/3.png"
+      },
+    ]
   },
   {
     title: "GULF PALMS",
@@ -22,6 +48,32 @@ const pages = [
     transform: "perspective(1500px) translate3d(0px, -62px, 190px) rotateX(-56.5deg) scale3d(0.83, 0.76, 1)",
     clipPath: "polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%)",
     opacity: 0.5,
+    menuItems: [
+      {
+        title: "UI/UX",
+        description:
+          "Our work with the Indian Navy involved the development of a custom web application that streamlined their internal processes, enabling them to operate more efficiently and effectively.",
+        image: "/images/gulf_palms_4.webp"
+      },
+      {
+        title: "WEB DEVELOPMENT",
+        description:
+          "Developing cutting-edge web solutions using modern technologies and best practices to ensure optimal performance and user experience.",
+        image: "/images/gulf_palms_2.webp"
+      },
+      {
+        title: "DEPLOYMENT",
+        description:
+          "Implementing robust deployment strategies with CI/CD pipelines to ensure smooth and reliable application updates.",
+        image: "/images/gulf_palms_4.webp"
+      },
+      {
+        title: "TRAINING",
+        description:
+          "Providing comprehensive training programs to enable teams to maintain and enhance their digital solutions independently.",
+        image: "/images/gulf_palms_2.webp"
+      },
+    ]
   },
   {
     title: "WATER ON WHEELS",
@@ -30,6 +82,32 @@ const pages = [
     transform: "perspective(1500px) translate3d(0px, -62px, 190px) rotateX(-56.5deg) scale3d(0.83, 0.76, 1)",
     clipPath: "polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%)",
     opacity: 0.5,
+    menuItems: [
+      {
+        title: "UI/UX",
+        description:
+          "Our work with the Indian Navy involved the development of a custom web application that streamlined their internal processes, enabling them to operate more efficiently and effectively.",
+        image: "/images/water_on_wheels_2.webp"
+      },
+      {
+        title: "WEB DEVELOPMENT",
+        description:
+          "Developing cutting-edge web solutions using modern technologies and best practices to ensure optimal performance and user experience.",
+        image: "/images/water_on_wheels_2.webp"
+      },
+      {
+        title: "DEPLOYMENT",
+        description:
+          "Implementing robust deployment strategies with CI/CD pipelines to ensure smooth and reliable application updates.",
+        image: "/images/water_on_wheels_2.webp"
+      },
+      {
+        title: "TRAINING",
+        description:
+          "Providing comprehensive training programs to enable teams to maintain and enhance their digital solutions independently.",
+        image: "/images/water_on_wheels_2.webp"
+      },
+    ]
   },
   {
     title: "ZIA AL MADINA",
@@ -38,6 +116,168 @@ const pages = [
     transform: "perspective(1500px) translate3d(0px, -62px, 190px) rotateX(-56.5deg) scale3d(0.83, 0.76, 1)",
     clipPath: "polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%)",
     opacity: 0.5,
+    menuItems: [
+      {
+        title: "UI/UX",
+        description:
+          "Our work with the Indian Navy involved the development of a custom web application that streamlined their internal processes, enabling them to operate more efficiently and effectively.",
+        image: "/images/zia_al_madina_2.webp"
+      },
+      {
+        title: "WEB DEVELOPMENT",
+        description:
+          "Developing cutting-edge web solutions using modern technologies and best practices to ensure optimal performance and user experience.",
+        image: "/images/zia_al_madina_2.webp"
+      },
+      {
+        title: "DEPLOYMENT",
+        description:
+          "Implementing robust deployment strategies with CI/CD pipelines to ensure smooth and reliable application updates.",
+        image: "/images/zia_al_madina_2.webp"
+      },
+      {
+        title: "TRAINING",
+        description:
+          "Providing comprehensive training programs to enable teams to maintain and enhance their digital solutions independently.",
+        image: "/images/zia_al_madina_2.webp"
+      },
+    ]
+  },
+  {
+    title: "LILITH",
+    largeImage: "/images/My Dubai Property.webp",
+    smallImage: "/images/my_dubai_properties_small.webp",
+    transform: "perspective(1500px) translate3d(0px, -62px, 190px) rotateX(-56.5deg) scale3d(0.83, 0.76, 1)",
+    clipPath: "polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%)",
+    opacity: 0.5,
+    menuItems: [
+      {
+        title: "UI/UX",
+        description:
+          "Our work with the Indian Navy involved the development of a custom web application that streamlined their internal processes, enabling them to operate more efficiently and effectively.",
+        image: "/images/lilith_1.webp"
+      },
+      {
+        title: "WEB DEVELOPMENT",
+        description:
+          "Developing cutting-edge web solutions using modern technologies and best practices to ensure optimal performance and user experience.",
+        image: "/images/lilith_2.webp"
+      },
+      {
+        title: "DEPLOYMENT",
+        description:
+          "Implementing robust deployment strategies with CI/CD pipelines to ensure smooth and reliable application updates.",
+        image: "/images/lilith_3.webp"
+      },
+      {
+        title: "TRAINING",
+        description:
+          "Providing comprehensive training programs to enable teams to maintain and enhance their digital solutions independently.",
+        image: "/images/lilith_4.webp"
+      },
+    ]
+  },
+  {
+    title: "SALESNAV AI",
+    largeImage: "/images/Salesnav.ai.jpg",
+    smallImage: "/images/My Dubai Property.webp",
+    transform: "perspective(1500px) translate3d(0px, -62px, 190px) rotateX(-56.5deg) scale3d(0.83, 0.76, 1)",
+    clipPath: "polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%)",
+    opacity: 0.5,
+    menuItems: [
+      {
+        title: "UI/UX",
+        description:
+          "Our work with the Indian Navy involved the development of a custom web application that streamlined their internal processes, enabling them to operate more efficiently and effectively.",
+        image: "/images/salesnav_ai_2.webp"
+      },
+      {
+        title: "WEB DEVELOPMENT",
+        description:
+          "Developing cutting-edge web solutions using modern technologies and best practices to ensure optimal performance and user experience.",
+        image: "/images/salesnav_ai_4.webp"
+      },
+      {
+        title: "DEPLOYMENT",
+        description:
+          "Implementing robust deployment strategies with CI/CD pipelines to ensure smooth and reliable application updates.",
+        image: "/images/salesnav_ai_2.webp"
+      },
+      {
+        title: "TRAINING",
+        description:
+          "Providing comprehensive training programs to enable teams to maintain and enhance their digital solutions independently.",
+        image: "/images/salesnav_ai_4.webp"
+      },
+    ]
+  },
+  {
+    title: "FINE TECHNICAL SREVICES",
+    largeImage: "/images/fine.webp",
+    smallImage: "/images/My Dubai Property.webp",
+    transform: "perspective(1500px) translate3d(0px, -62px, 190px) rotateX(-56.5deg) scale3d(0.83, 0.76, 1)",
+    clipPath: "polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%)",
+    opacity: 0.5,
+    menuItems: [
+      {
+        title: "UI/UX",
+        description:
+          "Our work with the Indian Navy involved the development of a custom web application that streamlined their internal processes, enabling them to operate more efficiently and effectively.",
+        image: "/images/fine_2.webp"
+      },
+      {
+        title: "WEB DEVELOPMENT",
+        description:
+          "Developing cutting-edge web solutions using modern technologies and best practices to ensure optimal performance and user experience.",
+        image: "/images/fine_2.webp"
+      },
+      {
+        title: "DEPLOYMENT",
+        description:
+          "Implementing robust deployment strategies with CI/CD pipelines to ensure smooth and reliable application updates.",
+        image: "/images/fine_2.webp"
+      },
+      {
+        title: "TRAINING",
+        description:
+          "Providing comprehensive training programs to enable teams to maintain and enhance their digital solutions independently.",
+        image: "/images/fine_2.webp"
+      },
+    ]
+  },
+  {
+    title: "ECO FRIENDLY SERVICES",
+    largeImage: "/images/Eco.webp",
+    smallImage: "/images/My Dubai Property.webp",
+    transform: "perspective(1500px) translate3d(0px, -62px, 190px) rotateX(-56.5deg) scale3d(0.83, 0.76, 1)",
+    clipPath: "polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%)",
+    opacity: 0.5,
+    menuItems: [
+      {
+        title: "UI/UX",
+        description:
+          "Our work with the Indian Navy involved the development of a custom web application that streamlined their internal processes, enabling them to operate more efficiently and effectively.",
+        image: "/images/eco_2.webp"
+      },
+      {
+        title: "WEB DEVELOPMENT",
+        description:
+          "Developing cutting-edge web solutions using modern technologies and best practices to ensure optimal performance and user experience.",
+        image: "/images/eco_2.webp"
+      },
+      {
+        title: "DEPLOYMENT",
+        description:
+          "Implementing robust deployment strategies with CI/CD pipelines to ensure smooth and reliable application updates.",
+        image: "/images/eco_2.webp"
+      },
+      {
+        title: "TRAINING",
+        description:
+          "Providing comprehensive training programs to enable teams to maintain and enhance their digital solutions independently.",
+        image: "/images/eco_2.webp"
+      },
+    ]
   }
 ]
 
@@ -143,7 +383,7 @@ export default function Portfolios({ setIsExpanded, setClicked }) {
           </div>
         </div>
 
-        <div className="space-y-10 w-full h-[calc(400vh+160px)] flex flex-col items-center mt-24">
+        <div className="space-y-10 w-full h-[calc(800vh+320px)] flex flex-col items-center mt-24">
           {pagesState.map((page, index) => (
             <Page key={index} pageIndex={index} updateTransform={updateTransform} page={page} />
           ))}

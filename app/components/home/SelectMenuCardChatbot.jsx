@@ -40,6 +40,7 @@ export default function SelectMenuCardChatbot() {
     WebkitBackdropFilter: "blur(50px)",
     background:
       "linear-gradient(180deg, rgba(40, 40, 40, 0.5) 0%, rgba(61, 61, 61, 0.5) 50%, rgba(40, 40, 40, 0.5) 100%)",
+    opacity: 1
   };
 
   const handleClose = () => {
@@ -103,7 +104,7 @@ export default function SelectMenuCardChatbot() {
           <motion.div
             key="expanded"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={expandedStyle}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
             className="fixed rounded-[20px] overflow-hidden z-50"
