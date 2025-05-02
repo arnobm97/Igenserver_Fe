@@ -142,7 +142,7 @@ export default function ChatbotMainScreen({ handleClose }) {
   }
 
   return (
-    <div className='h-full w-full px-5 xl:px-[40px] py-[20px] z-[100] flex flex-col justify-between relative font-raleway'>
+    <div className='h-full w-full xl:px-[40px] py-[20px] z-[100] flex flex-col justify-between relative font-raleway'>
       <button
         onClick={() => handleClose()}
         className='absolute top-[1.875rem] right-[1.875rem] text-white h-[35px] w-[35px] flex justify-center items-center border border-primary hover:border-white/20 rounded-full hover:text-primary'>
@@ -198,7 +198,7 @@ export default function ChatbotMainScreen({ handleClose }) {
                 className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 <div className="w-full flex flex-col gap-2">
-                  <div className={`w-max max-w-[70%] flex rounded-2xl px-6 py-4 ${message.sender === 'user'
+                  <div className={`w-full xl:w-max xl:max-w-[70%] flex rounded-2xl px-6 py-4 text-sm xl:text-base ${message.sender === 'user'
                     ? 'self-end bg-orange-500 text-white'
                     : 'bg-[#34363A]/70 text-gray-200'
                     }`}>

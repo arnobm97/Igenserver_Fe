@@ -8,7 +8,7 @@ import { Undo } from "lucide-react";
 
 export default function DisplayServices({ handleTakeALook, activeService, handleBack }) {
   return (
-    <div className="relative flex flex-col p-4 md:p-6 lg:p-8 h-[calc(100vh_-_90px)] ">
+    <div className="relative flex flex-col p-4 md:p-6 lg:p-8 h-[calc(100vh_-_90px)] overflow-y-hidden ">
       {activeService ? (
         <AnimatePresence>
           <motion.div
@@ -21,7 +21,7 @@ export default function DisplayServices({ handleTakeALook, activeService, handle
             <div className="flex-1 relative">
               <button
                 onClick={handleBack}
-                className="fixed top-4 left-4 text-orange-500 h-12 w-12 grid place-content-center rounded-full hover:text-gray-400 hover:border-orange-500 border z-50"
+                className="absolute top-4 left-4 text-orange-500 h-12 w-12 grid place-content-center rounded-full hover:text-gray-400 hover:border-orange-500 border z-50"
                 aria-label="Undo"
               >
                 <Undo className="w-6 h-6" />

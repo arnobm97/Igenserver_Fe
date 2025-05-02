@@ -28,7 +28,7 @@ export default function ServiceMainScreen({ onClose, isExpanded }) {
     }, 500);
 
     return () => clearTimeout(timer);
-  }, [isExpanded,onClose]);
+  }, [isExpanded, onClose]);
 
   return (
     <div className="h-[calc(100vh_-_40px)] w-full py-[40px] z-[100] relative !cursor-default ">
