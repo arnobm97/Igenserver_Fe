@@ -1,12 +1,22 @@
 #!/bin/bash
 set -e
 
-# Load nvm (adjust the path if needed)
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+echo "==> Node version before setup:"
+node -v
 
-# Use Node.js 18
-nvm use v22.14.0
+# Load nvm (if available)
+export NVM_DIR="$HOME/.nvm"
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+  . "$NVM_DIR/nvm.sh"
+  nvm install 18
+  nvm use 18
+else
+  echo "❌ NVM not found! Cannot switch Node version."
+  exit 1
+fi
+
+echo "==> Node version after setup:"
+node -v
 
 echo "Deployment started..."
 
