@@ -1,6 +1,23 @@
 #!/bin/bash
 set -e
 
+echo "==> Node version before setup:"
+node -v
+
+# Load nvm (if available)
+export NVM_DIR="$HOME/.nvm"
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+  . "$NVM_DIR/nvm.sh"
+  nvm install 18
+  nvm use 18
+else
+  echo "❌ NVM not found! Cannot switch Node version."
+  exit 1
+fi
+
+echo "==> Node version after setup:"
+node -v
+
 echo "Deployment started..."
 
 # Pull the latest version of the app
