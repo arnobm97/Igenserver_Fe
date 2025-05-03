@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUp, ChevronsRight, House, Mic, Paperclip, Copy, Check, Share2, NotebookPen } from 'lucide-react';
 import TypingIndicator from '../TypingIndicator';
+import ReactMarkdown from 'react-markdown';
 
 export function StyledButton({ name = 'Button', handleClick }) {
   return (
@@ -70,6 +71,14 @@ export default function ChatbotMainScreen({ handleClose }) {
     setMessages([]);
     setInputMessage('');
     setIsTyping(false);
+  };
+
+  const fixMarkdown = (text) => {
+    return text
+      .replace(/([a-z])([A-Z])/g, '$1\n\n$2') // Add breaks between headings or sentences
+      .replace(/\n(?=[^\n])/g, '\n\n')        // Ensure double line breaks for paragraphs
+      .replace(/(?<=:)\s*\n/g, ' ')           // Remove unwanted line breaks after colons
+      .trim();
   };
 
   const adjustTextareaHeight = (element) => {
@@ -198,13 +207,15 @@ export default function ChatbotMainScreen({ handleClose }) {
                 className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 <div className="w-full flex flex-col gap-2">
-                  <div className={`w-full xl:w-max xl:max-w-[70%] flex rounded-2xl px-6 py-4 text-sm xl:text-base ${message.sender === 'user'
+                  <div className={`w-full xl:w-max xl:max-w-[70%] flex flex-col gap-3 rounded-2xl px-6 py-4 text-sm xl:text-base ${message.sender === 'user'
                     ? 'self-end bg-orange-500 text-white'
                     : 'bg-[#34363A]/70 text-gray-200'
                     }`}>
-                    <p className="whitespace-pre-wrap break-words">
-                      {message.text}
-                    </p>
+                    <ReactMarkdown
+
+                    >
+                      {fixMarkdown(message.text)}
+                    </ReactMarkdown>
                   </div>
                   {message.sender === 'bot' && (
                     <div className="flex items-center gap-3 ml-2">
