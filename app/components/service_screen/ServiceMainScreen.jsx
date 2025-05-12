@@ -47,7 +47,7 @@ export default function ServiceMainScreen({ onClose, isExpanded }) {
         </div>
       ) : (
         // Main content
-        <div className="mb-8 h-[calc(100vh_-_90px)] flex flex-col overflow-hidden justify-between">
+        <div className="mb-8 h-[calc(100vh_-_90px)] flex flex-col overflow-hidden justify-between items-center">
           {!displayMainServices.show ? (
             <>
               <div className="mb-8 flex px-2 mt-5 sm:mt-0 sm:px-[40px] xl:px-[200px] text-white">

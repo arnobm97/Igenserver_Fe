@@ -28,7 +28,8 @@
     "**/*.tsx",
     "build/types/**/*.ts",
     "next-env.d.ts",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "app/data/services.js"
   ],
   "exclude": [
     "node_modules"

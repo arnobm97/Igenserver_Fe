@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { services } from "@/data/services";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { services } from "../../data/services";
 
 const gradients = [
   "bg-gradient-to-b from-black via-black to-[#3a1a1a]",

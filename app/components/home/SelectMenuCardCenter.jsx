@@ -64,7 +64,7 @@ export default function SelectMenuCardCenter() {
       <motion.div
         style={baseStyle}
         ref={divRef}
-        className={`w-[450px] max-w-[calc(100vw-20px)] h-[375px] 2xl:h-[450px] bg-zinc-400 bg-opacity-40 rounded-[10px] backdrop-blur-2xl p-[10px] font-nordiquePro`}
+        className={`w-[450px] max-w-[calc(100vw-20px)] h-[375px] 2xl:h-[450px] bg-zinc-400 bg-opacity-40 rounded-[10px] border-[3px] border-primary backdrop-blur-2xl p-[10px] font-nordiquePro`}
         transition={{ duration: 0.5, ease: "easeInOut" }}
 
         onMouseEnter={() => setIsHovered(true)}
@@ -73,44 +73,41 @@ export default function SelectMenuCardCenter() {
 
         {dimensions.width > 0 && dimensions.height > 0 && !isExpanded && (
           <motion.svg
-            className="svg-border rounded-xl absolute !top-[-4px] !left-[-4px]"
-            width={dimensions.width + 10}
-            height={dimensions.height + 10}
-            viewBox={`0 0 ${dimensions.width + 10} ${dimensions.height + 10}`}
+            className="svg-border rounded-xl absolute !top-[-3px] !left-[-3px]"
+            width={dimensions.width + 2}
+            height={dimensions.height + 2}
+            viewBox={`0 0 ${dimensions.width + 4} ${dimensions.height + 4}`}
             xmlns="http://www.w3.org/2000/svg"
           >
             <defs>
-              <linearGradient id="borderGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#DB6E27" amplitude='100' />
-                <stop offset="50%" stopColor="white" />
-                <stop offset="100%" stopColor="#DB6E27" />
+              <linearGradient id="borderGradient" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="#ffffff" stopOpacity="0" />
+                <stop offset="40%" stopColor="#ffffff" stopOpacity="0.8" />
+                <stop offset="50%" stopColor="#ffffff" stopOpacity="1" />
+                <stop offset="60%" stopColor="#ffffff" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
               </linearGradient>
               <filter id="neon" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow
-                  dx="0"
-                  dy="0"
-                  stdDeviation="4"
-                  floodColor="#DB6E27"
-                />
+                <feDropShadow dx="0" dy="0" stdDeviation="3" floodColor="#ffffff" floodOpacity="1" />
               </filter>
             </defs>
             <motion.rect
-              x="5"
-              y="5"
+              x="2"
+              y="2"
               width={dimensions.width}
               height={dimensions.height}
               rx="10"
               stroke="url(#borderGradient)"
-              strokeWidth="2"
+              strokeWidth="3"
               fill="none"
               filter="url(#neon)"
-              initial={{
-                strokeDasharray: 1 * (dimensions.width + dimensions.height),
-                strokeDashoffset: 2 * (dimensions.width + dimensions.height),
+              strokeDasharray={2 * (dimensions.width + dimensions.height)}
+              strokeDashoffset={0}
+              animate={{
+                strokeDashoffset: [0, -2 * (dimensions.width + dimensions.height)],
               }}
-              animate={{ strokeDashoffset: 0 }}
               transition={{
-                duration: 8,
+                duration: 4,
                 ease: "linear",
                 repeat: Infinity,
               }}

@@ -1,4 +1,4 @@
-const TitleText = () => {
+const TitleTexts = () => {
     return (
         <div className="w-[100vw] md:w-full -mt-8 sm:-mt-0 lg:ml-0 flex flex-col justify-center items-center text-center px-4 lg:h-[234px] xl:-mt-7">
             <div className="max-w-4xl">
@@ -44,4 +44,4 @@ const TitleText = () => {
     );
 };
 
-export default TitleText;
+export default TitleTexts;

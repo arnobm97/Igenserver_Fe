@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Undo } from "lucide-react";
 import Portfolio from "./Portfolio";
 import ScrollMouseIndicator from "./ScrollIndicator";
+import { useSmoothScroll } from "../lib/useSmoothScroll";
 
 const pages = [
   {
@@ -358,6 +359,8 @@ export default function Portfolios({ setIsExpanded, setClicked }) {
         idx === pageIndex ? { ...page, transform: newTransform, opacity: newOpacity, clipPath: newClipPath } : page
       )
     );
+
+    useSmoothScroll();
   };
 
   return (
