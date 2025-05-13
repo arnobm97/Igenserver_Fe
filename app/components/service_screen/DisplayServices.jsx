@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { services } from '../../data/services';
 import AnimatedServices from './AnimatedServices';
 import { Undo } from "lucide-react";
+import Image from 'next/image';
 
 export default function DisplayServices({ handleTakeALook, activeService, handleBack }) {
   return (
@@ -41,10 +42,13 @@ export default function DisplayServices({ handleTakeALook, activeService, handle
                 />
                 <div className="flex flex-col space-y-6 mt-6">
                   {activeService.details.images.map((img, idx) => (
-                    <img
+                    <Image
                       key={idx}
                       src={img}
                       alt={`${activeService.title} Detail ${idx}`}
+                      width={0}
+                      height={0}
+                      sizes='100vw'
                       className="w-full h-60 md:h-96 object-cover rounded-lg"
                     />
                   ))}

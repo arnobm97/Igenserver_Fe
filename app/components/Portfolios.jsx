@@ -360,7 +360,6 @@ export default function Portfolios({ setIsExpanded, setClicked }) {
       )
     );
 
-    useSmoothScroll();
   };
 
   return (

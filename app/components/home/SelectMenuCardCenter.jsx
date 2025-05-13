@@ -64,7 +64,7 @@ export default function SelectMenuCardCenter() {
       <motion.div
         style={baseStyle}
         ref={divRef}
-        className={`w-[450px] max-w-[calc(100vw-20px)] h-[375px] 2xl:h-[450px] bg-zinc-400 bg-opacity-40 rounded-[10px] border-[3px] border-primary backdrop-blur-2xl p-[10px] font-nordiquePro`}
+        className={`w-[450px] max-w-[calc(100vw-20px)] h-[375px] 2xl:h-[450px] bg-zinc-400 bg-opacity-40 rounded-[10px] border-primary backdrop-blur-2xl p-[10px] font-nordiquePro`}
         transition={{ duration: 0.5, ease: "easeInOut" }}
 
         onMouseEnter={() => setIsHovered(true)}
@@ -80,31 +80,37 @@ export default function SelectMenuCardCenter() {
             xmlns="http://www.w3.org/2000/svg"
           >
             <defs>
-              <linearGradient id="borderGradient" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="#ffffff" stopOpacity="0" />
-                <stop offset="40%" stopColor="#ffffff" stopOpacity="0.8" />
-                <stop offset="50%" stopColor="#ffffff" stopOpacity="1" />
-                <stop offset="60%" stopColor="#ffffff" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
-              </linearGradient>
-              <filter id="neon" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="0" stdDeviation="3" floodColor="#ffffff" floodOpacity="1" />
+              <filter id="glow">
+                <feDropShadow dx="0" dy="0" stdDeviation="3" floodColor="white" />
               </filter>
             </defs>
-            <motion.rect
-              x="2"
-              y="2"
+
+            {/* Static border */}
+            <rect
+              x="3"
+              y="3"
               width={dimensions.width}
               height={dimensions.height}
-              rx="10"
-              stroke="url(#borderGradient)"
-              strokeWidth="3"
+              rx="16"
+              stroke="#DB6E27"
+              strokeWidth="2"
               fill="none"
-              filter="url(#neon)"
-              strokeDasharray={2 * (dimensions.width + dimensions.height)}
-              strokeDashoffset={0}
+            />
+
+            {/* Moving white stroke line */}
+            <motion.rect
+              x="3"
+              y="3"
+              width={dimensions.width}
+              height={dimensions.height}
+              rx="16"
+              stroke="white"
+              strokeWidth="2"
+              fill="none"
+              filter="url(#glow)"
+              strokeDasharray={`100 ${2 * (dimensions.width + dimensions.height)}`}
               animate={{
-                strokeDashoffset: [0, -2 * (dimensions.width + dimensions.height)],
+                strokeDashoffset: [0, -(2 * (dimensions.width + dimensions.height) + 50)],
               }}
               transition={{
                 duration: 4,

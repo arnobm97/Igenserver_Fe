@@ -6,6 +6,7 @@ import AnimatedServices from '../../components/service_screen/AnimatedServices';
 import { MoveRight, Undo } from 'lucide-react';
 import Link from 'next/link';
 import { useParams, useSearchParams } from 'next/navigation';
+import Image from 'next/image';
 
 export default function DisplayServices() {
   const params = useSearchParams();
@@ -88,10 +89,13 @@ export default function DisplayServices() {
                   />
                   <div className="flex flex-col space-y-[30px] mt-[30px] w-full">
                     {activeService.details.images.map((img, idx) => (
-                      <img
+                      <Image
                         key={idx}
                         src={img}
                         alt={`${activeService.title} Detail ${idx}`}
+                        width={0}
+                        height={0}
+                        sizes='100vw'
                         className="w-full hfull object-fill rounded-lg sticky top-0"
                       />
                     ))}
@@ -133,10 +137,13 @@ export default function DisplayServices() {
                 />
                 <div className="flex flex-col space-y-[30px] mt-[30px] w-full">
                   {activeService.details.images.map((img, idx) => (
-                    <img
+                    <Image
                       key={idx}
                       src={img}
                       alt={`${activeService.title} Detail ${idx}`}
+                      width={0}
+                      height={0}
+                      sizes='100vw'
                       className="w-full hfull object-fill rounded-lg sticky top-0"
                     />
                   ))}

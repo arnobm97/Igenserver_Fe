@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { services } from "../../data/services"
 import { MoveRight } from "lucide-react"
+import Image from "next/image"
 
 export default function AnimatedServices({ setActiveService }) {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -82,9 +83,12 @@ export default function AnimatedServices({ setActiveService }) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1.5, delay: 0.2 }}
                 >
-                  <img
+                  <Image
                     src={service.image || "/placeholder.svg"}
                     alt={service.title}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
                     className="h-full w-full object-cover rounded-[1.25rem] overflow-hidden"
 
                   />

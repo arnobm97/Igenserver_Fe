@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUp, ChevronsRight, House, Mic, Paperclip, Copy, Check, Share2, NotebookPen } from 'lucide-react';
 import TypingIndicator from '../TypingIndicator';
 import ReactMarkdown from 'react-markdown';
+import Image from 'next/image';
 
 export function StyledButton({ name = 'Button', handleClick }) {
   return (
@@ -187,10 +188,13 @@ export default function ChatbotMainScreen({ handleClose }) {
 
       {!messages.length && <div className="absolute top-0 left-0 w-full h-full flex justify-center -z-[1]">
         <div className='h-[300px] 2xl:h-[350px] mt-7 sm:mt-12 lg:mt-20 xl:mt-28 '>
-          <img
+          <Image
             className='h-full w-auto'
             src='images/robot.png'
             alt='chatbot'
+            width={0}
+            height={0}
+            sizes='100vw'
           />
         </div>
 

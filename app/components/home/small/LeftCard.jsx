@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import ChatbotMainScreen from '../../chatbot_screen/ChatbotMainScreen'
+import Image from 'next/image';
 
 export default function LeftCard({ isExpanded, setIsExpanded }) {
   const [clicked, setClicked] = useState(false);
@@ -53,7 +54,7 @@ export default function LeftCard({ isExpanded, setIsExpanded }) {
       >
         {!isExpanded && (
           <div className='w-full h-full grid place-content-center'>
-            <img src="/images/Wave.svg" alt="Icon" className='w-[150px]' />
+            <Image src="/images/Wave.svg" alt="Icon" width={0} height={0} sizes='100vw' className='w-[150px] h-full object-cover' />
           </div>
         )}
 

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import ChatbotMainScreen from "../chatbot_screen/ChatbotMainScreen";
+import Image from "next/image";
 
 export default function SelectMenuCardChatbot() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -84,7 +85,7 @@ export default function SelectMenuCardChatbot() {
                   onClick={() => { setIsExpanded(true); setExpandCount(1) }}
                 >
                   <div>
-                    <img src="/images/Wave.svg" alt="Icon" />
+                    <Image src="/images/Wave.svg" alt="Icon" width={176} height={190} />
                   </div>
                   <div className="text-white text-center text-[25px] font-[400] flex items-center gap-3 cursor-pointer">
                     <span>Connect With Us</span>
