@@ -26,11 +26,17 @@ const TitleTexts = () => {
 
                 </div>
             </div>
-            <div className="max-w-5xl mt-3">
+            <div className="max-w-5xl flex gap-1 mt-3">
                 <p className="text-[0.7rem] sm:text-[15px] xl:text-[20px] text-gray-200 sm:leading-[30px]">
-                    Transform your brand&apos;s reach with data-driven strategies that
-                    deliver measurable results. Unlock the power of insights to
-                    drive smarter marketing campaigns.
+                    Transform your reach with data driven strategies, where detail oriented
+                </p>
+                <Image src="/images/quote-start.svg" width={0} height={0} sizes="100vw" className="w-3 h-auto -mt-2" />
+                <p className="text-[0.7rem] sm:text-[15px] xl:text-[20px] text-gray-200 sm:leading-[30px]">
+                    agents
+                </p>
+                <Image src="/images/quote-end.svg" width={0} height={0} sizes="100vw" className="w-3 h-auto -mt-2" />
+                <p className="text-[0.7rem] sm:text-[15px] xl:text-[20px] text-gray-200 sm:leading-[30px]">
+                    co-pilot your business
                 </p>
             </div>
         </div>

@@ -97,6 +97,16 @@ export default function SelectMenuCardCenter() {
               fill="none"
             />
 
+            <defs>
+              <filter id="glow">
+                <feDropShadow dx="0" dy="0" stdDeviation="3" floodColor="white" />
+              </filter>
+              <linearGradient id="strokeGradient" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#DB6E27" />
+                <stop offset="100%" stopColor="white" />
+              </linearGradient>
+            </defs>
+
             {/* Moving white stroke line */}
             <motion.rect
               x="3"
@@ -104,7 +114,7 @@ export default function SelectMenuCardCenter() {
               width={dimensions.width}
               height={dimensions.height}
               rx="16"
-              stroke="white"
+              stroke="url(#strokeGradient)"
               strokeWidth="2"
               fill="none"
               filter="url(#glow)"

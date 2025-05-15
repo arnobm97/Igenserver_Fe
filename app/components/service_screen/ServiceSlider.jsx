@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { services } from "../../data/services";
+import { useRouter } from "next/navigation";
 
 const gradients = [
   "bg-gradient-to-b from-black via-black to-[#3a1a1a]",
@@ -16,6 +17,7 @@ const gradients = [
 ];
 
 export default function ServicesSlider() {
+  const router = useRouter();
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
@@ -57,7 +59,7 @@ export default function ServicesSlider() {
                     <service.Icon className="opacity-60" size={20} />
 
                     <Link
-                      href="#"
+                      href={`/services?service=${i}`}
                       className="text-sm font-medium hover:underline"
                     >
                       Preview {service.title.toLowerCase()}
