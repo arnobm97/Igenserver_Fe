@@ -5,7 +5,7 @@ export default function HomeLayout({ children }) {
         <div className="!relative max-w-[1920px] mx-auto h-full">
             <div className="absolute top-5 left-5 flex items-center gap-2">
                 <Image
-                    src="/images/igenServerWebLogo.png"
+                    src="/images/igenServerOfficialLogo.webp"
                     alt="Logo"
                     width={0}
                     height={0}
