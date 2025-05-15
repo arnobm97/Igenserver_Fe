@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ArrowRight } from "lucide-react";
 import Portfolios from "../Portfolios"
+import Image from "next/image";
 
 export default function SelectMenuCardService() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -25,7 +26,7 @@ export default function SelectMenuCardService() {
   // }
 
   const baseStyle = {
-    backgroundImage: "url('/images/lastSlideInnetIcon.png')",
+    backgroundImage: "url('/images/portfolio-bg.png')",
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
@@ -84,11 +85,18 @@ export default function SelectMenuCardService() {
                 className="flex flex-col items-center "
 
               >
+                <div className="absolute top-0 right-0 w-[173px]">
+                  <Image src="/images/lilith.jpg" width={0} height={0} sizes="100vw" className="w-full h-auto object-cover rounded-bl-[2.25rem]" />
+                </div>
+                <div className="absolute left-0 bottom-0 w-[173px]">
+                  <Image src="/images/My Dubai Property.webp" width={0} height={0} sizes="100vw" className="w-full h-auto object-cover rounded-tr-[2.25rem]" />
+                </div>
                 <div>
                   <div
-                    className="text-gray-200 text-center text-[18px] font-[400] flex items-center gap-3 absolute left-[75px] top-[5.75px] bg-black bg-opacity-90 p-3 cursor-pointer backdrop-blur-2xl"
+                    className="text-gray-200 text-center flex items-center gap-3 absolute left-[20px] top-[5.75px] bg-opacity-90 p-3 cursor-pointer"
                   >
-                    <span>Portfolio</span>
+                    <Image src="/images/rocket-launch.png" alt="Portfolio icon" width={20} height={20} />
+                    <p className="text-xl">Portfolio</p>
                   </div>
                   <div
                     className="text-gray-200 text-center text-[18px] font-[400] flex items-center gap-3 absolute right-[21px] bottom-3 bg-black bg-opacity-90 p-3 cursor-pointer backdrop-blur-2xl !z-[200]"

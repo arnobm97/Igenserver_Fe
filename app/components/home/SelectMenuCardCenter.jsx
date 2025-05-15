@@ -70,65 +70,14 @@ export default function SelectMenuCardCenter() {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-
         {dimensions.width > 0 && dimensions.height > 0 && !isExpanded && (
-          <motion.svg
-            className="svg-border rounded-xl absolute !top-[-3px] !left-[-3px]"
-            width={dimensions.width + 2}
-            height={dimensions.height + 2}
-            viewBox={`0 0 ${dimensions.width + 4} ${dimensions.height + 4}`}
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <filter id="glow">
-                <feDropShadow dx="0" dy="0" stdDeviation="3" floodColor="white" />
-              </filter>
-            </defs>
-
-            {/* Static border */}
-            <rect
-              x="3"
-              y="3"
-              width={dimensions.width}
-              height={dimensions.height}
-              rx="16"
-              stroke="#DB6E27"
-              strokeWidth="2"
-              fill="none"
-            />
-
-            <defs>
-              <filter id="glow">
-                <feDropShadow dx="0" dy="0" stdDeviation="3" floodColor="white" />
-              </filter>
-              <linearGradient id="strokeGradient" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#DB6E27" />
-                <stop offset="100%" stopColor="white" />
-              </linearGradient>
-            </defs>
-
-            {/* Moving white stroke line */}
-            <motion.rect
-              x="3"
-              y="3"
-              width={dimensions.width}
-              height={dimensions.height}
-              rx="16"
-              stroke="url(#strokeGradient)"
-              strokeWidth="2"
-              fill="none"
-              filter="url(#glow)"
-              strokeDasharray={`100 ${2 * (dimensions.width + dimensions.height)}`}
-              animate={{
-                strokeDashoffset: [0, -(2 * (dimensions.width + dimensions.height) + 50)],
-              }}
-              transition={{
-                duration: 4,
-                ease: "linear",
-                repeat: Infinity,
-              }}
-            />
-          </motion.svg>
+          <motion.div
+            className="border-gradient"
+            style={{
+              filter: 'drop-shadow(0 0 3px white)',
+              WebkitFilter: 'drop-shadow(0 0 3px white)'
+            }}
+          />
         )}
 
         <div

@@ -129,3 +129,30 @@ body {
   }
 }
 
+.border-gradient {
+  position: absolute;
+  inset: -2px;
+  border-radius: 16px;
+  padding: 2px;
+  background: linear-gradient(90deg, #DB6E27 0%, white 50%, #DB6E27 100%);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  background-size: 200% 100%;
+  animation: moveGradient 7s linear infinite;
+}
+
+@keyframes moveGradient {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
