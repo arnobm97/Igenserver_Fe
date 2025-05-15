@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 
 export default function ShuffledCards() {
@@ -32,16 +32,29 @@ export default function ShuffledCards() {
     },
   ]
 
-  const [hoveredCard, setHoveredCard] = useState(null)
+  const [hoveredCard, setHoveredCard] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return; // Don't start interval if paused
+
+    const timer = setInterval(() => {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % cards.length)
+    }, 2000)
+
+    return () => clearInterval(timer)
+  }, [isPaused]);
 
   return (
-    <div className="relative  w-full max-w-md h-full perspective-1000 pt-[56px] px-7 lg:px-12 2xl:pl-2">
+    <div className="relative w-full max-w-md h-full perspective-1000 pt-[56px] px-7 lg:px-12 2xl:pl-2" onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}>
       {cards.map((card, index) => (
         <motion.div
           key={card.id}
-          className={`absolute max-w-[calc(100vw-100px)] w-[300px] 2xl:w-[375px] h-[145px] 2xl:h-[206px] rounded-xl cursor-pointer ${card.color} bg-opacity-20 backdrop-blur-xl `}
+          className={`absolute max-w-[calc(100vw-100px)] w-[300px] 2xl:w-[375px] h-[145px] 2xl:h-[206px] rounded-xl cursor-pointer ${card.color} bg-opacity-20 backdrop-blur-xl`}
           style={{
-            zIndex: hoveredCard === index ? 1000 : cards.length - index,
+            zIndex: hoveredCard === index || activeIndex === index ? 1000 : cards.length - index,
             transformOrigin: "top-left",
           }}
           initial={{
@@ -49,15 +62,16 @@ export default function ShuffledCards() {
             translateY: 0,
           }}
           animate={{
-            rotate: index === 0 ? 0 : (index ) * 8,
-            translateY: index * 4,
+            rotate: activeIndex === index ? 0 : ((index - activeIndex + cards.length) % cards.length) * 8,
+            translateY: ((index - activeIndex + cards.length) % cards.length) * 4,
+            scale: hoveredCard === index ? 1.05 : 1,
           }}
           whileHover={{
             scale: 1.05,
             translateZ: 40,
           }}
           transition={{
-            duration: 2, // Slow unfolding over 2 seconds
+            duration: 0.75,
             type: "spring",
             stiffness: 260,
             damping: 20,
