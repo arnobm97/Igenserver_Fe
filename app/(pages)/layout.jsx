@@ -68,7 +68,7 @@ export default function MainLayout({ children }) {
                 <div className="w-full">
                     {children}
                 </div>
-                
+
             )}
         </div>
     );

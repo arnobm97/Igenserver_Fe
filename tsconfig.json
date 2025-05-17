@@ -29,7 +29,8 @@
     "build/types/**/*.ts",
     "next-env.d.ts",
     ".next/types/**/*.ts",
-    "app/data/services.js"
+    "app/data/services.js",
+    "app/api/google-sheets/route.js"
   ],
   "exclude": [
     "node_modules"

@@ -10,7 +10,7 @@ export default function HomeLayout({ children }) {
                     width={0}
                     height={0}
                     sizes="100vw"
-                    className="w-[20px] lg:w-[35px] h-auto"
+                    className="w-[20px] lg:w-[30px] h-auto"
                 />
                 <h2 className="font-nordiquePro text-[1.375rem] text-white tracking-widest -mt-2">igenserver</h2>
             </div>
