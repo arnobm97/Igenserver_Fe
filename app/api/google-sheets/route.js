@@ -13,37 +13,6 @@ export async function POST(request) {
 
     const sheets = google.sheets({ version: 'v4', auth });
     const spreadsheetId = "1znZ0HCqiG5J5fHL8BPEytJ12KO8tSn4P2Ju5jVfENBg";
-    
-    // First, check if headers exist
-    const response = await sheets.spreadsheets.values.get({
-      spreadsheetId,
-      range: 'Sheet1!A1:I1'
-    });
-
-    // Define headers
-    const headers = [
-      'Timestamp',
-      'Device',
-      'Operating System',
-      'Browser',
-      'Country',
-      'City',
-      'Language',
-      'Referrer',
-      'Timezone'
-    ];
-
-    // If no headers exist, add them
-    if (!response.data.values) {
-      await sheets.spreadsheets.values.append({
-        spreadsheetId,
-        range: 'Sheet1!A1',
-        valueInputOption: 'RAW',
-        requestBody: {
-          values: [headers]
-        }
-      });
-    }
 
     // Append data row
     const row = [

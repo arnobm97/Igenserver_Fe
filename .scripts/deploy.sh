@@ -8,8 +8,8 @@ node -v
 export NVM_DIR="$HOME/.nvm"
 if [ -s "$NVM_DIR/nvm.sh" ]; then
   . "$NVM_DIR/nvm.sh"
-  nvm install 18
-  nvm use 18
+  nvm install 20
+  nvm use 20
 else
   echo "❌ NVM not found! Cannot switch Node version."
   exit 1
