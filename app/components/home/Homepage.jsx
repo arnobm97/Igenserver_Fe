@@ -14,83 +14,52 @@ const Homepage = () => {
     const [isExpanded, setIsExpanded] = useState(false);
     const [userData, setUserData] = useState({
         device: "",
-        ip: "",
-        country: "",
-        city: "",
+        os: "",
         browser: "",
         language: "",
         referrer: "",
-        timezone: ""
     });
 
-    const [ipAddress, setIpAddress] = useState('');
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
     useEffect(() => {
-        const fetchIpAndLocation = async () => {
-            setLoading(true);
-            setError(null);
+        const collectAndSendData = async () => {
             try {
-                // Step 1: Get IP address
-                const ipRes = await fetch('https://api.ipify.org?format=json');
-                if (!ipRes.ok) throw new Error(`Failed to get IP. Status: ${ipRes.status}`);
-                const { ip } = await ipRes.json();
-                setIpAddress(ip);
-
-                // Step 2: Get Geo + ISP Info
-                const geoRes = await fetch(`http://ip-api.com/json/${ip}?fields=status,message,country,countryCode,region,regionName,city,zip,timezone,query`);
-                if (!geoRes.ok) throw new Error(`Failed to get geo info. Status: ${geoRes.status}`);
-                const geoData = await geoRes.json();
-
-                if (geoData.status !== "success") throw new Error(`IP-API error: ${geoData.message}`);
-
-                // Step 3: Extract browser data
-                const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                // Collect browser data
                 const parser = new UAParser();
                 const result = parser.getResult();
 
-                setUserData({
+                const clientData = {
                     device: result.device.type || "desktop",
                     os: `${result.os.name} ${result.os.version}`,
                     browser: `${result.browser.name} ${result.browser.version}`,
-                    ip,
-                    country: geoData.country,
-                    city: geoData.city,
                     language: navigator.language,
                     referrer: document.referrer,
-                    timezone
+                };
+
+                // Send to backend
+                const response = await fetch('/api/google-sheets', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ clientData })
+                });
+
+                const data = await response.json();
+                if (!response.ok) throw new Error(data.error);
+
+                // Combine client and server data
+                setUserData({
+                    ...clientData,
+                    ...data.ipData
                 });
 
             } catch (e) {
-                setError(e);
                 console.error(e);
-            } finally {
-                setLoading(false);
             }
         };
 
-        fetchIpAndLocation();
+        collectAndSendData();
     }, []);
-
-    useEffect(() => {
-        if (userData.ip) {
-            fetch('/api/google-sheets', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ userData })
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log("Uploaded to sheet:", data);
-                })
-                .catch(err => {
-                    console.error("Failed to upload to sheet", err);
-                });
-        }
-    }, [userData]);
 
     return (
         <div
