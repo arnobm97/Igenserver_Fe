@@ -24,32 +24,53 @@ const TitleTexts = () => {
 
                 </div>
                 <div>
-                    <p className="text-[25px] leading-[40px] sm:text-[35px] lg:text-[3.125rem] 2xl:text-[60px] font-bold sm:leading-[60px] tracking-wide font-ceraRoundPro mt-2">
+                    <p className="text-[25px] leading-[40px] sm:text-[35px] lg:text-[3.125rem] 2xl:text-[60px] font-bold sm:leading-[60px] tracking-wide font-ceraRoundPro lg:mt-2">
                         Digital Transformation Partner
                     </p>
                     {/* Curved SVG Line */}
 
                 </div>
             </div>
-            <div className="max-w-5xl flex gap-1 mt-3">
-                <p className="text-[0.7rem] sm:text-[15px] xl:text-[20px] text-gray-200 sm:leading-[30px]">
-                    Transform your reach with data driven strategies, where detail oriented
-                </p>
-                <Image src="/images/quote-start.svg" width={0} height={0} sizes="100vw" className="w-3 h-auto -mt-2 ml-1" />
-                <p className="text-[0.7rem] sm:text-[15px] xl:text-[20px] text-gray-200 sm:leading-[30px]">
-                    agents
-                </p>
-                <Image src="/images/quote-end.svg" width={0} height={0} sizes="100vw" className="w-3 h-auto -mt-2 mr-1" />
-                <div className="flex items-center">
+            <div className="w-full max-w-5xl flex flex-col sm:flex-row items-center sm:items-start gap-1 mt-3">
+                {/* First Line */}
+                <div className="flex items-center gap-1">
                     <p className="text-[0.7rem] sm:text-[15px] xl:text-[20px] text-gray-200 sm:leading-[30px]">
-                        co
-                    </p>
-                    <Minus size={12} className="mt-1" />
-                    <p className="text-[0.7rem] sm:text-[15px] xl:text-[20px] text-gray-200 sm:leading-[30px]">
-                        pilot your business
+                        Transform your reach with data driven strategies,
                     </p>
                 </div>
 
+                {/* Second Line */}
+                <div className="flex items-center gap-1">
+                    <p className="text-[0.7rem] sm:text-[15px] xl:text-[20px] text-gray-200 sm:leading-[30px]">
+                        where detail oriented
+                    </p>
+                    <Image
+                        src="/images/quote-start.svg"
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        className="w-2 h-auto -mt-1 sm:-mt-6 xl:-mt-2 xl:ml-1"
+                    />
+                    <p className="text-[0.7rem] sm:text-[15px] xl:text-[20px] text-gray-200 sm:leading-[30px]">
+                        agents
+                    </p>
+                    <Image
+                        src="/images/quote-end.svg"
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        className="w-2 h-auto -mt-1 sm:-mt-6 xl:-mt-2 mr-1"
+                    />
+                    <div className="flex items-center">
+                        <p className="text-[0.7rem] sm:text-[15px] xl:text-[20px] text-gray-200 sm:leading-[30px]">
+                            co
+                        </p>
+                        <Minus size={12} className="mt-1" />
+                        <p className="text-[0.7rem] sm:text-[15px] xl:text-[20px] text-gray-200 sm:leading-[30px]">
+                            pilot your business
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     );

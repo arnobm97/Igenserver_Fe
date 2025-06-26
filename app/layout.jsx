@@ -39,7 +39,6 @@ export default function RootLayout({ children }) {
         ${nordiquePro.variable} 
         ${ceraRoundPro.variable}
         ${raleway.variable} 
-        antialiased
         max-w-[1920px]
         mx-auto
         `}

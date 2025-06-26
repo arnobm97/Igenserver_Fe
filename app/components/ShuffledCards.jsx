@@ -46,9 +46,28 @@ export default function ShuffledCards() {
     return () => clearInterval(timer)
   }, [isPaused]);
 
+  const handleCardHover = (index) => {
+    if (index === activeIndex) {
+      // Top card - just pause the autoplay
+      setIsPaused(true);
+      setHoveredCard(null);
+    } else {
+      // Other cards - bring to top
+      setActiveIndex(index);
+      setHoveredCard(index);
+    }
+  };
+
+  const handleCardLeave = (index) => {
+    if (index === activeIndex) {
+      // Resume autoplay when leaving top card
+      setIsPaused(false);
+    }
+    setHoveredCard(null);
+  };
+
   return (
-    <div className="relative w-full max-w-md h-full perspective-1000 pt-[56px] px-7 lg:px-12 2xl:pl-2" onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}>
+    <div className="relative w-full max-w-md h-full perspective-1000 pt-[56px] px-7 lg:px-12 2xl:pl-2">
       {cards.map((card, index) => (
         <motion.div
           key={card.id}
@@ -66,18 +85,18 @@ export default function ShuffledCards() {
             translateY: ((index - activeIndex + cards.length) % cards.length) * 4,
             scale: hoveredCard === index ? 1.05 : 1,
           }}
-          whileHover={{
-            scale: 1.05,
-            translateZ: 40,
-          }}
-          transition={{
-            duration: 0.75,
-            type: "spring",
-            stiffness: 260,
-            damping: 20,
-          }}
-          onMouseEnter={() => setHoveredCard(index)}
-          onMouseLeave={() => setHoveredCard(null)}
+          // whileHover={{
+          //   scale: 1.05,
+          //   translateZ: 40,
+          // }}
+          // transition={{
+          //   duration: 0.75,
+          //   type: "spring",
+          //   stiffness: 260,
+          //   damping: 20,
+          // }}
+          onMouseEnter={() => handleCardHover(index)}
+          onMouseLeave={() => handleCardLeave(index)}
         >
           <div className="relative w-full h-full">
             <div className="absolute inset-0 rounded-xl backdrop-blur-md border border-white/10 shadow-xl" />
