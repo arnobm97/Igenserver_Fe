@@ -62,6 +62,26 @@ export const portableTextComponents = {
                 </div>
             </div>
         ),
+
+        warning: ({ value }) => (
+            <div className={`bg-[#2D2D2D] text-white p-6 rounded-lg shadow-2xl border border-gray-600 max-w-2xl mx-auto ${className}`}>
+                <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0 mt-0.5">
+                        <AlertTriangle className="w-6 h-6 text-orange-500" />
+                    </div>
+                    <div className="flex-1">
+                        <h3 className="text-orange-500 font-semibold text-lg mb-3 flex items-center gap-2">
+                            Note
+                        </h3>
+                        <div className="text-gray-200 leading-relaxed space-y-2">
+                            <p className="text-base text-orange-300 font-medium">
+                                {value}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ),
         // tweet: ({ value }) => (
         //     <div className="my-4">
         //         <TweetEmbed tweetId={value.tweetId} options={{ cards: 'hidden' }} />
