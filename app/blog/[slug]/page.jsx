@@ -1,5 +1,6 @@
 import { client } from '../../../sanity/client';
 import { PortableText } from "next-sanity";
+import { portableTextComponents } from '../../components/PortableTextComponent'; // Adjust path as needed
 
 export async function generateStaticParams() {
   const slugs = await client.fetch(`*[_type == "post"]{ slug }`);
@@ -19,10 +20,10 @@ export default async function BlogPage({ params }) {
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
       <h1 className="text-4xl font-bold">
-        <PortableText value={} />
+        <PortableText value={post.title} components={portableTextComponents} />
       </h1>
       <div className="text-lg text-gray-500 mb-4">
-        <PortableText value={post.subtitle} />
+        <PortableText value={post.subtitle} components={portableTextComponents} />
       </div>
       {post.featuredImage && (
         <img
@@ -36,10 +37,10 @@ export default async function BlogPage({ params }) {
       {post.sections?.map((section, i) => (
         <div key={i} className="mb-6">
           <h2 className="text-2xl font-semibold mb-2">
-            <PortableText value={section.title} />
+            <PortableText value={section.title} components={portableTextComponents} />
           </h2>
           <div className="mb-2">
-            <PortableText value={section.details} />
+            <PortableText value={section.details} components={portableTextComponents} />
           </div>
           {section.image && (
             <img
@@ -54,7 +55,7 @@ export default async function BlogPage({ params }) {
       {/* Quote */}
       {post.quote && (
         <blockquote className="italic border-l-4 pl-4 border-gray-400 text-gray-700 my-8">
-          <PortableText value={post.quote} />
+          <PortableText value={post.quote} components={portableTextComponents} />
         </blockquote>
       )}
 
@@ -65,7 +66,7 @@ export default async function BlogPage({ params }) {
           <ul className="list-disc list-inside">
             {post.tips.map((tip, i) => (
               <li key={i}>
-                <PortableText value={[{ _type: 'block', children: [{ _type: 'span', text: tip }] }]} />
+                <PortableText value={[{ _type: 'block', children: [{ _type: 'span', text: tip }] }]} components={portableTextComponents} />
               </li>
             ))}
           </ul>
@@ -78,7 +79,7 @@ export default async function BlogPage({ params }) {
           <ul className="list-disc list-inside">
             {post.notes.map((note, i) => (
               <li key={i}>
-                <PortableText value={[{ _type: 'block', children: [{ _type: 'span', text: note }] }]} />
+                <PortableText value={[{ _type: 'block', children: [{ _type: 'span', text: note }] }]} components={portableTextComponents} />
               </li>
             ))}
           </ul>
@@ -89,19 +90,19 @@ export default async function BlogPage({ params }) {
       {post.conclusion && (
         <div className="mt-6 border-t pt-4 text-gray-800">
           <h3 className="text-xl font-semibold mb-2">Conclusion</h3>
-          <PortableText value={post.conclusion} />
+          <PortableText value={post.conclusion} components={portableTextComponents} />
         </div>
       )}
 
       {/* Disclaimer & Warning */}
       {post.disclaimer && (
         <div className="text-xs text-gray-500 mt-6 italic">
-          <PortableText value={post.disclaimer} />
+          <PortableText value={post.disclaimer} components={portableTextComponents} />
         </div>
       )}
       {post.warning && (
         <div className="text-xs text-red-500 italic mt-2">
-          <PortableText value={post.warning} />
+          <PortableText value={post.warning} components={portableTextComponents} />
         </div>
       )}
     </div>
