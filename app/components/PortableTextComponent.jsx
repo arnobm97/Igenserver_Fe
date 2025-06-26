@@ -1,7 +1,7 @@
 import { AlertTriangle } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
-import TweetEmbed from 'react-tweet-embed';
+// import TweetEmbed from 'react-tweet-embed';
 
 export const portableTextComponents = {
     block: {
@@ -62,11 +62,11 @@ export const portableTextComponents = {
                 </div>
             </div>
         ),
-        tweet: ({ value }) => (
-            <div className="my-4">
-                <TweetEmbed tweetId={value.tweetId} options={{ cards: 'hidden' }} />
-            </div>
-        ),
+        // tweet: ({ value }) => (
+        //     <div className="my-4">
+        //         <TweetEmbed tweetId={value.tweetId} options={{ cards: 'hidden' }} />
+        //     </div>
+        // ),
         image: ({ value }) => (
             value?.asset?.url ? (
                 <img
