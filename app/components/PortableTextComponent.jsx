@@ -1,7 +1,7 @@
 import { AlertTriangle } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
-import TweetEmbed from 'react-tweet-embed';
+// import TweetEmbed from 'react-tweet-embed';
 
 export const portableTextComponents = {
     block: {
@@ -24,8 +24,12 @@ export const portableTextComponents = {
         ),
     },
     types: {
-        tip: ({ value }) => (
-            <div className={`bg-[#2D2D2D] text-white p-6 rounded-lg shadow-2xl border border-gray-600 max-w-2xl mx-auto ${className}`}>
+        title: ({ value: { value } }) => (
+            <h1 className="text-4xl font-bold my-4">{value}</h1>
+        ),
+        subtitle: ({ value: { value } }) => <h2 className="text-2xl font-semibold my-3">{value}</h2>,
+        tip: ({ value: { value } }) => (
+            <div className={`bg-[#2D2D2D] text-white p-6 rounded-lg shadow-2xl border border-gray-600 max-w-2xl mx-auto`}>
                 <div className="flex items-start gap-3">
                     <div className="flex-shrink-0 mt-0.5">
                         <AlertTriangle className="w-6 h-6 text-orange-500" />
@@ -43,8 +47,8 @@ export const portableTextComponents = {
                 </div>
             </div>
         ),
-        note: ({ value }) => (
-            <div className={`bg-[#2D2D2D] text-white p-6 rounded-lg shadow-2xl border border-gray-600 max-w-2xl mx-auto ${className}`}>
+        note: ({ value: { value } }) => (
+            <div className={`bg-[#2D2D2D] text-white p-6 rounded-lg shadow-2xl border border-gray-600 max-w-2xl mx-auto`}>
                 <div className="flex items-start gap-3">
                     <div className="flex-shrink-0 mt-0.5">
                         <AlertTriangle className="w-6 h-6 text-orange-500" />
@@ -62,11 +66,71 @@ export const portableTextComponents = {
                 </div>
             </div>
         ),
-        tweet: ({ value }) => (
-            <div className="my-4">
-                <TweetEmbed tweetId={value.tweetId} options={{ cards: 'hidden' }} />
+
+        quote: ({ value: { value } }) => (
+            <div className={`bg-[#2D2D2D] text-white p-6 rounded-lg shadow-2xl border border-gray-600 max-w-2xl mx-auto`}>
+                <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0 mt-0.5">
+                        <AlertTriangle className="w-6 h-6 text-orange-500" />
+                    </div>
+                    <div className="flex-1">
+                        <h3 className="text-orange-500 font-semibold text-lg mb-3 flex items-center gap-2">
+                            Quote
+                        </h3>
+                        <div className="text-gray-200 leading-relaxed space-y-2">
+                            <p className="text-base text-orange-300 font-medium">
+                                {value}
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         ),
+
+        disclaimer: ({ value: { value } }) => (
+            <div className={`bg-[#2D2D2D] text-white p-6 rounded-lg shadow-2xl border border-gray-600 max-w-2xl mx-auto`}>
+                <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0 mt-0.5">
+                        <AlertTriangle className="w-6 h-6 text-orange-500" />
+                    </div>
+                    <div className="flex-1">
+                        <h3 className="text-orange-500 font-semibold text-lg mb-3 flex items-center gap-2">
+                            Disclaimer
+                        </h3>
+                        <div className="text-gray-200 leading-relaxed space-y-2">
+                            <p className="text-base text-orange-300 font-medium">
+                                {value}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ),
+
+        warning: ({ value: { value } }) => (
+            <div className={`bg-[#2D2D2D] text-white p-6 rounded-lg shadow-2xl border border-gray-600 max-w-2xl mx-auto`}>
+                <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0 mt-0.5">
+                        <AlertTriangle className="w-6 h-6 text-orange-500" />
+                    </div>
+                    <div className="flex-1">
+                        <h3 className="text-orange-500 font-semibold text-lg mb-3 flex items-center gap-2">
+                            Warning
+                        </h3>
+                        <div className="text-gray-200 leading-relaxed space-y-2">
+                            <p className="text-base text-orange-300 font-medium">
+                                {value}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ),
+        // tweet: ({ value }) => (
+        //     <div className="my-4">
+        //         <TweetEmbed tweetId={value.tweetId} options={{ cards: 'hidden' }} />
+        //     </div>
+        // ),
         image: ({ value }) => (
             value?.asset?.url ? (
                 <img
