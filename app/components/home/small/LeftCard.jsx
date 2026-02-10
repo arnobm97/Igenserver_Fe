@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
-import React, { useState } from 'react'
-import ChatbotMainScreen from '../../chatbot_screen/ChatbotMainScreen'
-import Image from 'next/image';
+import React, { useState } from "react";
+import ChatbotMainScreen from "../../chatbot_screen/ChatbotMainScreen";
+import Image from "next/image";
 
 export default function LeftCard({ isExpanded, setIsExpanded }) {
   const [clicked, setClicked] = useState(false);
@@ -14,7 +14,7 @@ export default function LeftCard({ isExpanded, setIsExpanded }) {
     top: "45px",
     backdropFilter: "blur(50px)",
     WebkitBackdropFilter: "blur(50px)",
-    borderRadius: '30px',
+    borderRadius: "30px",
     background:
       "linear-gradient(180deg, rgba(40, 40, 40, 0.5) 0%, rgba(61, 61, 61, 0.5) 50%, rgba(40, 40, 40, 0.5) 100%)",
   };
@@ -34,13 +34,14 @@ export default function LeftCard({ isExpanded, setIsExpanded }) {
   return (
     <>
       <div
-        className={isExpanded
-          ? 'border-none max-h-[100vh] overflow-hidden'
-          : 'h-[180px] w-full border rounded-[32px] cursor-pointer '
+        className={
+          isExpanded
+            ? "border-none max-h-[100vh] overflow-hidden"
+            : "h-[180px] w-full border rounded-[32px] cursor-pointer "
         }
-
         style={{
-          transform: "perspective(800px) translate3d(0px, 0px, 190px) rotateY(-26.5deg) scale3d(0.83, 0.76, 1)",
+          transform:
+            "perspective(800px) translate3d(0px, 0px, 190px) rotateY(-26.5deg) scale3d(0.83, 0.76, 1)",
           backgroundImage: "url('/images/FirstSlideBgPattern1.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -48,25 +49,31 @@ export default function LeftCard({ isExpanded, setIsExpanded }) {
           borderImageSlice: 1,
           backdropFilter: "blur(18px)",
           boxShadow: "-8px -8px 16px 0px rgba(0, 0, 0, 0.5) inset",
-        }
-        }
+        }}
         onClick={handleCardClick}
       >
         {!isExpanded && (
-          <div className='w-full h-full grid place-content-center'>
-            <Image src="/images/Wave.svg" alt="Icon" width={0} height={0} sizes='100vw' className='w-[150px] h-full object-cover' />
+          <div className="w-full h-full grid place-content-center">
+            <Image
+              src="/images/Wave.svg"
+              alt="Icon"
+              width={0}
+              height={0}
+              sizes="100vw"
+              className="w-[150px] h-full object-cover"
+            />
           </div>
         )}
-
       </div>
       {isExpanded && clicked && (
-        <dialog open
-          className='fixed w-screen h-screen z-10'
+        <dialog
+          open
+          className="fixed w-screen h-screen z-10"
           style={expandedStyle}
         >
           <ChatbotMainScreen handleClose={handleClose} />
         </dialog>
       )}
     </>
-  )
+  );
 }

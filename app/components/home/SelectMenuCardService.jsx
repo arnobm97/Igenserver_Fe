@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import React, { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import Portfolios from "../Portfolios"
+import Portfolios from "../Portfolios";
 import Image from "next/image";
 
 export default function SelectMenuCardService() {
@@ -12,9 +12,9 @@ export default function SelectMenuCardService() {
 
   const containerStyle = {
     perspective: "700px",
-    transition: 'width 0.5s ease-in-out 0.3s',
-    zIndex: isHovered ? 10 : 0
-  }
+    transition: "width 0.5s ease-in-out 0.3s",
+    zIndex: isHovered ? 10 : 0,
+  };
 
   // const expandedContainerStyle = {
   //   position: "fixed",
@@ -37,7 +37,7 @@ export default function SelectMenuCardService() {
     transformOrigin: "left",
     transition: "background-image 3s ease, opacity 2s ease",
     opacity: 1,
-  }
+  };
 
   const expandedStyle = {
     position: "fixed",
@@ -51,14 +51,12 @@ export default function SelectMenuCardService() {
     opacity: 1,
     background:
       "linear-gradient(180deg, rgba(40, 40, 40, 0.5) 0%, rgba(61, 61, 61, 0.5) 50%, rgba(40, 40, 40, 0.5) 100%)",
-    borderRadius: "20px"
-  }
+    borderRadius: "20px",
+  };
 
   return (
     <>
-      <div
-        className="hidden xl:block font-raleway"
-        style={containerStyle}>
+      <div className="hidden xl:block font-raleway" style={containerStyle}>
         <motion.div
           style={baseStyle}
           className={`w-[380px] h-[300px]
@@ -83,36 +81,48 @@ export default function SelectMenuCardService() {
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
                 className="flex flex-col items-center "
-
               >
                 <div className="absolute top-0 right-0 w-[173px]">
-                  <Image src="/images/lilith.jpg" width={0} height={0} sizes="100vw" className="w-full h-auto object-cover rounded-bl-[2.25rem]" />
+                  <Image
+                    src="/images/lilith.jpg"
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    alt="lilith"
+                    className="w-full h-auto object-cover rounded-bl-[2.25rem]"
+                  />
                 </div>
                 <div className="absolute left-0 bottom-0 w-[173px]">
-                  <Image src="/images/My Dubai Property.webp" width={0} height={0} sizes="100vw" className="w-full h-auto object-cover rounded-tr-[2.25rem]" />
+                  <Image
+                    src="/images/My Dubai Property.webp"
+                    width={0}
+                    height={0}
+                    alt="dubai property"
+                    sizes="100vw"
+                    className="w-full h-auto object-cover rounded-tr-[2.25rem]"
+                  />
                 </div>
                 <div>
-                  <div
-                    className="text-gray-200 text-center flex items-center gap-3 absolute left-[20px] top-[5.75px] bg-opacity-90 p-3 cursor-pointer"
-                  >
-                    <Image src="/images/rocket-launch.png" alt="Portfolio icon" width={20} height={20} />
+                  <div className="text-gray-200 text-center flex items-center gap-3 absolute left-[20px] top-[5.75px] bg-opacity-90 p-3 cursor-pointer">
+                    <Image
+                      src="/images/rocket-launch.png"
+                      alt="Portfolio icon"
+                      width={20}
+                      height={20}
+                      
+                    />
                     <p className="text-xl">Portfolio</p>
                   </div>
-                  <div
-                    className="text-gray-200 text-center text-[18px] font-[400] flex items-center gap-3 absolute right-[21px] bottom-3 bg-black bg-opacity-90 p-3 cursor-pointer backdrop-blur-2xl !z-[200]"
-
-                  >
+                  <div className="text-gray-200 text-center text-[18px] font-[400] flex items-center gap-3 absolute right-[21px] bottom-3 bg-black bg-opacity-90 p-3 cursor-pointer backdrop-blur-2xl !z-[200]">
                     <span>Take A Look</span>
                     <span className="border rounded-full p-1 -rotate-[45deg] text-orange-400">
                       <ArrowRight />
                     </span>
                   </div>
                 </div>
-
               </motion.div>
             )}
           </AnimatePresence>
-
         </motion.div>
       </div>
       <AnimatePresence>
@@ -132,5 +142,5 @@ export default function SelectMenuCardService() {
         )}
       </AnimatePresence>
     </>
-  )
+  );
 }

@@ -8,7 +8,10 @@ import { Undo } from "lucide-react";
 
 export default function ServiceMainScreen({ onClose, isExpanded }) {
   const [activeService, setActiveService] = useState(null);
-  const [displayMainServices, setDisplayMainServices] = useState({ show: false, index: 1 });
+  const [displayMainServices, setDisplayMainServices] = useState({
+    show: false,
+    index: 1,
+  });
   const [isLoading, setIsLoading] = useState(true);
 
   const handleTakeALook = (service) => {
@@ -18,7 +21,7 @@ export default function ServiceMainScreen({ onClose, isExpanded }) {
   const handleBack = () => {
     setActiveService(null);
     setDisplayMainServices({ show: false, index: 1 });
-    setIsLoading(false)
+    setIsLoading(false);
     onClose();
   };
 
@@ -66,10 +69,10 @@ export default function ServiceMainScreen({ onClose, isExpanded }) {
                     shape the behaviors of tomorrow.
                   </p>
                   <p className="hidden xl:block">
-                    Our portfolio is not a simple list of projects. It is a map of
-                    digital adventures we shared with our clients, whether they are
-                    small family businesses and startups or big players on the
-                    corporate scene.
+                    Our portfolio is not a simple list of projects. It is a map
+                    of digital adventures we shared with our clients, whether
+                    they are small family businesses and startups or big players
+                    on the corporate scene.
                   </p>
                 </div>
               </div>

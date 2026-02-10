@@ -73,13 +73,17 @@ export default function Portfolio({ page }) {
             {page.menuItems.map((item, index) => (
               <div
                 key={index}
-                className={`border-b last:border-none border-zinc-800 pb-4 cursor-pointer transition-opacity duration-300 ${activeIndex === index ? "opacity-100" : "opacity-60 group"
-                  }`}
+                className={`border-b last:border-none border-zinc-800 pb-4 cursor-pointer transition-opacity duration-300 ${
+                  activeIndex === index ? "opacity-100" : "opacity-60 group"
+                }`}
                 onClick={() => handleMenuClick(index)}
               >
                 <h2
-                  className={`text-base sm:text-lg font-medium tracking-wide ${activeIndex === index ? "text-primary" : "group-hover:text-primary"
-                    }`}
+                  className={`text-base sm:text-lg font-medium tracking-wide ${
+                    activeIndex === index
+                      ? "text-primary"
+                      : "group-hover:text-primary"
+                  }`}
                 >
                   {item.title}
                 </h2>

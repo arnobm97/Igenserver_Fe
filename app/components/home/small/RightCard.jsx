@@ -1,12 +1,12 @@
-'use client'
+"use client";
 
-import React, { useState } from 'react'
-import { Rocket } from 'lucide-react';
-import ServiceMainScreen from '../../service_screen/ServiceMainScreen'
-import Portfolios from '../../Portfolios';
+import React, { useState } from "react";
+import { Rocket } from "lucide-react";
+import ServiceMainScreen from "../../service_screen/ServiceMainScreen";
+import Portfolios from "../../Portfolios";
 
 export default function RightCard({ isExpanded, setIsExpanded }) {
-  const [clicked, setClicked] = useState(false)
+  const [clicked, setClicked] = useState(false);
 
   const expandedContainerStyle = {
     position: "absolute",
@@ -14,7 +14,7 @@ export default function RightCard({ isExpanded, setIsExpanded }) {
     left: 0,
     width: "100vw",
     height: "100vh",
-  }
+  };
 
   const expandedStyle = {
     width: "calc(100vw - 20px)",
@@ -25,7 +25,7 @@ export default function RightCard({ isExpanded, setIsExpanded }) {
     right: "10px",
     backdropFilter: "blur(50px)",
     WebkitBackdropFilter: "blur(50px)",
-    borderRadius: '30px',
+    borderRadius: "30px",
     background:
       "linear-gradient(180deg, rgba(40, 40, 40, 0.5) 0%, rgba(61, 61, 61, 0.5) 50%, rgba(40, 40, 40, 0.5) 100%)",
   };
@@ -39,11 +39,11 @@ export default function RightCard({ isExpanded, setIsExpanded }) {
 
   return (
     <>
-      <div className={
-        'h-[180px] w-full border rounded-[32px] cursor-pointer'
-      }
+      <div
+        className={"h-[180px] w-full border rounded-[32px] cursor-pointer"}
         style={{
-          transform: "perspective(800px) translate3d(0px, 0px, 190px) rotateY(26.5deg) scale3d(0.83, 0.76, 1)",
+          transform:
+            "perspective(800px) translate3d(0px, 0px, 190px) rotateY(26.5deg) scale3d(0.83, 0.76, 1)",
           backgroundImage: "url('/images/FirstSlideBgPattern1.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -51,25 +51,21 @@ export default function RightCard({ isExpanded, setIsExpanded }) {
           borderImageSlice: 1,
           backdropFilter: "blur(18px)",
           boxShadow: "-8px -8px 16px 0px rgba(0, 0, 0, 0.5) inset",
-        }
-        }
-        onClick={handleCardClick}>
+        }}
+        onClick={handleCardClick}
+      >
         {!isExpanded && (
-          <div className='w-full h-full flex flex-col justify-center items-center space-y-3'>
+          <div className="w-full h-full flex flex-col justify-center items-center space-y-3">
             <Rocket />
             <p>Portfolio</p>
           </div>
         )}
-
       </div>
       {isExpanded && clicked && (
-        <dialog open
-          className='fixed z-10'
-          style={expandedStyle}
-        >
+        <dialog open className="fixed z-10" style={expandedStyle}>
           <Portfolios setIsExpanded={setIsExpanded} setClicked={setClicked} />
         </dialog>
       )}
     </>
-  )
+  );
 }

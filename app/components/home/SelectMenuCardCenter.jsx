@@ -21,14 +21,15 @@ export default function SelectMenuCardCenter() {
 
   useEffect(() => {
     if (divRef.current) {
-      const { width, height, top, left } = divRef.current.getBoundingClientRect();
+      const { width, height, top, left } =
+        divRef.current.getBoundingClientRect();
       setDimensions({ width, height, top, left });
     }
   }, []);
 
   const handleShrink = () => {
-    setIsExpanded(false)
-  }
+    setIsExpanded(false);
+  };
 
   const baseStyle = {
     backgroundSize: "cover",
@@ -66,7 +67,6 @@ export default function SelectMenuCardCenter() {
         ref={divRef}
         className={`w-[450px] max-w-[calc(100vw-20px)] h-[375px] 2xl:h-[450px] bg-zinc-400 bg-opacity-40 rounded-[10px] border-primary backdrop-blur-2xl p-[10px] font-nordiquePro`}
         transition={{ duration: 0.5, ease: "easeInOut" }}
-
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -74,8 +74,8 @@ export default function SelectMenuCardCenter() {
           <motion.div
             className="border-gradient"
             style={{
-              filter: 'drop-shadow(0 0 3px white)',
-              WebkitFilter: 'drop-shadow(0 0 3px white)'
+              filter: "drop-shadow(0 0 3px white)",
+              WebkitFilter: "drop-shadow(0 0 3px white)",
             }}
           />
         )}
@@ -122,11 +122,13 @@ export default function SelectMenuCardCenter() {
               <ShuffledCards />
             </>
           )}
-
         </div>
       </motion.div>
-      {isExpanded && <motion.div className="fixed z-50" animate={expandedStyle}>
-        <ServiceMainScreen onClose={handleShrink} isExpanded={isExpanded} /></motion.div>}
+      {isExpanded && (
+        <motion.div className="fixed z-50" animate={expandedStyle}>
+          <ServiceMainScreen onClose={handleShrink} isExpanded={isExpanded} />
+        </motion.div>
+      )}
     </div>
   );
 }

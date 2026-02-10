@@ -1,14 +1,14 @@
 // app/page.tsx or pages/index.tsx
-'use client'; // if using App Router (Next.js 13+)
+"use client"; // if using App Router (Next.js 13+)
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export default function CardStack() {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start end', 'end start'],
+    offset: ["start end", "end start"],
   });
 
   // Motion values for card transforms
@@ -21,7 +21,10 @@ export default function CardStack() {
 
   return (
     <div className="h-[300vh] bg-gray-900 relative overflow-hidden">
-      <div ref={containerRef} className="sticky top-0 h-screen flex items-center justify-center">
+      <div
+        ref={containerRef}
+        className="sticky top-0 h-screen flex items-center justify-center"
+      >
         {/* Card 1 */}
         <motion.div
           style={{ y: y3, scale: scale3 }}

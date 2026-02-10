@@ -1,13 +1,17 @@
-'use client'
+"use client";
 
-import React from 'react';
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { services } from '../../data/services';
-import AnimatedServices from './AnimatedServices';
+import { services } from "../../data/services";
+import AnimatedServices from "./AnimatedServices";
 import { Undo } from "lucide-react";
-import Image from 'next/image';
+import Image from "next/image";
 
-export default function DisplayServices({ handleTakeALook, activeService, handleBack }) {
+export default function DisplayServices({
+  handleTakeALook,
+  activeService,
+  handleBack,
+}) {
   return (
     <div className="relative flex flex-col p-4 md:p-6 lg:p-8 h-[calc(100vh_-_90px)] overflow-y-hidden ">
       {activeService ? (
@@ -48,7 +52,7 @@ export default function DisplayServices({ handleTakeALook, activeService, handle
                       alt={`${activeService.title} Detail ${idx}`}
                       width={0}
                       height={0}
-                      sizes='100vw'
+                      sizes="100vw"
                       className="w-full h-60 md:h-96 object-cover rounded-lg"
                     />
                   ))}
@@ -65,16 +69,23 @@ export default function DisplayServices({ handleTakeALook, activeService, handle
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 * (idx + 1) }}
                 >
-                  <h3 className="text-lg md:text-xl lg:text-2xl font-semibold">{item.title}</h3>
-                  <p className="text-gray-400 text-sm md:text-base">{item.description}</p>
+                  <h3 className="text-lg md:text-xl lg:text-2xl font-semibold">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-400 text-sm md:text-base">
+                    {item.description}
+                  </p>
                 </motion.div>
               ))}
             </div>
           </motion.div>
         </AnimatePresence>
       ) : (
-        <div className='w-full'>
-          <AnimatedServices services={services} handleTakeALook={handleTakeALook} />
+        <div className="w-full">
+          <AnimatedServices
+            services={services}
+            handleTakeALook={handleTakeALook}
+          />
         </div>
       )}
     </div>

@@ -3,10 +3,7 @@
 import StickyList from "./StickyList";
 
 const BlogList = () => {
-
-    return (
-        <StickyList />
-    );
+  return <StickyList />;
 };
 
 export default BlogList;

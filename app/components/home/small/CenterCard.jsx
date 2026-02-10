@@ -10,14 +10,20 @@ import ServiceMainScreen from "../../service_screen/ServiceMainScreen";
 export default function CenterCard({ isExpanded, setIsExpanded }) {
   const [clicked, setClicked] = useState(false);
   const divRef = useRef(null);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0, top: 0, left: 0 });
+  const [dimensions, setDimensions] = useState({
+    width: 0,
+    height: 0,
+    top: 0,
+    left: 0,
+  });
 
   useEffect(() => {
     if (divRef.current) {
-      const { width, height, top, left } = divRef.current.getBoundingClientRect();
+      const { width, height, top, left } =
+        divRef.current.getBoundingClientRect();
       setDimensions({ width, height, top, left });
     }
-  }, [divRef.current]);
+  }, []); // Removed divRef.current from dependencies
 
   const expandedStyle = {
     width: "calc(100%)",
@@ -28,7 +34,8 @@ export default function CenterCard({ isExpanded, setIsExpanded }) {
     WebkitBackdropFilter: "blur(50px)",
     "border-top": "1px solid rgba(255, 255, 255, 0.18)",
     borderRadius: "30px 30px 0 0",
-    background: "linear-gradient(180deg, rgba(40, 40, 40, 0.5) 0%, rgba(61, 61, 61, 0.5) 50%, rgba(40, 40, 40, 0.5) 100%)",
+    background:
+      "linear-gradient(180deg, rgba(40, 40, 40, 0.5) 0%, rgba(61, 61, 61, 0.5) 50%, rgba(40, 40, 40, 0.5) 100%)",
   };
 
   const handleExploreClick = () => {
@@ -39,13 +46,13 @@ export default function CenterCard({ isExpanded, setIsExpanded }) {
   const handleShrink = () => {
     setIsExpanded(false);
     setClicked(false);
-  }
+  };
 
   return (
     <div className="rounded-xl grid grid-cols-1 w-full h-[calc(100vh - 100px)] mt-10">
       <motion.div
         ref={divRef}
-        className={`w-full h-[350px]  bg-opacity-40 rounded-[10px] backdrop-blur-2xl font-nordiquePro px-3 ${!clicked && ' bg-zinc-400 '}`}
+        className={`w-full h-[350px]  bg-opacity-40 rounded-[10px] backdrop-blur-2xl font-nordiquePro px-3 ${!clicked && " bg-zinc-400 "}`}
       >
         {dimensions.width > 0 && dimensions.height > 0 && !isExpanded && (
           <motion.svg
@@ -62,7 +69,12 @@ export default function CenterCard({ isExpanded, setIsExpanded }) {
                 <stop offset="100%" stopColor="#DB6E27" />
               </linearGradient>
               <filter id="neon" x="-10%" y="-10%" width="120%" height="120%">
-                <feDropShadow dx="0" dy="0" stdDeviation="2" floodColor="#DB6E27" />
+                <feDropShadow
+                  dx="0"
+                  dy="0"
+                  stdDeviation="2"
+                  floodColor="#DB6E27"
+                />
               </filter>
             </defs>
             <motion.rect
@@ -90,7 +102,12 @@ export default function CenterCard({ isExpanded, setIsExpanded }) {
         >
           {!isExpanded && (
             <>
-              {["top-0 left-0", "top-0 right-0", "bottom-0 left-0", "bottom-0 right-0"].map((pos, index) => (
+              {[
+                "top-0 left-0",
+                "top-0 right-0",
+                "bottom-0 left-0",
+                "bottom-0 right-0",
+              ].map((pos, index) => (
                 <div key={index} className={`absolute ${pos}`}>
                   <Dot />
                 </div>
@@ -98,8 +115,13 @@ export default function CenterCard({ isExpanded, setIsExpanded }) {
 
               <div className="">
                 <div className="flex items-center justify-between">
-                  <p className="text-[22px] font-bold tracking-wider">Services</p>
-                  <div className="flex items-center group" onClick={handleExploreClick}>
+                  <p className="text-[22px] font-bold tracking-wider">
+                    Services
+                  </p>
+                  <div
+                    className="flex items-center group"
+                    onClick={handleExploreClick}
+                  >
                     <button className="border h-[40px] px-[20px] rounded-full cursor-pointer">
                       Explore More
                     </button>
@@ -112,8 +134,6 @@ export default function CenterCard({ isExpanded, setIsExpanded }) {
               <ShuffledCards />
             </>
           )}
-
-
         </div>
       </motion.div>
       {isExpanded && clicked && (

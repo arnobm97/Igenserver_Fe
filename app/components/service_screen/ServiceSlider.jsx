@@ -53,7 +53,9 @@ export default function ServicesSlider() {
                 <div className="w-[350px] h-full flex flex-col justify-end">
                   <div>
                     <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                    <p className="text-sm text-white/80 mb-4 line-clamp-3">{service.description}</p>
+                    <p className="text-sm text-white/80 mb-4 line-clamp-3">
+                      {service.description}
+                    </p>
                   </div>
                   <div className="flex items-center gap-2">
                     <service.Icon className="opacity-60" size={20} />
@@ -65,7 +67,6 @@ export default function ServicesSlider() {
                       Preview {service.title.toLowerCase()}
                     </Link>
                     <ArrowRight className="" size={16} />
-
                   </div>
                 </div>
               )}

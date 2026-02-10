@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import React, { useEffect, useState } from "react"
-import { motion } from "framer-motion"
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 export default function ShuffledCards() {
   const cards = [
@@ -9,8 +9,7 @@ export default function ShuffledCards() {
       id: 1,
       color: "bg-[#CEFFD1]",
       quote: "Good things aren't ",
-      description:
-        "We understand everyone wants to feel ",
+      description: "We understand everyone wants to feel ",
     },
     {
       id: 2,
@@ -30,7 +29,7 @@ export default function ShuffledCards() {
       quote: "Attention to detail",
       description: "Every product is chosen with c",
     },
-  ]
+  ];
 
   const [hoveredCard, setHoveredCard] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -40,11 +39,11 @@ export default function ShuffledCards() {
     if (isPaused) return; // Don't start interval if paused
 
     const timer = setInterval(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % cards.length)
-    }, 2000)
+      setActiveIndex((prevIndex) => (prevIndex + 1) % cards.length);
+    }, 2000);
 
-    return () => clearInterval(timer)
-  }, [isPaused]);
+    return () => clearInterval(timer);
+  }, [isPaused, cards.length]); // Added cards.length to dependencies
 
   const handleCardHover = (index) => {
     if (index === activeIndex) {
@@ -73,7 +72,10 @@ export default function ShuffledCards() {
           key={card.id}
           className={`absolute max-w-[calc(100vw-100px)] w-[300px] 2xl:w-[375px] h-[145px] 2xl:h-[206px] rounded-xl cursor-pointer ${card.color} bg-opacity-20 backdrop-blur-xl`}
           style={{
-            zIndex: hoveredCard === index || activeIndex === index ? 1000 : cards.length - index,
+            zIndex:
+              hoveredCard === index || activeIndex === index
+                ? 1000
+                : cards.length - index,
             transformOrigin: "top-left",
           }}
           initial={{
@@ -81,8 +83,12 @@ export default function ShuffledCards() {
             translateY: 0,
           }}
           animate={{
-            rotate: activeIndex === index ? 0 : ((index - activeIndex + cards.length) % cards.length) * 8,
-            translateY: ((index - activeIndex + cards.length) % cards.length) * 4,
+            rotate:
+              activeIndex === index
+                ? 0
+                : ((index - activeIndex + cards.length) % cards.length) * 8,
+            translateY:
+              ((index - activeIndex + cards.length) % cards.length) * 4,
             scale: hoveredCard === index ? 1.05 : 1,
           }}
           // whileHover={{
@@ -104,7 +110,9 @@ export default function ShuffledCards() {
             {/* Content */}
             <div className="relative p-6 text-white space-y-2">
               <p className="text-lg font-medium leading-snug">{card.quote}</p>
-              <p className="text-sm text-white/70 leading-relaxed">{card.description}</p>
+              <p className="text-sm text-white/70 leading-relaxed">
+                {card.description}
+              </p>
             </div>
 
             {/* Arrow icon */}
@@ -130,5 +138,5 @@ export default function ShuffledCards() {
         </motion.div>
       ))}
     </div>
-  )
+  );
 }

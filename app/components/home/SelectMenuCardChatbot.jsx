@@ -13,9 +13,9 @@ export default function SelectMenuCardChatbot() {
 
   const containerStyle = {
     perspective: "700px",
-    transition: 'width 0.5s ease-in-out 0.3s',
+    transition: "width 0.5s ease-in-out 0.3s",
     zIndex: 5,
-  }
+  };
 
   const baseStyle = {
     backgroundImage: "url('/images/FirstSlideBgPattern1.png')",
@@ -41,7 +41,7 @@ export default function SelectMenuCardChatbot() {
     WebkitBackdropFilter: "blur(50px)",
     background:
       "linear-gradient(180deg, rgba(40, 40, 40, 0.5) 0%, rgba(61, 61, 61, 0.5) 50%, rgba(40, 40, 40, 0.5) 100%)",
-    opacity: 1
+    opacity: 1,
   };
 
   const handleClose = () => {
@@ -50,7 +50,10 @@ export default function SelectMenuCardChatbot() {
 
   return (
     <>
-      <div className="hidden xl:block font-raleway" style={{ ...containerStyle }}>
+      <div
+        className="hidden xl:block font-raleway"
+        style={{ ...containerStyle }}
+      >
         <motion.div
           style={baseStyle}
           className={`w-[380px] h-[300px] bg-[#e7e4f01c] cursor-pointer z-10 overflow-hidden`}
@@ -60,7 +63,7 @@ export default function SelectMenuCardChatbot() {
             translateX: 10,
             translateY: 10,
             transition: { duration: 0.5 },
-            scaleX: 1
+            scaleX: 1,
           }}
           animate={{ rotateY: -15 }}
         >
@@ -82,10 +85,18 @@ export default function SelectMenuCardChatbot() {
                   exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
                   className="w-full h-full grid place-content-center"
-                  onClick={() => { setIsExpanded(true); setExpandCount(1) }}
+                  onClick={() => {
+                    setIsExpanded(true);
+                    setExpandCount(1);
+                  }}
                 >
                   <div>
-                    <Image src="/images/Wave.svg" alt="Icon" width={176} height={190} />
+                    <Image
+                      src="/images/Wave.svg"
+                      alt="Icon"
+                      width={176}
+                      height={190}
+                    />
                   </div>
                   <div className="text-white text-center text-[25px] font-[400] flex items-center gap-3 cursor-pointer">
                     <span>Connect With Us</span>
@@ -96,7 +107,6 @@ export default function SelectMenuCardChatbot() {
                 </motion.div>
               )}
             </AnimatePresence>
-
           </div>
         </motion.div>
       </div>

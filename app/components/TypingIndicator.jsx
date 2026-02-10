@@ -11,7 +11,7 @@ const TypingIndicator = () => (
           duration: 1.5,
           repeat: Infinity,
           delay: dot * 0.2,
-          ease: "easeInOut"
+          ease: "easeInOut",
         }}
         className="w-3 h-3 bg-gray-200 rounded-full"
       >
@@ -21,4 +21,4 @@ const TypingIndicator = () => (
   </div>
 );
 
-export default TypingIndicator
+export default TypingIndicator;

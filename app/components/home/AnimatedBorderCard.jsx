@@ -1,20 +1,22 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useRef } from "react"
-import { motion } from "framer-motion"
+import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
-
-
-export default function AnimatedBorderCard({ children, width = 380, height = 300 }) {
-  const [dimensions, setDimensions] = useState({ width, height })
-  const cardRef = useRef(null)
+export default function AnimatedBorderCard({
+  children,
+  width = 380,
+  height = 300,
+}) {
+  const [dimensions, setDimensions] = useState({ width, height });
+  const cardRef = useRef(null);
 
   useEffect(() => {
     if (cardRef.current) {
-      const { width, height } = cardRef.current.getBoundingClientRect()
-      setDimensions({ width, height })
+      const { width, height } = cardRef.current.getBoundingClientRect();
+      setDimensions({ width, height });
     }
-  }, [])
+  }, []);
 
   return (
     <div
@@ -79,6 +81,5 @@ export default function AnimatedBorderCard({ children, width = 380, height = 300
       </motion.svg>
       <div className="relative z-10">{children}</div>
     </div>
-  )
+  );
 }
-
