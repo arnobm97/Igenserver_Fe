@@ -41,3 +41,14 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
+# Next.js
+.next/
+out/
+build/
+
+# NEVER COMMIT BUILD ARTIFACTS
+*.module.css.js
+*.module.css.d.ts
+*_ed5ab9f0.module.css
+*_ed5ab9f0.js
+nordiquepro_ed5ab9f0*
