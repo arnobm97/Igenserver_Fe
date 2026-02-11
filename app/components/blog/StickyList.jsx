@@ -88,7 +88,6 @@ const ParallaxBlog = () => {
     const leftHeight = leftRef.current.offsetHeight;
     const scrollDistance = rightHeight - leftHeight;
 
-    // ✅ Set total scroll space to wrapperRef
     if (wrapperRef.current) {
       wrapperRef.current.style.height = `${scrollDistance + leftHeight}px`;
     }
