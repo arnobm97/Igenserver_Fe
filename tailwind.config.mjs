@@ -19,12 +19,12 @@ export default {
         foreground: "var(--foreground)",
       },
       backgroundImage: {
-        'custom-gradient': 'linear-gradient(to right, #1B1B1B 0%, #3D3D3D 50%, #1B1B1B 100%)',
+        'custom-gradient':
+          'linear-gradient(to right, #1B1B1B 0%, #3D3D3D 50%, #1B1B1B 100%)',
       },
       screens: {
-         sm: '450px',
+        sm: "450px",
       },
-
       animation: {
         spotlight: "spotlight 2s ease .75s 1 forwards",
       },
