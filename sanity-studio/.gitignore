@@ -27,12 +27,3 @@
 
 # Dotenv and similar local-only files
 *.local
-# Next.js build output
-.next
-out
-build
-
-# CSS module build artifacts
-*.module.css.js
-*.module.css.d.ts
-*_ed5ab9f0.module.css
