@@ -105,7 +105,6 @@ const ParallaxBlog = () => {
       },
     });
 
-    // Second phase: left and right scroll together
     gsap.to(contentRef.current, {
       y: -leftHeight,
       ease: "none",
