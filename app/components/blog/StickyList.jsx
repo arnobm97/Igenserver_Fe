@@ -92,7 +92,6 @@ const ParallaxBlog = () => {
       wrapperRef.current.style.height = `${scrollDistance + leftHeight}px`;
     }
 
-    // First phase: right column scrolls while left is fixed
     gsap.to(rightRef.current, {
       y: -scrollDistance,
       ease: "none",
