@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "vercel-build": "npm install --legacy-peer-deps && npm run build"
+     "vercel-build": "rm -rf .next && next build"
   },
   "dependencies": {
     "@sanity/image-url": "^1.1.0",
