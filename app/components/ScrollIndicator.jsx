@@ -10,7 +10,7 @@ export default function ScrollMouseIndicator() {
       animate={{ opacity: 1 }}
       transition={{ duration: 1, ease: "easeOut" }}
     >
-      {/* Animated mouse bounce */}
+
       <motion.div
         className="w-[35px] h-[55px] border-2 border-[#DB6E27] rounded-full flex justify-center items-start p-1"
         animate={{
